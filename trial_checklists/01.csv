@@ -1,0 +1,12 @@
+model, Texti, Þema, Gæði, Heildareinkunn, comment
+GPT-5.1, 10, 10, 8, 28, "GPT-5.1 var eina líkanið sem skrifaði textann algjörlega rétt. Skiltið sjálft er allt í lagi en missir nokkur stig fyrir órökrétta framsetningu (skiltið flýtur í loftinu)."
+GROK, 6, 10, 10, 26, "Líkanið notar nokkra séríslenska stafi, en ekki á réttum stöðum. Sumir stafir eru ekki til í alvörunni. Skiltið er fínt og í réttum stíl."
+META_AI, 0, 2, 7, 9, "Það er enginn texti á myndinni. Þetta er í raun ekki skilti heldur. Myndin er þó í teiknimyndastíl."
+MISTRAL, 3, 3, 6, 12, "Textinn er eittvað í áttina að því sem beðið var um. Þetta er skilti, en ekki í teiknimyndastíl. Hundurinn er með skrítin augu."
+QWEN3-MAX, 5, 8, 7, 20, "Textinn er á ákveðinn hátt nákvæmur (sami fjöldi atkvæða). En líkanið skáldar nokkra stafi sem eru ekki til í íslensku. Þemað er tæknilega rétt."
+GEMINI, 8, 5, 10, 23, "Textinn er nálægt því að vera réttur, en notar tákn sem eru ekki til í íslensku. Skiltið er með teiknimynd en þemað á myndinni er rangt. Myndin er að öðru leiti rétt."
+COPILOT, 9, 10, 10, 29, "Textinn er einu tákni frá því að vera réttur. Þemað er rétt og skiltið er rökrétt."
+GPT-4o, 9, 10, 8, 27, "Textinn er einu tákni frá því að vera réttur. Myndin er rétt þemuð en það er ekki augljóst hvort að hundurinn sé á skiltinu eða ekki."
+GPT-5instant, 9, 10, 8, 27, "Textinn er einu tákni frá því að vera réttur. Myndin er í teiknimyndastíl og þemað er rétt. Skiltið er meira eins og platti og hundurinn er teiknaður út fyrir brúnina."
+IMAGEN-4, 7, 0, 1, 8, "Textinn er tæknilega séð nálægt því að vera réttur. Þemað er rangt og líkanið teiknaði sápuflösku en ekki skilti."
+DALL-E, 5, 7, 6, 18, "Textinn er endurtekinn en er sumstaðar í áttina að réttum texta. Þemað er að einhverju leiti rétt en líkanið notar blöndu af nokkrum þemum. Það eru nokkur augljós merki um að um gervimmynd er að ræða."

@@ -1,0 +1,16 @@
+model,generate_image
+GPT-5.1,Yes
+GROK, Yes
+META_AI, Yes
+MISTRAL, Yes
+QWEN3-MAX, Yes
+KIMI-2, No
+MINIMAX, No
+CLAUDE, No
+GEMINI, Yes
+COPILOT, Yes
+GPT-OSS, No
+GPT-4o, Yes
+GPT-5instant, Yes
+IMAGEN-4, Yes
+DALL-E, Yes

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gervigreindarvígvöllurinn</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-content">
+        <h1>Gervigreindarvígvöllurinn 0.1</h1>
+        <p>
+          Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til einhver stöðupróf (e. benchmarks) sem eru mjög hjálpleg í að meta gæði tólanna í afmörkuðum verkefnum. Þessari síðu er ekki ætlað að vera slíkt próf og er alls ekki vísindalegt.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="filters">
+        <label>
+          Sía eftir prófi
+          <select id="trialFilter">
+            <option value="all" selected>Sýna öll</option>
+          </select>
+        </label>
+        <label>
+          Sía eftir líkani
+          <select id="modelFilter">
+            <option value="all" selected>Sýna öll</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="summary-section" id="summarySection">
+        <div class="summary-header">
+          <h2>Yfirlit yfir próf og líkön</h2>
+          <p>Stig fyrir hvern lið eru sótt beint úr prófunarskjölum.</p>
+        </div>
+        <div class="table-wrap">
+          <table id="summaryTable">
+            <thead>
+              <tr>
+                <th>Líkan</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <p class="table-empty" id="summaryEmpty">Engin gögn til að sýna.</p>
+        </div>
+      </section>
+
+      <section id="trialGrid" class="trial-grid" aria-live="polite">
+        <div class="status-message">Hleð gögnum…</div>
+      </section>
+    </main>
+
+    <template id="trialTemplate">
+      <article class="trial-card">
+        <header>
+          <p class="trial-id"></p>
+          <p class="trial-type"></p>
+        </header>
+        <h2 class="trial-prompt"></h2>
+        <div class="model-grid"></div>
+      </article>
+    </template>
+
+    <template id="modelTemplate">
+      <figure class="model-card">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Open image preview">
+            <img alt="" loading="lazy" />
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name"></strong>
+            <span class="generated-date"></span>
+          </div>
+          <p class="model-comment">—</p>
+          <div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">—</span>
+          </div>
+        </figcaption>
+      </figure>
+    </template>
+
+    <div id="lightbox" class="lightbox hidden" aria-hidden="true">
+      <div class="lightbox-backdrop"></div>
+      <figure class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Image preview">
+        <button type="button" class="lightbox-close" aria-label="Close image">×</button>
+        <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Show previous image">‹</button>
+        <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Show next image">›</button>
+        <img id="lightboxImage" alt="" />
+        <figcaption class="lightbox-caption">
+          <strong id="lightboxModel"></strong>
+          <p id="lightboxPrompt"></p>
+          <p id="lightboxComment" class="lightbox-comment"></p>
+          <div class="lightbox-scores" id="lightboxScores"></div>
+        </figcaption>
+      </figure>
+    </div>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
