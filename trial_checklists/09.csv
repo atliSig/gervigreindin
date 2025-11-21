@@ -1,0 +1,12 @@
+model, Texti, Staðsetningar, Stærðir, comment
+GPT-5.1, 7, 5, 9, "Stærðirnar eru fínar, staðsetningar eru ekki alveg réttar en textinn er fínn."
+GROK, 6, 4, 6, "Hérna eru allskonar nýir bæir sýndir sem ég hef aldrei heyrt um. En sumar stærðirnar eru góðar."
+META_AI, 5, 2, 2, "Enginn texti merktur, en það var ekki beðið um það sérstaklega. þarna er bara hrúga af rauðum demöntum."  
+MISTRAL, 3, 4, 4, "Lélegir textar en líkanið fattar að láta flesta staði nálægt strönd."
+QWEN3-MAX, 6, 6, 3, "Flott kort með ágætis texta en stærðir og staðsetningar eru ekki alveg réttar."
+GEMINI, 4, 4, 8, "Líkanið fattar að vera með stærsta demantinn á réttum stað, en heldur að margir íslenskir bæjir séu í kringum jökla."
+COPILOT, 8, 2, 7, "Stærðirnar eru ágætar og textinn er mjög góður. En Reykjavík er ekki í sjónum og það vantar ýmislegt."
+GPT-4o, 9, 7, 2, "Textinn er næstum alveg réttur. Það vantar Reykjavík en staðsetningarnar sem eru sýndar eru mjög fínar."
+GPT-5instant, 7, 5, 5, "Sumar staðsetningarnar eru mjög fínar, aðrar ekki. Textinn er fínn en Kornafjörður er ekki til, held ég."
+IMAGEN-4, 6, 4, 4, "Þetta líkan elskar Egilstaði og Mosfellsbúr. Hér eru stærðirnar ekki mjög raunverulegar og demöntum dreyft bara einhvern veginn."
+DALL-E, 3, 3, 4, "Svolítið mikið af Reykjavík. Það er erfitt að lesa hvað stendur á myndinni og það eru allskonar bæir í sjónum."

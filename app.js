@@ -50,6 +50,15 @@ const parseScoreNumber = (value) => {
 const checklistCache = new Map();
 let galleryEntries = [];
 let currentEntryIndex = -1;
+const galleryIndexByKey = new Map();
+const makeGalleryKey = (trialId, modelName) => `${trialId}__${modelName}`;
+
+const formatScoreWithMax = (value, max) => {
+  const num = parseScoreNumber(value);
+  if (Number.isNaN(num)) return `—/${max}`;
+  const formatted = Number.isInteger(num) ? String(num) : num.toFixed(2);
+  return `${formatted}/${max}`;
+};
 
 const formatPrompt = (prompt) => {
   const trimmed = prompt.trim();
@@ -136,9 +145,9 @@ const loadChecklist = async (trialId) => {
       return;
     }
     const entry = {
-      comment: "—",
+      comment: "-",
       overallLabel: "Heildareinkunn",
-      overallValue: "—",
+      overallValue: "-",
       metrics: [],
     };
     let fallbackMetric = null;
@@ -147,7 +156,7 @@ const loadChecklist = async (trialId) => {
       if (!label || label.toLowerCase() === "model") {
         return;
       }
-      const value = normalizeValue(rawValue) || "—";
+      const value = normalizeValue(rawValue) || "-";
       if (label.toLowerCase() === "comment") {
         entry.comment = value;
         return;
@@ -156,22 +165,27 @@ const loadChecklist = async (trialId) => {
       entry.metrics.push(metric);
       const lower = label.toLowerCase();
       if (
-        (entry.overallValue === "—" || entry.overallValue === "") &&
+        (entry.overallValue === "-" || entry.overallValue === "") &&
         lower.includes("heild")
       ) {
         entry.overallLabel = label;
         entry.overallValue = value;
       }
-      if (!fallbackMetric && value !== "—") {
+      if (!fallbackMetric && value !== "-") {
         fallbackMetric = metric;
       }
     });
-    if (
-      (!entry.overallValue || entry.overallValue === "—") &&
-      fallbackMetric
-    ) {
-      entry.overallLabel = fallbackMetric.label;
-      entry.overallValue = fallbackMetric.value;
+    if (!entry.overallValue || entry.overallValue === "-") {
+      const numericValues = entry.metrics
+        .map((metric) => parseScoreNumber(metric.value))
+        .filter((num) => !Number.isNaN(num));
+      if (numericValues.length) {
+        const total = numericValues.reduce((sum, num) => sum + num, 0);
+        entry.overallValue = Number.isInteger(total) ? String(total) : total.toFixed(2);
+      } else if (fallbackMetric) {
+        entry.overallLabel = fallbackMetric.label;
+        entry.overallValue = fallbackMetric.value;
+      }
     }
     map.set(row.model.trim(), entry);
   });
@@ -200,7 +214,7 @@ const renderSummaryTable = (trials, models, checklistMaps) => {
     summarySection?.classList.add("hidden");
     if (summaryEmpty) {
       summaryEmpty.style.display = "block";
-      summaryEmpty.textContent = "Engin gögn til að sýna.";
+      summaryEmpty.textContent = "No data to show";
     }
     return;
   }
@@ -229,11 +243,11 @@ const renderSummaryTable = (trials, models, checklistMaps) => {
 
   summaryHead.innerHTML = "";
   const firstTh = document.createElement("th");
-  firstTh.textContent = "Líkan";
+  firstTh.textContent = "L?kan";
   summaryHead.appendChild(firstTh);
   columns.forEach((col) => {
     const th = document.createElement("th");
-    th.textContent = `Próf ${col.trialId} – ${col.label}`;
+    th.textContent = 'Test ' + col.trialId;
     summaryHead.appendChild(th);
   });
 
@@ -246,15 +260,32 @@ const renderSummaryTable = (trials, models, checklistMaps) => {
     columns.forEach((col) => {
       const td = document.createElement("td");
       const entry = checklistMaps.get(col.trialId)?.get(model.model);
-      const value = entry?.overallValue ?? "—";
+      const value = entry?.overallValue ?? "?";
       const numeric = parseScoreNumber(value);
       const best = !Number.isNaN(numeric) && numeric === columnMax.get(col.trialId);
       const span = document.createElement("span");
       span.className = best ? "score-chip best" : "score-chip";
-      span.textContent = value || "—";
+      span.textContent = formatScoreWithMax(value, 30);
       td.appendChild(span);
+
+      const key = makeGalleryKey(col.trialId, model.model);
+      if (galleryIndexByKey.has(key)) {
+        const index = galleryIndexByKey.get(key);
+        td.classList.add("table-cell-link");
+        td.setAttribute("role", "button");
+        td.setAttribute("tabindex", "0");
+        td.addEventListener("click", () => openLightbox(index));
+        td.addEventListener("keypress", (evt) => {
+          if (evt.key === "Enter" || evt.key === " ") {
+            evt.preventDefault();
+            openLightbox(index);
+          }
+        });
+      }
+
       tr.appendChild(td);
     });
+
     summaryBody.appendChild(tr);
   });
 };
@@ -447,15 +478,55 @@ const createModelCard = (
   const imgEl = modelNode.querySelector("img");
   const buttonEl = modelNode.querySelector(".image-button");
   const imageWrap = modelNode.querySelector(".image-wrap");
-  const altText = `Próf ${trialId} útkoma frá ${model.model}`;
+  const altText = model?.model ? `Mynd fyrir ${model.model}` : "Mynd";
   if (dateEl) {
     dateEl.textContent = whenGenerated
-      ? `Mynduð: ${whenGenerated}`
+      ? `Myndgerð: ${whenGenerated}`
       : "Dagsetning óþekkt";
   }
   setText(overallLabelEl, scoreData?.overallLabel ?? "Heildareinkunn");
-  setText(overallEl, scoreData?.overallValue ?? "—");
+  setText(overallEl, formatScoreWithMax(scoreData?.overallValue, 30));
   setText(commentEl, scoreData?.comment ?? "—");
+
+  const scoreTile = modelNode.querySelector(".score-tile");
+  if (scoreTile) {
+    const parent = scoreTile.parentNode;
+    const stack = document.createElement("div");
+    stack.className = "score-stack";
+    const bars = document.createElement("div");
+    bars.className = "score-bars";
+    const metrics = (scoreData?.metrics ?? []).slice(0, 3);
+    metrics.forEach((metric) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "score-bar";
+      const label = document.createElement("span");
+      label.className = "score-bar-label";
+      const metricValue = formatScoreWithMax(metric.value, 10);
+      label.textContent = `${metric.label}: ${metricValue}`;
+
+      const track = document.createElement("div");
+      track.className = "score-bar-track";
+      const fill = document.createElement("div");
+      fill.className = "score-bar-fill";
+      const numeric = parseScoreNumber(metric.value);
+      const percent = Number.isNaN(numeric)
+        ? 0
+        : Math.max(0, Math.min(100, (numeric / 10) * 100));
+      fill.style.width = `${percent}%`;
+      track.appendChild(fill);
+
+      wrapper.appendChild(label);
+      wrapper.appendChild(track);
+      bars.appendChild(wrapper);
+    });
+
+    if (metrics.length) {
+      stack.appendChild(bars);
+    }
+    parent.insertBefore(stack, scoreTile);
+    parent.removeChild(scoreTile);
+    stack.appendChild(scoreTile);
+  }
 
   if (imagePath && imgEl) {
     imgEl.src = imagePath;
@@ -468,13 +539,14 @@ const createModelCard = (
         model: model.model,
         prompt: promptText,
         whenGenerated,
-        comment: scoreData?.comment ?? "—",
+        comment: scoreData?.comment ?? "?",
         metrics: scoreData?.metrics ?? [],
       });
+      galleryIndexByKey.set(makeGalleryKey(trialId, model.model), entryIndex);
       buttonEl.addEventListener("click", () => openLightbox(entryIndex));
       buttonEl.setAttribute(
         "aria-label",
-        `Stækka mynd frá ${model.model} fyrir próf ${trialId}`,
+        `Stækka mynd fyrir próf ${trialId}`,
       );
     }
   } else {
@@ -500,6 +572,8 @@ const createModelCard = (
 
 const renderTrials = async (trials, models) => {
   trialGrid.innerHTML = "";
+  galleryEntries = [];
+  galleryIndexByKey.clear();
   const selectedTrial = trialFilterEl.value;
   const selectedModel = modelFilterEl.value;
   const navEntries = [];

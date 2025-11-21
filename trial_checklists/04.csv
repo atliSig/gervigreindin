@@ -1,0 +1,12 @@
+model, Gamalt fólk, Pulsa, Bakpoki, comment
+GPT-5.1, 10, 9, 1, "Glæsileg pulsa, án remúlaði. Bakpoki er sýndur en ekkert gefur til kynna að hann sé frá 66° Norður."
+GROK, 10, 0, 1, "Engin pulsa, rétt fólk og einn ómerktur bakpoki."
+META_AI, 10, 0, 10, "Fólkið er rétt og bakpokinn líka. Engin pulsa."
+MISTRAL, 10, 0, 5, "Gamalt fólk án pulsu og bakpokinn á rangri manneskju, framan á henni."
+QWEN3-MAX, 10, 0, 1, "Vissulega gamalt fólk í fjallgöngu, en hvar er pylsan og afhverju er bakpokinn orðinn að hatti?"
+GEMINI, 10, 10, 10, "Frábær mynd af konu með pulsu (sem gæti verið með remúlaði) og fjórburavinum hennar. Einn þeirra er með réttan bakpoka."
+COPILOT, 10, 9, 2, "Falleg fjallgöngustund með pulsu. Bakpokinn er þó jakki."
+GPT-4o, 10, 9, 2, "Skemmtilegur hópur af fólki í allskonar stærðum. Pulsan er fín en bakpokinn er flíspeysa."
+GPT-5instant, 10, 9, 2, "Girnileg pulsa, en undarlegt hvernig er haldið á henni. Fólkið er fínt og bakpokinn er aftur orðinn að einhverju öðru."
+IMAGEN-4, 0, 0, 1, "Þetta er ekki gamalt fólk heldur skilti. Það er engin pulsa en það er minnst á 66° Norður."
+DALL-E, 7, 7, 2, "Einhverskonar miðevrópsk pulsa með káli, í höndunum á rangri manneskju. Sami maður er með vörumerkið á bumbunni."

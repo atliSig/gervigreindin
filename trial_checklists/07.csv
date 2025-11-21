@@ -1,0 +1,12 @@
+model, Texti, Samhengi, Valkostur, comment
+GPT-5.1, 8, 10, 10, "Mjög sannfærandi skjáskot, textinn er nærri lagi."
+GROK, 9, 2, 10, "Þetta er ekki viltu vinna milljón. En þarna er texti sem nánast réttur og ágætlega rökréttur fyrir spurninguna."
+META_AI, 0, 8, 2, "Konan gat valið um annað hvort stafinn l eða liccorc. Hvorugt er kanilsykur en bæði er merkt B."
+MISTRAL, 3, 4, 10, "Þetta er í spilavíti, konan velur réttan valmöguleika en spurningin er eitthvað skrítin."
+QWEN3-MAX, 3, 2, 3, "Valkosturinn B er vissulega sýndur en þetta er meira eins og auglýsing fyrir nýtt íslenskt app." 
+GEMINI, 9, 9, 9, "Þetta er skemmtileg spurning sem er reyndar alls ekki rökrétt. Valkosturinn er næstum því réttur."
+COPILOT, 7, 10, 10, "Þarna fer spurningin sjálf á eitthvað skrítið flug. Mjög sannfærandi skjáskot úr þættinum með réttan valmöguleika."
+GPT-4o, 9, 10, 10, "Þessi kona er greinilega alltaf í viltu vinna milljón, því hérna birtist hún aftur. Textinn er næstum réttur."
+GPT-5instant, 9, 10, 9, "´Ætla að prófa að láta kanilsykur á lummur næst. Þetta er mjög líkt þættinum og svarið næstum rétt skrifað."
+IMAGEN-4, 6, 0, 10, "Við verðum að gefa IMAGEN-4 það að það skrifar skemmtilega sögur. Réttur valkostur er nefndur en röng tegund af skjáskoti sýnd." 
+DALL-E, 5, 6, 6, "Það eru ekki svona margir valkostir í þættinum og þeir eru ekki merktir með bæði tölum og bókstöfum. Valkosturinn er næstum rétt skrifaður."

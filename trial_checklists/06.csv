@@ -1,0 +1,12 @@
+model, Almenn gæði, Íslenskt samhengi, Sjónarhorn, comment
+GPT-5.1, 10, 10, 6, "Þetta er hágæða mynd af háíslensku heimili. Þarna er notuð víðlinsa, en þetta væri mjög hávaxið barn."
+GROK, 8, 5, 3, "Barnið hefur tekið á flug til að ná sem bestri mynd. Það er margt sem lítur smá út eins og Ísland en finnst þetta frekar eins og Noregur."
+META_AI, 8, 7, 2, "Barnið gleymdi víðlinsunni en faldi sig í staðinn á bakvið grindverk. Gæti alveg verið tekið á Íslandi."
+MISTRAL, 8, 8, 7, "Þetta barn býr á mjög stílhreinu heimili. Þetta er svona næstum í hæð barns en engin víðlinsa."
+QWEN3-MAX, 2, 5, 6, "Þetta er meira eins og teiknimynd. Þetta er fornaldarbarn greinilega, en á þessa fínu víðlinsu."
+GEMINI, 10, 10, 5, "Bónusstig fyrir kisuna og öll þessi teppi. Þetta er sannfærandi sem íslenskt heimili en barnið gleymdi víðlinsunni."
+COPILOT, 7, 9, 7, "Barnið klifraði uppá borð til að taka myndina. Þetta er mjög íslenskt heimili en smá eins og biðstofa."
+GPT-4o, 10, 9, 10, "Barnið tekur mynd af dótinu sínu á þessu mjög íslenska heimili. Barnið hefur fundið víðlinsu til að taka myndina."
+GPT-5instant, 9, 9, 5, "Barnið ákvað að taka frekar mynd af sjálfu sér með eina kubbinn sinn og bangsann sinn"
+IMAGEN-4, 6, 6, 0, "Þetta er ákveðin móðgun við íslensk heimili."
+DALL-E, 5, 6, 7, "Gæti verið barn, erfitt að segja. Þetta er aðeins of íslenskt eitthvað, en virkar alveg kósí."

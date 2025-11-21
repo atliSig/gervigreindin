@@ -1,0 +1,12 @@
+model, Teiknimynd, Jólasveinar, Grýla, comment
+GPT-5.1, 10, 5, 3, "Ekkert sem gefur til kynna hvaða jólasveinar þetta eru. Grýla er ekki nógu vond."
+GROK, 8, 5, 5, "Grýla er ágætlega vond. Ekkert sem gefur til kynna hvaða jólasveinar þetta eru."
+META_AI, 10, 5, 6, "Þetta er mjög týpísk jólasveinateiknimynd. En eiginleikar sveinanna eru ekki sérlega áberandi." 
+MISTRAL, 8, 3, 2, "Mistral fattar að það eru einhver kerti tengd þessu. En þetta er eins og mynd af einum stórum jólasveini og tveimur krökkum."
+QWEN3-MAX, 9, 0, 2, "Þetta er eins og anime mynd. Engir jólasveinar en það eru vísanir í Ísland (rúnir)"
+GEMINI, 9, 6, 3, "Of margir jólasveinar en það er einn með kerti. Hinn er hærri. Grýla er ekki vond og gleymdi að tengja garnið við prjónana."
+COPILOT, 10, 5, 3, "Mjög týpísk teiknimynd en jólasveinarnir eru ekki einkennandi og Grýla er of góð."
+GPT-4o, 10, 5, 3, "Sannfærandi teiknimynd sem nær ekki að tjá einkenni jólasveinanna og Grýlu."
+GPT-5instant, 10, 6, 3, "Góð teiknimynd, einn jólasveinninn er hærri en hinn. Grýla er ekki nógu vond."
+IMAGEN-4, 8, 4, 3, "Þarna er ameríski jólasveinninn og vinur hans tæknisveinn. Grýla er of góð."
+DALL-E, 8, 7, 3, "Það eru kerti og einn er mjög stór, það er ákveðinn sigur fyrir DALL-E. En Grýla er of vond og Kertasníkir er ekki sá sem heldur á kertinu."

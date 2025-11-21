@@ -1,0 +1,12 @@
+model, Fjöldi og verðmæti, Hönnun, Röðun, comment
+GPT-5.1, 8, 7, 10, "Sannfærandi, en það vantar 10 krónur. Litir ekki réttir og ég veit ekki hvað er sýnt á 1 krónunni."
+GROK, 8, 5, 10, "Röðin er rétt en það er of mikið af kröbbum og peningum sem eru eins og evrur. 100 krónurnar eru reyndar mjög flott hannaðar!"
+META_AI, 0, 2, 1, "Þetta er bara safn af allskonar peningum sem hefur verið raðað eftir lit."
+MISTRAL, 8, 3, 10, "Enn vantar 5 krónu peninginn. Þetta er blanda af evrum og bandarískum peningum sýnist mér."
+QWEN3-MAX, 4, 2, 6, "Þetta er skemmtilegt en óraunverulegt safn af peningum. Við notum ekki lengur aurma."
+GEMINI, 8, 9, 10, "Þarna eru nokkrir mjög vel gerðir íslenskir peningar. En það vantar einn og myndirnar eru ekki alveg réttar og litirnir eru rangir líka."
+COPILOT, 10, 9, 10, "Mjög vel gert. Líkanið fattar að láta peningana í rétta liti en blandar saman báðum hliðum sumra peninga."
+GPT-4o, 8, 6, 9, "Ekki fallega raðað hjá líkaninu. Að vissu leiti vel gert en við erum ekki með andapening."
+GPT-5instant, 8, 6, 10, "Skemmtilegur lundapeningur. Það vantar 1 krónu peninginn og við notum ekki víkingaskip á íslenskum peningum."
+IMAGEN-4, 6, 3, 5, "IMAGEN segir okkur sögu um peningana. Þetta eru ekki íslenskir peningar og þeim er skringilega raðað."
+DALL-E, 6, 6, 5, "Það er mikið af kröbbum og fiskum. En þetta er skringilega sett fram til samanburðar."

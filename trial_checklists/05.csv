@@ -1,0 +1,12 @@
+model, Texti, Dagblað, Samhengi, comment
+GPT-5.1, 8, 9, 7, "Hér er Morgunblaðið sýnt í teiknimyndastíl, fréttin gæti átt við íslenskt samhengi og textinn er í áttina að týpískri íslensku."
+GROK, 1, 10, 2, "Hér er dagblaðið "Slemsk Deitilð" sýnt. En það er ekki til og er greinilega ekki íslenskt. Ártalið er rétt."
+META_AI, 3, 7, 7, "Það er eitthvað mjög íslenskt við þessa mynd. Textinn er í áttina að einhverju íslensku."
+MISTRAL, 1, 9, 5, "Dagblaðið er ekki íslenskt en það er minnst á Ísland og inflúensu."
+QWEN3-MAX, 5, 5, 8, "Þetta er mjög áhugaverð tilraun. Þarna eru augljósar vísanir í fullveldisdaginn. Blaðið er rétt ármerkt og textinn er skýr, en hann er á ensku."
+GEMINI, 7, 8, 10, "Hérna er fín mynd af Morgu blaðinu. Það eru ýmsar vísanir í atburði sem tengjast þessum tíma og Íslandi."
+COPILOT, 8, 6, 6, "Ágætismynd en ekkert sérstaklega sannfærandi sem forsíða á dagblaði. Textinn er fínn í fyrirsögnum og titli en minna í efnisgreinum."
+GPT-4o, 9, 7, 9, "Textinn er mjög nálægt því að vera alveg réttur. Það var sannarlega Kötlugos árið 1918."
+GPT-5instant, 8, 6, 8, "Blaðið er gefið út 7. Nóvember 1918, sem er einmmitt þegar samið var um vopnahlé í fyrri heimsstyrjöldinni."
+IMAGEN-4, 7, 0, 7, "Við verðum að gefa IMAGEN-4 smá hrós fyrir að skrifa svona mikinn texta. En þetta er ekki dagblað, þótt að umræðuefnið sé í réttu samhengi."
+DALL-E, 3, 6, 4, "Þetta er mjög spennandi dagblað, þótt það sé ekki mjög sannfærandi. Þarna er vitnað í inflúensu mikið."

@@ -1,0 +1,12 @@
+model, Þema, Litir, Aðbúnaður, comment
+GPT-5.1, 7, 8, 9, "Fínasta mynd en kannski ekki dæmigerð skýringarmynd. Litir að mestu leiti réttir, en nokkrir svartir fletir."
+GROK, 8, 5, 2, "Meginlitur myndarinnar er rangur. Minnir frekar á hlaupabraut frekar en sundlaug. Lítið um aðbúnað."
+META_AI, 2, 4, 2, "Frekar eins og einföld ljósmynd af sundlaug."
+MISTRAL, 10, 10, 6, "Sannfærandi sem skýringarmynd. Litir eru réttir en það vantar til dæmis rennibrautir."
+QWEN3-MAX, 2, 5, 3, "Er ekki skýringarmynd. Meginliturinn er rangur. Takmarkaður aðbúnaður."
+GEMINI, 9, 8, 8, "Mjög sannfærandi skýringarmynd en er ekki alveg rökrétt. Litirnir eru almennt réttir og týpiskur aðbúnaður er sýndur."
+COPILOT, 9, 10, 8, "Teiknimyndaleg skýringarmynd. Góður aðbúnaður og litirnir eru réttir."
+GPT-4o, 8, 10, 8, "Góð skýringarmynd, en er ekki rökrétt, til dæmis hvað varðar sjónarhorn. Litir eru réttir og aðbúnaður er fínn."
+GPT-5instant, 10, 9, 9, "Mjög góð skýringarmynd. Litirnir eru réttir og aðbúnaðurinn er sannfærandi."
+IMAGEN-4, 3, 3, 3, "Er eins og einhverskonar tæknileg lýsing á sundlaug. Litirnir eru ekki réttir. Takmarkaður aðbúnaður sýndur."
+DALL-E, 8, 7, 9, "Fín skýringarmynd af mjög spennandi sundlaug. Litirnir eru ekki alveg réttir, margar sundlaugar en engin rennibraut."
