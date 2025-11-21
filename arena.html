@@ -15,28 +15,22 @@
     <header class="site-header">
       <div class="header-content">
         <h1>Gervigreindarvígvöllurinn 0.1</h1>
+        <h3>
+          Á gervigreindarvígvellinum berjast mismunandi gervigreindarlíkön um titilinn "Besta gervigreindin í íslensku".
+        </h3>
         <p>
-          Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til einhver stöðupróf (e. benchmarks) sem eru mjög hjálpleg í að meta gæði tólanna í afmörkuðum verkefnum. Þessari síðu er ekki ætlað að vera slíkt próf og er alls ekki vísindalegt.
+          Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til <a href='https://huggingface.co/spaces/mideind/icelandic-llm-leaderboard'>einhver stöðupróf</a> 
+          (e. benchmarks) sem eru mjög hjálpleg í að meta gæði tólanna í afmörkuðum verkefnum. Þessari síðu er ekki ætlað að vera slíkt próf og er alls ekki vísindalegt. Hér eru líkönin
+          í staðin borin saman í "núllskots" (e. zero-shot) verkefnum með frekar hlutdrægum mælikvörðum. Það þýðir að sama manneskjan (ég) bjó til öll prófin og gaf þeim öllum einkunn.
         </p>
+        <p>
+          Þrátt fyrir það þá gefur þesis vígvöllur ágæta mynd af getu mismunandi gervigreindarlíkana að skilja og fylgja skipunum á íslensku.
+        </p>
+        <p> 
       </div>
     </header>
 
     <main>
-      <section class="filters">
-        <label>
-          Sía eftir prófi
-          <select id="trialFilter">
-            <option value="all" selected>Sýna öll</option>
-          </select>
-        </label>
-        <label>
-          Sía eftir líkani
-          <select id="modelFilter">
-            <option value="all" selected>Sýna öll</option>
-          </select>
-        </label>
-      </section>
-
       <section class="summary-section" id="summarySection">
         <div class="summary-header">
           <h2>Yfirlit yfir próf og líkön</h2>
@@ -55,6 +49,21 @@
         </div>
       </section>
 
+      <section class="filters">
+        <label>
+          Sía eftir prófi
+          <select id="trialFilter">
+            <option value="all" selected>Sýna öll</option>
+          </select>
+        </label>
+        <label>
+          Sía eftir líkani
+          <select id="modelFilter">
+            <option value="all" selected>Sýna öll</option>
+          </select>
+        </label>
+      </section>
+
       <section id="trialGrid" class="trial-grid" aria-live="polite">
         <div class="status-message">Hleð gögnum…</div>
       </section>
@@ -67,6 +76,9 @@
           <p class="trial-type"></p>
         </header>
         <h2 class="trial-prompt"></h2>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <div class="trial-metrics">
+        </div>
         <div class="model-grid"></div>
       </article>
     </template>

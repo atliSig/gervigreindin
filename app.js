@@ -1,16 +1,13 @@
 const modelsCsvPath = "models.csv";
 const trialsCsvPath = "index.csv";
-
 const folderOverrides = {
   "GPT-5.1": "GPT5-1",
   "GPT-4o": "GPT4o",
   "QWEN3-MAX": "QWEN",
   "GPT-5instant": "GPT-5instant",
 };
-
 const extensionPreference = ["png", "jpg", "jpeg", "webp"];
 const imageCache = new Map();
-
 const trialFilterEl = document.getElementById("trialFilter");
 const modelFilterEl = document.getElementById("modelFilter");
 const trialGrid = document.getElementById("trialGrid");
@@ -30,7 +27,8 @@ const summaryHead = summaryTable?.querySelector("thead tr");
 const summaryBody = summaryTable?.querySelector("tbody");
 const summaryEmpty = document.getElementById("summaryEmpty");
 const summarySection = document.getElementById("summarySection");
-
+const updatesList = document.getElementById("updatesList");
+const updatesSection = document.getElementById("updatesSection");
 const normalizeHeader = (value) =>
   typeof value === "string" ? value.trim() : "";
 const normalizeValue = (value) =>
@@ -46,20 +44,39 @@ const parseScoreNumber = (value) => {
   const normalized = String(value).replace(",", ".").match(/-?\d+(\.\d+)?/);
   return normalized ? parseFloat(normalized[0]) : NaN;
 };
-
 const checklistCache = new Map();
 let galleryEntries = [];
 let currentEntryIndex = -1;
 const galleryIndexByKey = new Map();
 const makeGalleryKey = (trialId, modelName) => `${trialId}__${modelName}`;
-
 const formatScoreWithMax = (value, max) => {
   const num = parseScoreNumber(value);
   if (Number.isNaN(num)) return `—/${max}`;
   const formatted = Number.isInteger(num) ? String(num) : num.toFixed(2);
   return `${formatted}/${max}`;
 };
-
+const renderUpdates = (entries) => {
+  if (!updatesList) return;
+  updatesList.innerHTML = "";
+  if (!entries?.length) {
+    updatesList.innerHTML = "<p class='table-empty'>Engar uppfærslur tiltækar.</p>";
+    return;
+  }
+  entries.forEach((row) => {
+    const item = document.createElement("article");
+    item.className = "update-item";
+    const title = document.createElement("h4");
+    title.textContent = row.Description ?? "";
+    const meta = document.createElement("p");
+    meta.className = "update-meta";
+    const date = row.Date ?? "";
+    const version = row.Version ?? "";
+    meta.textContent = [date, version].filter(Boolean).join(" • ");
+    item.appendChild(title);
+    item.appendChild(meta);
+    updatesList.appendChild(item);
+  });
+};
 const formatPrompt = (prompt) => {
   const trimmed = prompt.trim();
   if (trimmed.startsWith('"') && trimmed.endsWith('"')) {
@@ -67,17 +84,14 @@ const formatPrompt = (prompt) => {
   }
   return trimmed;
 };
-
 const parseCsv = (text) => {
   const lines = text
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter(Boolean);
-
   if (!lines.length) {
     return [];
   }
-
   const headers = splitCsvLine(lines.shift());
   return lines.map((line) => {
     const values = splitCsvLine(line);
@@ -87,15 +101,12 @@ const parseCsv = (text) => {
     }, {});
   });
 };
-
 const splitCsvLine = (line) => {
   const cells = [];
   let current = "";
   let inQuotes = false;
-
   for (let i = 0; i < line.length; i++) {
     const char = line[i];
-
     if (char === '"') {
       if (inQuotes && line[i + 1] === '"') {
         current += '"';
@@ -110,11 +121,9 @@ const splitCsvLine = (line) => {
       current += char;
     }
   }
-
   cells.push(current);
   return cells.map((cell) => cell.trim());
 };
-
 const loadCsv = async (path) => {
   const response = await fetch(path);
   if (!response.ok) {
@@ -123,7 +132,6 @@ const loadCsv = async (path) => {
   const text = await response.text();
   return parseCsv(text);
 };
-
 const loadOptionalCsv = async (path) => {
   const response = await fetch(path);
   if (!response.ok) {
@@ -132,7 +140,6 @@ const loadOptionalCsv = async (path) => {
   const text = await response.text();
   return parseCsv(text);
 };
-
 const loadChecklist = async (trialId) => {
   if (checklistCache.has(trialId)) {
     return checklistCache.get(trialId);
@@ -192,7 +199,6 @@ const loadChecklist = async (trialId) => {
   checklistCache.set(trialId, map);
   return map;
 };
-
 const renderSummaryTable = (trials, models, checklistMaps) => {
   if (!summaryTable || !summaryHead || !summaryBody) {
     return;
@@ -209,7 +215,6 @@ const renderSummaryTable = (trials, models, checklistMaps) => {
     }
     return { trialId: trial.ID, label };
   });
-
   if (!columns.length) {
     summarySection?.classList.add("hidden");
     if (summaryEmpty) {
@@ -218,15 +223,16 @@ const renderSummaryTable = (trials, models, checklistMaps) => {
     }
     return;
   }
-
   summarySection?.classList.remove("hidden");
   if (summaryEmpty) {
     summaryEmpty.style.display = "none";
   }
-
   const columnMax = new Map();
+  const columnMin = new Map();
+  const totals = new Map();
   columns.forEach((col) => {
     let max = -Infinity;
+    let min = Infinity;
     let hasValue = false;
     models.forEach((model) => {
       const entry = checklistMaps.get(col.trialId)?.get(model.model);
@@ -236,38 +242,75 @@ const renderSummaryTable = (trials, models, checklistMaps) => {
         if (numeric > max) {
           max = numeric;
         }
+        if (numeric < min) {
+          min = numeric;
+        }
       }
     });
     columnMax.set(col.trialId, hasValue ? max : NaN);
+    columnMin.set(col.trialId, hasValue ? min : NaN);
   });
-
+  models.forEach((model) => {
+    let sum = 0;
+    let hasAny = false;
+    columns.forEach((col) => {
+      const entry = checklistMaps.get(col.trialId)?.get(model.model);
+      const numeric = parseScoreNumber(entry?.overallValue);
+      if (!Number.isNaN(numeric)) {
+        hasAny = true;
+        sum += numeric;
+      }
+    });
+    totals.set(model.model, hasAny ? sum : NaN);
+  });
   summaryHead.innerHTML = "";
   const firstTh = document.createElement("th");
   firstTh.textContent = "L?kan";
   summaryHead.appendChild(firstTh);
+  const totalTh = document.createElement("th");
+  totalTh.textContent = "Heildartala";
+  summaryHead.appendChild(totalTh);
   columns.forEach((col) => {
     const th = document.createElement("th");
     th.textContent = 'Test ' + col.trialId;
     summaryHead.appendChild(th);
   });
-
   models.forEach((model) => {
     const tr = document.createElement("tr");
     const nameTd = document.createElement("td");
     nameTd.textContent = model.model;
     tr.appendChild(nameTd);
-
+    const totalTd = document.createElement("td");
+    const totalValue = totals.get(model.model);
+    const totalSpan = document.createElement("span");
+    const totalsArray = Array.from(totals.values()).filter((v) => !Number.isNaN(v));
+    const maxTotal = totalsArray.length ? Math.max(...totalsArray) : NaN;
+    const isWinner = !Number.isNaN(totalValue) && totalValue === maxTotal;
+    totalSpan.className = isWinner ? "score-chip total-winner" : "score-chip total";
+    if (isWinner) {
+      const crown = document.createElement("span");
+      crown.className = "crown-icon";
+      crown.setAttribute("aria-hidden", "true");
+      crown.textContent = "♛ ";
+      totalSpan.appendChild(crown);
+    }
+    const totalText = document.createElement("span");
+    totalText.textContent = formatScoreWithMax(totalValue, 30 * columns.length);
+    totalSpan.appendChild(totalText);
+    totalTd.appendChild(totalSpan);
+    tr.appendChild(totalTd);
     columns.forEach((col) => {
       const td = document.createElement("td");
       const entry = checklistMaps.get(col.trialId)?.get(model.model);
       const value = entry?.overallValue ?? "?";
       const numeric = parseScoreNumber(value);
       const best = !Number.isNaN(numeric) && numeric === columnMax.get(col.trialId);
+      const worst =
+        !Number.isNaN(numeric) && numeric === columnMin.get(col.trialId);
       const span = document.createElement("span");
-      span.className = best ? "score-chip best" : "score-chip";
+      span.className = best ? "score-chip best" : worst ? "score-chip worst" : "score-chip";
       span.textContent = formatScoreWithMax(value, 30);
       td.appendChild(span);
-
       const key = makeGalleryKey(col.trialId, model.model);
       if (galleryIndexByKey.has(key)) {
         const index = galleryIndexByKey.get(key);
@@ -282,27 +325,22 @@ const renderSummaryTable = (trials, models, checklistMaps) => {
           }
         });
       }
-
       tr.appendChild(td);
     });
-
     summaryBody.appendChild(tr);
   });
 };
-
 const getFolderName = (modelName) => {
   if (folderOverrides[modelName]) {
     return folderOverrides[modelName];
   }
   return modelName.replace(/[.\s]/g, "");
 };
-
 const findImagePath = async (folderName, trialId) => {
   const cacheKey = `${folderName}_${trialId}`;
   if (imageCache.has(cacheKey)) {
     return imageCache.get(cacheKey);
   }
-
   for (const ext of extensionPreference) {
     const url = `images/${folderName}/${trialId}.${ext}`;
     try {
@@ -315,11 +353,9 @@ const findImagePath = async (folderName, trialId) => {
       // Ignore fetch errors and move to the next extension
     }
   }
-
   imageCache.set(cacheKey, null);
   return null;
 };
-
 const populateFilters = (trials, models) => {
   trials.forEach((trial) => {
     const option = document.createElement("option");
@@ -330,7 +366,6 @@ const populateFilters = (trials, models) => {
     )}${formatPrompt(trial.prompt).length > 40 ? "…" : ""}`;
     trialFilterEl.appendChild(option);
   });
-
   models.forEach((model) => {
     const option = document.createElement("option");
     option.value = model.model;
@@ -338,27 +373,23 @@ const populateFilters = (trials, models) => {
     modelFilterEl.appendChild(option);
   });
 };
-
 const setText = (node, value) => {
   if (!node) return;
   node.textContent = value;
 };
-
 const normalizeDate = (value) => {
   if (typeof value === "string") {
     return value.trim();
   }
   return "";
 };
-
 const formatType = (value) => {
   const trimmed = typeof value === "string" ? value.trim() : "";
   if (!trimmed) {
-    return "myndgerð";
+    return "Búið til";
   }
-  return trimmed.toLowerCase() === "image" ? "myndgerð" : trimmed;
+  return trimmed.toLowerCase() === "image" ? "búið til" : trimmed;
 };
-
 const closeLightbox = () => {
   if (!lightboxEl) return;
   lightboxEl.classList.add("hidden");
@@ -375,7 +406,6 @@ const closeLightbox = () => {
   currentEntryIndex = -1;
   document.body.style.removeProperty("overflow");
 };
-
 const updateNavControls = () => {
   const disabled = galleryEntries.length < 2;
   [lightboxPrevBtn, lightboxNextBtn].forEach((btn) => {
@@ -387,7 +417,6 @@ const updateNavControls = () => {
     }
   });
 };
-
 const showEntry = (index) => {
   if (!galleryEntries.length || !lightboxImg) return;
   const validIndex =
@@ -408,7 +437,6 @@ const showEntry = (index) => {
   }
   updateNavControls();
 };
-
 const openLightbox = (entryIndex) => {
   if (!lightboxEl) return;
   if (!galleryEntries.length) return;
@@ -417,15 +445,12 @@ const openLightbox = (entryIndex) => {
   lightboxEl.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 };
-
 const navigateLightbox = (direction) => {
   if (currentEntryIndex === -1) return;
   showEntry(currentEntryIndex + direction);
 };
-
 const registerLightbox = () => {
   if (!lightboxEl) return;
-
   lightboxEl.addEventListener("click", (event) => {
     if (
       event.target === lightboxEl ||
@@ -434,26 +459,21 @@ const registerLightbox = () => {
       closeLightbox();
     }
   });
-
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !lightboxEl.classList.contains("hidden")) {
       closeLightbox();
     }
   });
-
   if (lightboxCloseBtn) {
     lightboxCloseBtn.addEventListener("click", () => closeLightbox());
   }
-
   if (lightboxPrevBtn) {
     lightboxPrevBtn.addEventListener("click", () => navigateLightbox(-1));
   }
-
   if (lightboxNextBtn) {
     lightboxNextBtn.addEventListener("click", () => navigateLightbox(1));
   }
 };
-
 const createModelCard = (
   model,
   folderName,
@@ -470,7 +490,6 @@ const createModelCard = (
   const modelNode = modelTemplate.content.firstElementChild.cloneNode(true);
   const nameEl = modelNode.querySelector(".model-name");
   setText(nameEl, model.model);
-
   const dateEl = modelNode.querySelector(".generated-date");
   const overallEl = modelNode.querySelector(".overall-grade");
   const commentEl = modelNode.querySelector(".model-comment");
@@ -481,13 +500,12 @@ const createModelCard = (
   const altText = model?.model ? `Mynd fyrir ${model.model}` : "Mynd";
   if (dateEl) {
     dateEl.textContent = whenGenerated
-      ? `Myndgerð: ${whenGenerated}`
+      ? `Búið til: ${whenGenerated}`
       : "Dagsetning óþekkt";
   }
   setText(overallLabelEl, scoreData?.overallLabel ?? "Heildareinkunn");
   setText(overallEl, formatScoreWithMax(scoreData?.overallValue, 30));
   setText(commentEl, scoreData?.comment ?? "—");
-
   const scoreTile = modelNode.querySelector(".score-tile");
   if (scoreTile) {
     const parent = scoreTile.parentNode;
@@ -503,7 +521,6 @@ const createModelCard = (
       label.className = "score-bar-label";
       const metricValue = formatScoreWithMax(metric.value, 10);
       label.textContent = `${metric.label}: ${metricValue}`;
-
       const track = document.createElement("div");
       track.className = "score-bar-track";
       const fill = document.createElement("div");
@@ -514,12 +531,10 @@ const createModelCard = (
         : Math.max(0, Math.min(100, (numeric / 10) * 100));
       fill.style.width = `${percent}%`;
       track.appendChild(fill);
-
       wrapper.appendChild(label);
       wrapper.appendChild(track);
       bars.appendChild(wrapper);
     });
-
     if (metrics.length) {
       stack.appendChild(bars);
     }
@@ -527,7 +542,6 @@ const createModelCard = (
     parent.removeChild(scoreTile);
     stack.appendChild(scoreTile);
   }
-
   if (imagePath && imgEl) {
     imgEl.src = imagePath;
     imgEl.alt = altText;
@@ -563,13 +577,11 @@ const createModelCard = (
       imageWrap.appendChild(placeholder);
     }
   }
-
   modelNode.dataset.model = model.model;
   modelNode.dataset.folder = folderName;
   modelNode.dataset.trial = trialId;
   return modelNode;
 };
-
 const renderTrials = async (trials, models) => {
   trialGrid.innerHTML = "";
   galleryEntries = [];
@@ -588,22 +600,50 @@ const renderTrials = async (trials, models) => {
       continue;
     }
     const trialNode = trialTemplate.content.firstElementChild.cloneNode(true);
+    trialNode.id = 'trial-' + trial.ID;
 
     const idEl = trialNode.querySelector(".trial-id");
     const typeEl = trialNode.querySelector(".trial-type");
     const promptEl = trialNode.querySelector(".trial-prompt");
-    setText(idEl, `Próf ${trial.ID}`);
-    setText(typeEl, formatType(trial.type));
+    const metricsPills = trialNode.querySelector(".trial-metrics");
+    const modelGrid = trialNode.querySelector(".model-grid");
+
+    if (idEl) {
+      const link = document.createElement("a");
+      link.href = '#trial-' + trial.ID;
+      link.className = "trial-link";
+      link.innerHTML = 'Trial ' + trial.ID + '</span>';
+      link.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const url = `${window.location.origin}#trial-${trial.ID}`;
+        navigator?.clipboard?.writeText?.(url).catch(() => {});
+      });
+      idEl.textContent = "";
+      idEl.appendChild(link);
+    } else {
+      setText(idEl, 'Trial ' + trial.ID);
+    }
+    setText(typeEl, 'Tegund: ' + formatType(trial.type ?? ''));
     const promptText = formatPrompt(trial.prompt ?? "");
-    const whenGenerated = normalizeDate(trial.when_generated);
     setText(promptEl, promptText);
 
-    const modelGrid = trialNode.querySelector(".model-grid");
-    if (!modelGrid) {
-      continue;
-    }
     const checklist = (await loadChecklist(trial.ID)) ?? new Map();
+    if (metricsPills) {
+      metricsPills.innerHTML = "";
+      const firstEntry = checklist.values().next().value;
+      const labels = (firstEntry?.metrics ?? [])
+        .map((m) => m.label)
+        .filter(Boolean)
+        .slice(0, 3);
+      labels.forEach((label) => {
+        const pill = document.createElement("span");
+        pill.className = "trial-metric-pill";
+        pill.textContent = `${label}: 10 stig`;
+        metricsPills.appendChild(pill);
+      });
+    }
 
+    const whenGenerated = normalizeDate(trial.when_generated);
     for (const model of models) {
       if (selectedModel !== "all" && selectedModel !== model.model) {
         continue;
@@ -613,9 +653,9 @@ const renderTrials = async (trials, models) => {
       const imagePath = await findImagePath(folderName, trial.ID);
       const scoreData =
         checklist.get(model.model) ?? {
-          comment: "—",
+          comment: "?",
           overallLabel: "Heildareinkunn",
-          overallValue: "—",
+          overallValue: "?",
           metrics: [],
         };
       const modelCard = createModelCard(
@@ -628,14 +668,14 @@ const renderTrials = async (trials, models) => {
         imagePath,
         navEntries,
       );
-      modelGrid.appendChild(modelCard);
+      modelGrid?.appendChild(modelCard);
     }
 
-    if (!modelGrid.children.length) {
+    if (!modelGrid?.children.length) {
       const empty = document.createElement("p");
       empty.className = "status-message";
       empty.textContent = "No models match the current filter.";
-      modelGrid.appendChild(empty);
+      modelGrid?.appendChild(empty);
     }
 
     trialGrid.appendChild(trialNode);
@@ -644,7 +684,7 @@ const renderTrials = async (trials, models) => {
   if (!trialGrid.children.length) {
     const empty = document.createElement("div");
     empty.className = "status-message";
-    empty.textContent = "Engin próf til fyrir þessa síu.";
+    empty.textContent = "Engin pr?f til fyrir ?essa s?u.";
     trialGrid.appendChild(empty);
   }
 
@@ -661,29 +701,31 @@ const renderTrials = async (trials, models) => {
 
 const boot = async () => {
   registerLightbox();
+  let updatesRows = [];
+  try {
+    updatesRows = await loadCsv('updates.csv');
+  } catch (e) {
+    updatesRows = [];
+  }
+  renderUpdates(updatesRows);
   try {
     const [modelRows, trialRows] = await Promise.all([
       loadCsv(modelsCsvPath),
       loadCsv(trialsCsvPath),
     ]);
-
     const imageModels = modelRows.filter((model) =>
       (model.generate_image ?? "").toLowerCase().startsWith("y"),
     );
-
     if (!imageModels.length) {
       trialGrid.innerHTML =
         "<div class='status-message'>Engin valin líkön geta búið til myndir.</div>";
       return;
     }
-
     populateFilters(trialRows, imageModels);
     await renderTrials(trialRows, imageModels);
-
     trialFilterEl.addEventListener("change", () => {
       renderTrials(trialRows, imageModels);
     });
-
     modelFilterEl.addEventListener("change", () => {
       renderTrials(trialRows, imageModels);
     });
@@ -692,5 +734,4 @@ const boot = async () => {
     trialGrid.innerHTML = `<div class="status-message">Mistókst að hlaða gögnum: ${error.message}</div>`;
   }
 };
-
 boot();
