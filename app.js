@@ -13,6 +13,7 @@ const modelFilterEl = document.getElementById("modelFilter");
 const trialGrid = document.getElementById("trialGrid");
 const trialTemplate = document.getElementById("trialTemplate");
 const modelTemplate = document.getElementById("modelTemplate");
+const topNav = document.querySelector(".top-nav");
 const lightboxEl = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImage");
 const lightboxCloseBtn = document.querySelector(".lightbox-close");
@@ -91,6 +92,31 @@ const markFutureUpdates = () => {
     const parsedDate = new Date(year, month - 1, day);
     if (parsedDate > today) {
       el.classList.add("future-update");
+    }
+  });
+};
+
+const registerTopNavScrollHide = () => {
+  if (!topNav) return;
+  let lastY = window.scrollY;
+  let ticking = false;
+  const threshold = 10;
+  const handle = () => {
+    const currentY = window.scrollY;
+    const scrollingDown = currentY - lastY > threshold;
+    const scrollingUp = lastY - currentY > threshold;
+    if (scrollingDown && currentY > 80) {
+      topNav.classList.add("is-hidden");
+    } else if (scrollingUp) {
+      topNav.classList.remove("is-hidden");
+    }
+    lastY = currentY;
+    ticking = false;
+  };
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(handle);
+      ticking = true;
     }
   });
 };
@@ -736,6 +762,7 @@ const renderTrials = async (trials, models) => {
 
 const boot = async () => {
   registerLightbox();
+  registerTopNavScrollHide();
   markFutureUpdates();
   let updatesRows = [];
   try {

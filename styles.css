@@ -816,18 +816,20 @@ select {
 
 .top-nav {
   position: sticky;
-  top: 0;
+  top: 1rem; /* keep space from viewport edge */
   z-index: 200;
   display: flex;
   justify-content: center;
   width: 100%;
   padding: 0.75rem 1.25rem;
-  margin: 0.75rem 0 1rem;
+  margin: 0.75rem 0 1.25rem;
   background: rgba(5, 6, 10, 0.7);
   border: 1px solid var(--border);
   border-radius: 999px;
   backdrop-filter: blur(10px);
   gap: 0.5rem;
+  transition: opacity 200ms ease, transform 200ms ease;
+  transform: translateY(0);
 }
 
 .top-nav a {
@@ -847,6 +849,12 @@ select {
 .top-nav a:focus-visible {
   border-color: rgba(255, 255, 255, 0.5);
   outline: none;
+}
+
+.top-nav.is-hidden {
+  opacity: 0;
+  transform: translateY(-120%);
+  pointer-events: none;
 }
 
 .header-content{
