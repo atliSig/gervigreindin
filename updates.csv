@@ -1,2 +1,5 @@
-Date, Description, Version, 
-21-11-2025, "Myndapróf eru komin í loftið!", 0.1
+Date, Description, Version, Type
+21-11-2025, "Myndapróf eru komin í loftið!", 0.1, current
+28-11-2025, "Gettu betur gervigreinda", 0.2, upcoming
+05-12-2025, "Textagerð", 0.3, upcoming
+12-12-2025, "Raddprufur", 0.4, upcoming

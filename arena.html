@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gervigreindarvígvöllurinn</title>
     <link rel="stylesheet" href="styles.css" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Gervigreindarvígvöllurinn" />
+
   </head>
   <body id="top">
     <nav class="top-nav" aria-label="Site navigation">
       <a href="home.html">home</a>
-      <a href="arena.html">arena</a>
+      <a href="arena.html">
+        arena
+      </a>
       <a href="about.html">about</a>
     </nav>
     <header class="site-header">
@@ -17,15 +23,22 @@
         
         <div class="header-inner-content">
           <div class="header-left">
-            <h1>Gervigreindar<wbr>vígvöllurinn
-            </h1>
-            <span id="version-header">Útgáfa 0.1</span>
+            <div class="header-title-logo">
+              <div class="site-title-wrapper">
+                <h1 class="site-title">Gervigreindar<wbr>vígvöllurinn
+                </h1>
+                <span id="version-header">Útgáfa 0.1</span>
+              </div>
+              <div class="arena-logo-wrapper">
+                <img src="assets/images/arena_logo.png" alt="Gervigreindarvígvöllurinn logo" class="arena-logo", loading="lazy" />
+              </div>
+            </div>
             <h3>
-            Á gervigreindarvígvellinum berjast mismunandi gervigreindarlíkön um titilinn "Besta gervigreindin í íslensku".
+                Á gervigreindarvígvellinum berjast mismunandi gervigreindarlíkön um titilinn "Besta gervigreindin í íslensku".
             </h3>
             <p>
-              Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til <a href='https://huggingface.co/spaces/mideind/icelandic-llm-leaderboard'>einhver stöðupróf</a> 
-              (e. benchmarks) sem eru mjög hjálpleg í að meta gæði tólanna í afmörkuðum verkefnum. Þessari síðu er ekki ætlað að vera slíkt próf og er alls ekki vísindalegt. Hér eru líkönin
+              Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til <a href='https://huggingface.co/spaces/mideind/icelandic-llm-leaderboard'>stöðupróf</a> 
+              (e. benchmarks) sem eru hjálpleg í að bera saman gæði tólanna í afmörkuðum verkefnum. Þessari síðu er ekki ætlað að vera slíkt próf og er alls ekki vísindalegt. Hér eru líkönin
               í staðin borin saman í "núllskots" (e. zero-shot) verkefnum með frekar hlutdrægum mælikvörðum. Það þýðir að sama manneskjan (ég) bjó til öll prófin og gaf þeim öllum einkunn.
             </p>
             <p>
@@ -34,12 +47,15 @@
             <p> 
           </div>
           <div class="header-update-list">
-              <h3>Uppfærslur</h3>
+              <h3 style="margin-bottom:0">Uppfærslur</h3>
+              <p>Vígvöllurinn verður reglulega uppfærður með nýjum prófum og líkönum. Listinn hér að neðan
+                sýnir fyrrverandi útgáfur og uppfærslur sem eru í vinnslu.
+              </p>
               <div class="header-update-list-scroll">
                   <div class="update-item">
                     <div class="update-item-header">
                       <div class="update-version">
-                        Útgáfa 0.1
+                        Útgáfa <span class="current-update-number"></span>
                       </div>
                       <div class="update-date">
                           01-01-2025

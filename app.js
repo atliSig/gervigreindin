@@ -14,6 +14,7 @@ const trialGrid = document.getElementById("trialGrid");
 const trialTemplate = document.getElementById("trialTemplate");
 const modelTemplate = document.getElementById("modelTemplate");
 const topNav = document.querySelector(".top-nav");
+const versionHeader = document.getElementById("version-header");
 const lightboxEl = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImage");
 const lightboxCloseBtn = document.querySelector(".lightbox-close");
@@ -28,8 +29,7 @@ const summaryHead = summaryTable?.querySelector("thead tr");
 const summaryBody = summaryTable?.querySelector("tbody");
 const summaryEmpty = document.getElementById("summaryEmpty");
 const summarySection = document.getElementById("summarySection");
-const updatesList = document.getElementById("updatesList");
-const updatesSection = document.getElementById("updatesSection");
+
 const normalizeHeader = (value) =>
   typeof value === "string" ? value.trim() : "";
 const normalizeValue = (value) =>
@@ -56,44 +56,14 @@ const formatScoreWithMax = (value, max) => {
   const formatted = Number.isInteger(num) ? String(num) : num.toFixed(2);
   return `${formatted}/${max}`;
 };
-const renderUpdates = (entries) => {
-  if (!updatesList) return;
-  updatesList.innerHTML = "";
-  if (!entries?.length) {
-    updatesList.innerHTML = "<p class='table-empty'>Engar uppfaerslur tiltaekar.</p>";
-    return;
-  }
-  entries.forEach((row) => {
-    const item = document.createElement("article");
-    item.className = "update-item";
-    const title = document.createElement("h4");
-    title.textContent = row.Description ?? "";
-    const meta = document.createElement("p");
-    meta.className = "update-meta";
-    const date = row.Date ?? "";
-    const version = row.Version ?? "";
-    meta.textContent = [date, version].filter(Boolean).join(" • ");
-    item.appendChild(title);
-    item.appendChild(meta);
-    updatesList.appendChild(item);
-  });
-};
 
-const markFutureUpdates = () => {
-  const dateEls = document.querySelectorAll(".header-update-list .update-date");
-  if (!dateEls.length) return;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  dateEls.forEach((el) => {
-    const parts = el.textContent.trim().split("-");
-    if (parts.length !== 3) return;
-    const [day, month, year] = parts.map((part) => parseInt(part, 10));
-    if ([day, month, year].some(Number.isNaN)) return;
-    const parsedDate = new Date(year, month - 1, day);
-    if (parsedDate > today) {
-      el.classList.add("future-update");
-    }
-  });
+
+const parseDate = (value) => {
+  if (!value) return null;
+  const parts = value.split("-").map((part) => parseInt(part, 10));
+  if (parts.length !== 3 || parts.some(Number.isNaN)) return null;
+  const [day, month, year] = parts;
+  return new Date(year, month - 1, day);
 };
 
 const registerTopNavScrollHide = () => {
@@ -763,14 +733,6 @@ const renderTrials = async (trials, models) => {
 const boot = async () => {
   registerLightbox();
   registerTopNavScrollHide();
-  markFutureUpdates();
-  let updatesRows = [];
-  try {
-    updatesRows = await loadCsv('updates.csv');
-  } catch (e) {
-    updatesRows = [];
-  }
-  renderUpdates(updatesRows);
   try {
     const [modelRows, trialRows] = await Promise.all([
       loadCsv(modelsCsvPath),
@@ -798,6 +760,7 @@ const boot = async () => {
   }
 };
 boot();
+
 
 
 
