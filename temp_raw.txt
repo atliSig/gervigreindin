@@ -28,7 +28,7 @@
       Hæ! 
     </p>
     <p>
-      Ég lauk nýlega <button type="button" onclick="location.href='https://people.inf.ed.ac.uk/Atli_Sigurgeirsson.html'">doktorsnámi</button> hjá <button type="button" onclick="location.href='https://www.cstr.ed.ac.uk/'">CSTR</button>, í Edinborgarháskóla.
+      Ég lauk nýlega <a href="https://people.inf.ed.ac.uk/Atli_Sigurgeirsson.html">doktorsnámi</a> hjá <a href='https://www.cstr.ed.ac.uk/'>CSTR</a>, í Edinborgarháskóla.
       Ritgerðin mín heitir "Control Strategies For Expressive Text-To-Speech" og fjallar um hvernig er hægt að beisla stór gervigreindarlíkön. Ég gaf út 5 rannsóknargreinar 
       á meðan doktorsnáminu stóð.
     <p>  
@@ -44,9 +44,9 @@
     <section class="summary-section">
       <div class="about-card-grid">
         <article class="about-card">
-          <button type="button" onclick="location.href='https://huggingface.co/atlithor'" style="font-weight: bold; margin-right:10px">HuggingFace</button>
-          <button type="button" onclick="location.href='https://www.linkedin.com/in/atlisig'" style="font-weight: bold; margin-right:10px">LinkedIn</button>
-          <button type="button" onclick="location.href='https://scholar.google.com/citations?user=AtliSig&hl=en'" style="font-weight: bold; margin-right:10px">Google Scholar</button>
+          <a href="https://huggingface.co/atlithor" style="font-weight: bold; margin-right:10px">HuggingFace</a>
+          <a href="https://www.linkedin.com/in/atlisig" style="font-weight: bold; margin-right:10px">LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=AtliSig&hl=en" style="font-weight: bold; margin-right:10px">Google Scholar</a>
         </article>
       </div>
     </section>
@@ -57,23 +57,23 @@
       </div>
       <div class="about-card-grid">
         <article class="about-card">
-          <button type="button" onclick="location.href='https://atlisig.github.io/SSW_supp_material/index.html'">RepeaTTS: Towards feature discovery through repeated fine-tuning</button>
+          <a href="https://atlisig.github.io/SSW_supp_material/index.html">RepeaTTS: Towards feature discovery through repeated fine-tuning</a>
           <p style="margin-top:5px;">A Sigurgeirsson, S King, SSW 2025</p>
         </article>
         <article class="about-card">
-          <button type="button" onclick="location.href='https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:0EnyYjriUFMC'">Controllable speaking styles using a large language model</button>
+          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:0EnyYjriUFMC">Controllable speaking styles using a large language model</a>
           <p style="margin-top:5px;">A Sigurgeirsson, S King, ICASSP 2024</p>
         </article>
         <article class="about-card">
-          <button type="button" onclick="location.href='https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:UebtZRa9Y70C'">Do Prosody Transfer Models Transfer Prosody?</button>
+          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:UebtZRa9Y70C">Do Prosody Transfer Models Transfer Prosody?</a>
           <p style="margin-top:5px;">A Sigurgeirsson, E Ungless, Interspeech 2024</p>
         </article>
         <article class="about-card">
-          <button type="button" onclick="location.href='https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:8k81kl-MbHgC'">Just Because We Camp, Doesn't Mean We Should: The Ethics of Modelling Queer Voices</button>
+          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:8k81kl-MbHgC">Just Because We Camp, Doesn't Mean We Should: The Ethics of Modelling Queer Voices</a>
           <p style="margin-top:5px;">A Sigurgeirsson, E Ungless, Interspeech 2024</p>
         </article>
         <article class="about-card">
-          <button type="button" onclick="location.href='https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:5nxA0vEk-isC'">A Human-in-the-Loop Approach to Improving Cross-Text Prosody Transfer</button>
+          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:5nxA0vEk-isC">A Human-in-the-Loop Approach to Improving Cross-Text Prosody Transfer</a>
           <p style="margin-top:5px;">H Maurya, A Sigurgeirsson, Interspeech 2024</p>
         </article>
       </div>
@@ -85,11 +85,11 @@
       </div>
       <div class="about-card-grid">
         <article class="about-card">
-          <button type="button" onclick="location.href='https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:W7OEmFMy1HYC'">TalrA3mur: Large general use TTS corpus</button>
+          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:W7OEmFMy1HYC">TalrA3mur: Large general use TTS corpus</a>
           <p style="margin-top:5px;">Atli AzA3r Sigurgeirsson, Azorsteinn DaA?i Gunnarsson, Gunnar Thor A-rnA3lfsson, RagnheiA?ur AzA3rhallsdA3ttir, EydA-s Huld MagnA?sdA3ttir, JA3n GuA?nason, 2021</p>
         </article>
         <article class="about-card">
-          <button type="button" onclick="location.href='https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:MXK_kJrjxJIC'">TalrA3mur 3: Multi-speaker emotive TTS corpus</button>
+          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:MXK_kJrjxJIC">TalrA3mur 3: Multi-speaker emotive TTS corpus</a>
           <p style="margin-top:5px;">GT A-rnA3lfsson, AAz Sigurgeirsson, AB NikulA?sdA3ttir, D Schnell, 2024</p>
         </article>
       </div>
@@ -101,11 +101,11 @@
       </div>
       <div class="about-card-grid">
         <article class="about-card">
-          <button type="button" onclick="location.href='https://huggingface.co/atlithor/EmotiveIcelandic'">Emotive Icelandic</button>
+          <a href="https://huggingface.co/atlithor/EmotiveIcelandic">Emotive Icelandic</a>
           <p style="margin-top:5px;">An Icelandic TTS model that can synthesise speech according to natural language descriptions of the output.</p>
         </article>
         <article class="about-card">
-          <button type="button" onclick="location.href='https://huggingface.co/atlithor/RepeaTTS-level-3'">RepeaTTS</button>
+          <a href="https://huggingface.co/atlithor/RepeaTTS-level-3">RepeaTTS</a>
           <p style="margin-top:5px;">The model proposed in my paper: RepeaTTS.</p>
         </article>
       </div>
@@ -117,7 +117,7 @@
       </div>
       <div class="about-card-grid">
         <article class="about-card">
-          <p>Email: <button type="button" onclick="location.href='mailto:atlisigurgeirsson@gmail.com'">atlisigurgeirsson@gmail.com</button></p>
+          <p>Email: <a href="mailto:atlisigurgeirsson@gmail.com">atlisigurgeirsson@gmail.com</a></p>
         </article>
       </div>
     </section>

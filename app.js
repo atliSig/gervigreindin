@@ -77,6 +77,23 @@ const renderUpdates = (entries) => {
     updatesList.appendChild(item);
   });
 };
+
+const markFutureUpdates = () => {
+  const dateEls = document.querySelectorAll(".header-update-list .update-date");
+  if (!dateEls.length) return;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  dateEls.forEach((el) => {
+    const parts = el.textContent.trim().split("-");
+    if (parts.length !== 3) return;
+    const [day, month, year] = parts.map((part) => parseInt(part, 10));
+    if ([day, month, year].some(Number.isNaN)) return;
+    const parsedDate = new Date(year, month - 1, day);
+    if (parsedDate > today) {
+      el.classList.add("future-update");
+    }
+  });
+};
 const formatPrompt = (prompt) => {
   const trimmed = prompt.trim();
   if (trimmed.startsWith('"') && trimmed.endsWith('"')) {
@@ -279,7 +296,7 @@ const renderSummaryTable = (trials, models, checklistMaps) => {
   summaryHead.appendChild(totalTh);
   columns.forEach((col) => {
     const th = document.createElement("th");
-    th.textContent = 'Test ' + col.trialId;
+    th.textContent = 'Prof ' + col.trialId;
     summaryHead.appendChild(th);
   });
   models.forEach((model) => {
@@ -719,6 +736,7 @@ const renderTrials = async (trials, models) => {
 
 const boot = async () => {
   registerLightbox();
+  markFutureUpdates();
   let updatesRows = [];
   try {
     updatesRows = await loadCsv('updates.csv');
