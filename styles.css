@@ -666,11 +666,7 @@ select {
 }
 
 .update-item {
-  border: 1px solid var(--border);
-  border-radius: 14px;
   padding: 0.9rem 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 .update-item h4 {
