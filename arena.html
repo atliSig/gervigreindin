@@ -14,7 +14,9 @@
     </nav>
     <header class="site-header">
       <div class="header-content">
-        <h1>Gervigreindarvígvöllurinn 0.1</h1>
+        <h1>Gervigreindarvígvöllurinn
+        </h1>
+        <span id="version-header">Útgáfa 0.1</span>
         <h3>
           Á gervigreindarvígvellinum berjast mismunandi gervigreindarlíkön um titilinn "Besta gervigreindin í íslensku".
         </h3>
@@ -33,8 +35,11 @@
     <main>
       <section class="summary-section" id="summarySection">
         <div class="summary-header">
-          <h2>Yfirlit yfir próf og líkön</h2>
-          <p>Stig fyrir hvern lið eru sótt beint úr prófunarskjölum.</p>
+          <h2>Stigataflan</h2>
+          <p>Taflan sýnir hversu mörg stig hvert líkan fékk á hverju prófi. 
+            Græn stig tákna bestu frammistöðu, rauð tákna þá verstu. Smelltu á
+            stigagjöf til að sjá tilraun líkansins á tilteknu prófi.
+          </p>
         </div>
         <div class="table-wrap">
           <table id="summaryTable">
@@ -72,13 +77,20 @@
     <template id="trialTemplate">
       <article class="trial-card">
         <header>
-          <p class="trial-id"></p>
-          <p class="trial-type"></p>
+          <h2 class="trial-name"></h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"></p>
+            <p class="trial-type"></p>
+          </span>
         </header>
-        <h2 class="trial-prompt"></h2>
-        <h4 class="trial-metric-title">Mælikvarðar</h4>
-        <div class="trial-metrics">
-        </div>
+        <span class="trial-prompt-title">Promptur</span>
+        <pre class="trial-prompt-code">
+          <span class="trial-prompt-content"></span>
+        </pre>
+        <h4 class="trial-metric-title">Maelikvardar</h4>
+        <p class="trial-description"></p>
+        <div class="trial-metrics"></div>
+
         <div class="model-grid"></div>
       </article>
     </template>

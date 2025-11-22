@@ -51,7 +51,7 @@ const galleryIndexByKey = new Map();
 const makeGalleryKey = (trialId, modelName) => `${trialId}__${modelName}`;
 const formatScoreWithMax = (value, max) => {
   const num = parseScoreNumber(value);
-  if (Number.isNaN(num)) return `—/${max}`;
+  if (Number.isNaN(num)) return `-/${max}`;
   const formatted = Number.isInteger(num) ? String(num) : num.toFixed(2);
   return `${formatted}/${max}`;
 };
@@ -59,7 +59,7 @@ const renderUpdates = (entries) => {
   if (!updatesList) return;
   updatesList.innerHTML = "";
   if (!entries?.length) {
-    updatesList.innerHTML = "<p class='table-empty'>Engar uppfærslur tiltækar.</p>";
+    updatesList.innerHTML = "<p class='table-empty'>Engar uppfaerslur tiltaekar.</p>";
     return;
   }
   entries.forEach((row) => {
@@ -263,9 +263,16 @@ const renderSummaryTable = (trials, models, checklistMaps) => {
     });
     totals.set(model.model, hasAny ? sum : NaN);
   });
+  const sortedModels = [...models].sort((a, b) => {
+    const aTotal = totals.get(a.model);
+    const bTotal = totals.get(b.model);
+    const aVal = Number.isNaN(aTotal) ? -Infinity : aTotal;
+    const bVal = Number.isNaN(bTotal) ? -Infinity : bTotal;
+    return bVal - aVal;
+  });
   summaryHead.innerHTML = "";
   const firstTh = document.createElement("th");
-  firstTh.textContent = "L?kan";
+  firstTh.textContent = "Likan";
   summaryHead.appendChild(firstTh);
   const totalTh = document.createElement("th");
   totalTh.textContent = "Heildartala";
@@ -360,12 +367,11 @@ const populateFilters = (trials, models) => {
   trials.forEach((trial) => {
     const option = document.createElement("option");
     option.value = trial.ID;
-    option.textContent = `${trial.ID} • ${formatPrompt(trial.prompt).slice(
-      0,
-      40,
-    )}${formatPrompt(trial.prompt).length > 40 ? "…" : ""}`;
+    const labelSource = formatPrompt(trial.name ?? trial.prompt ?? "");
+    option.textContent = `${trial.ID} : ${labelSource.slice(0, 40)}${labelSource.length > 40 ? "-" : ""}`;
     trialFilterEl.appendChild(option);
   });
+
   models.forEach((model) => {
     const option = document.createElement("option");
     option.value = model.model;
@@ -386,9 +392,9 @@ const normalizeDate = (value) => {
 const formatType = (value) => {
   const trimmed = typeof value === "string" ? value.trim() : "";
   if (!trimmed) {
-    return "Búið til";
+    return "�tilgreint";
   }
-  return trimmed.toLowerCase() === "image" ? "búið til" : trimmed;
+  return trimmed.toLowerCase() === "image" ? "myndger�" : trimmed;
 };
 const closeLightbox = () => {
   if (!lightboxEl) return;
@@ -560,7 +566,7 @@ const createModelCard = (
       buttonEl.addEventListener("click", () => openLightbox(entryIndex));
       buttonEl.setAttribute(
         "aria-label",
-        `Stækka mynd fyrir próf ${trialId}`,
+        `Staekka mynd fyrir prof ${trialId}`,
       );
     }
   } else {
@@ -586,6 +592,7 @@ const renderTrials = async (trials, models) => {
   trialGrid.innerHTML = "";
   galleryEntries = [];
   galleryIndexByKey.clear();
+
   const selectedTrial = trialFilterEl.value;
   const selectedModel = modelFilterEl.value;
   const navEntries = [];
@@ -599,33 +606,44 @@ const renderTrials = async (trials, models) => {
     if (!trialTemplate?.content?.firstElementChild) {
       continue;
     }
+
     const trialNode = trialTemplate.content.firstElementChild.cloneNode(true);
-    trialNode.id = 'trial-' + trial.ID;
+    trialNode.id = `trial-${trial.ID}`;
 
     const idEl = trialNode.querySelector(".trial-id");
     const typeEl = trialNode.querySelector(".trial-type");
-    const promptEl = trialNode.querySelector(".trial-prompt");
+    const nameEl = trialNode.querySelector(".trial-name");
+    const descriptionEl = trialNode.querySelector(".trial-description");
+    const promptCodeEl = trialNode.querySelector(".trial-prompt-code");
     const metricsPills = trialNode.querySelector(".trial-metrics");
     const modelGrid = trialNode.querySelector(".model-grid");
 
     if (idEl) {
       const link = document.createElement("a");
-      link.href = '#trial-' + trial.ID;
+      link.href = `#trial-${trial.ID}`;
       link.className = "trial-link";
-      link.innerHTML = 'Trial ' + trial.ID + '</span>';
+      link.title = "Smelltu til ad afrita tengil";
+      link.innerHTML = `Prof ${trial.ID}`;
       link.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const url = `${window.location.origin}#trial-${trial.ID}`;
+        event.preventDefault();
+        const url = `${window.location.origin}${window.location.pathname}#trial-${trial.ID}`;
         navigator?.clipboard?.writeText?.(url).catch(() => {});
+        window.location.hash = `trial-${trial.ID}`;
       });
-      idEl.textContent = "";
-      idEl.appendChild(link);
+      idEl.replaceChildren(link);
     } else {
-      setText(idEl, 'Trial ' + trial.ID);
+      setText(idEl, `Pr�f ${trial.ID}`);
     }
-    setText(typeEl, 'Tegund: ' + formatType(trial.type ?? ''));
-    const promptText = formatPrompt(trial.prompt ?? "");
-    setText(promptEl, promptText);
+
+    setText(typeEl, `Tegund: ${formatType(trial.type ?? "")}`);
+    const nameText = formatPrompt(trial.name ?? "");
+    const descriptionText = formatPrompt(trial.description ?? "");
+    const promptText = trial.prompt ?? "";
+    setText(nameEl, nameText || `Prof ${trial.ID}`);
+    setText(descriptionEl, descriptionText);
+    if (promptCodeEl) {
+      promptCodeEl.textContent = promptText;
+    }
 
     const checklist = (await loadChecklist(trial.ID)) ?? new Map();
     if (metricsPills) {
@@ -653,9 +671,9 @@ const renderTrials = async (trials, models) => {
       const imagePath = await findImagePath(folderName, trial.ID);
       const scoreData =
         checklist.get(model.model) ?? {
-          comment: "?",
+          comment: "-",
           overallLabel: "Heildareinkunn",
-          overallValue: "?",
+          overallValue: "-",
           metrics: [],
         };
       const modelCard = createModelCard(
@@ -684,7 +702,7 @@ const renderTrials = async (trials, models) => {
   if (!trialGrid.children.length) {
     const empty = document.createElement("div");
     empty.className = "status-message";
-    empty.textContent = "Engin pr?f til fyrir ?essa s?u.";
+    empty.textContent = "Engin prof til fyrir thessa sidu.";
     trialGrid.appendChild(empty);
   }
 
@@ -718,7 +736,7 @@ const boot = async () => {
     );
     if (!imageModels.length) {
       trialGrid.innerHTML =
-        "<div class='status-message'>Engin valin líkön geta búið til myndir.</div>";
+        "<div class='status-message'>Engin valin likon geta búið til myndir.</div>";
       return;
     }
     populateFilters(trialRows, imageModels);
@@ -731,7 +749,21 @@ const boot = async () => {
     });
   } catch (error) {
     console.error(error);
-    trialGrid.innerHTML = `<div class="status-message">Mistókst að hlaða gögnum: ${error.message}</div>`;
+    trialGrid.innerHTML = `<div class="status-message">Mistokst að hlaða gognum: ${error.message}</div>`;
   }
 };
 boot();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
