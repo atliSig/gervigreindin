@@ -10,6 +10,7 @@
   --border: rgba(255, 255, 255, 0.1);
   --card-bg: rgba(15, 17, 23, 0.85);
   --content-width: 1200px;
+  --secondary-accent: #b788ff;
 }
 
 *,
@@ -26,6 +27,10 @@ body {
     radial-gradient(circle at 90% 10%, rgba(224, 95, 255, 0.25), transparent 40%),
     #05060a;
   padding: 1.5rem;
+}
+
+.long-text{
+  text-align: justify;
 }
 
 .site-header {
@@ -46,7 +51,7 @@ body {
 }
 
 .site-header h1 {
-  margin: 0 0 0.4rem;
+  margin: 0 0 1rem;
   font-size: clamp(1.8rem, 3vw, 2.8rem);
 }
 
@@ -59,16 +64,31 @@ body {
 .header-inner-content{
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 }
 
-.header-title-logo{
+  .header-title-logo{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .site-title, .site-subtitle{
+    text-align: center;
+  }
+
+  .site-title-wrapper{
+    width: 100%;
     display: flex;
-    align-content: flex-start;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-}
+  }
 
+  .arena-logo-wrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 
 .header-left{
  /* its 60% on desktop, 100% on mobile */
@@ -83,7 +103,7 @@ body {
 }
 
 .arena-logo{
-  max-height: 200px;
+  max-height: 20vh;
 }
 
 .header-update-list-scroll {
@@ -143,11 +163,10 @@ body {
   white-space: nowrap;
 }
 
-.update-version.future-update,
-.update-date.future-update {
-  background: #2aa76f;
+.update-version.future-update{
+  background: var(--secondary-accent);
   color: #04110c;
-  border-color: #2aa76f;
+  border-color: var(--secondary-accent);
 }
 
 .update-version.current-update,
@@ -166,6 +185,39 @@ body {
   font-style: italic;
   color: #e7ecff;
   line-height: 1.5;
+}
+
+.long-header-text{
+  display:flex;
+  width:50%;
+}
+
+
+.pill-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+  gap: 0.35rem;
+  transition: border-color 150ms ease, transform 150ms ease;
+  margin-right: 10px;
+}
+
+/* the last pill link should not have margin right */
+.pill-link:last-child {
+  margin-right: 0;
+}
+
+.pill-link:hover,
+.pill-link:focus-visible {
+  border-color: rgba(255, 255, 255, 0.5);
+  outline: none;
+  transform: translateY(-1px);
 }
 
 
@@ -214,10 +266,10 @@ main {
 }
 
 .about-hero-media img {
-  width: 100%;
   border-radius: 18px;
   border: 1px solid var(--border);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  max-height: 350px;
 }
 
 .about-card-grid {
@@ -514,6 +566,13 @@ select {
   transition: width 200ms ease;
 }
 
+.mistery{
+  font-size: 0.85rem;
+  font-style: italic;
+  text-align: center;
+  opacity: 0.7;
+}
+
 @media (max-width: 1100px) {
   .model-grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -661,43 +720,22 @@ select {
   margin-top: auto;
 }
 
-@media (max-width: 640px) {
-  .header-title-logo{
+@media (max-width: 400px) {
+    .update-item-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
-
-  .site-title{
-    text-align: center;
-  }
-
-  .site-title-wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .arena-logo-wrapper{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
+}
 
 
-
+@media (max-width: 640px) {
   body {
     padding: 1rem;
   }
 
   .trial-card {
     padding: 1.2rem;
-  }
-
-  .update-item-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
   }
   
 }
@@ -846,6 +884,8 @@ select {
 .score-chip.total {
   color: #f5d76e;
   border-color: #f5d76e;
+  width: 100%;
+  font-weight: 600;
 }
 
 .score-chip.total-winner {
@@ -889,7 +929,7 @@ select {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1rem;
   margin: 0.75rem 0 1.25rem;
   background: rgba(5, 6, 10, 0.7);
   border: 1px solid var(--border);
@@ -927,10 +967,16 @@ select {
 
 .header-content{
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 
 @media (max-width: 900px) {
+  .long-header-text{
+    width: 100%;
+  }
+  
   .overview-row {
     flex-direction: column;
   }
