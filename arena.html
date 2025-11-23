@@ -19,9 +19,11 @@
 
   </head>
   <body id="top">
-    <nav class="top-nav is-hidden" aria-label="Site navigation">
-      <div style="display: flex; gap: 0.5rem;">
-        <div class="nav-item">
+    <div class="nav-bar-wrap">
+      <img src="assets/images/favicon.png" alt="Gervigreindin merki" class="nav-favicon is-hidden" loading="lazy">
+      <nav class="top-nav is-hidden" aria-label="Site navigation">
+        <div style="display:flex; gap:0.5rem;">
+          <div class="nav-item">
           <a href="index.html">
             Heim
           </a>
@@ -39,10 +41,10 @@
             <a href="#filters" role="menuitem" class="dropdown-link">Niðurstöður</a>
           </div>
         </div>
-      </div>
-      
-      <div class="nav-item"><a href="about.html">Um mig</a></div>
-    </nav>
+        </div>
+        <div class="nav-item"><a href="about.html">Um mig</a></div>
+      </nav>
+    </div>
     <header class="site-header" id="site-header">
       <div class="header-content">
         
@@ -62,7 +64,7 @@
                 Á gervigreindarvígvellinum berjast mismunandi gervigreindarlíkön um titilinn "Besta gervigreindin í íslensku".
             </h3>
             <p class="long-text">
-              Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til <a href="https://huggingface.co/spaces/mideind/icelandic-llm-leaderboard">stöðupróf</a> 
+              Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til nokkur <a href="https://huggingface.co/spaces/mideind/icelandic-llm-leaderboard">stöðupróf</a> 
               (e. benchmarks) sem eru hjálpleg í að bera saman gæði tólanna í afmörkuðum verkefnum. Þessari síðu er ekki ætlað að vera slíkt próf og er alls ekki vísindalegt. Hér eru líkönin
               í staðin borin saman í "núllskots" (e. zero-shot) verkefnum með frekar hlutdrægum mælikvörðum. Það þýðir að sama manneskjan, það er að segja ég, bjó til öll prófin og gaf þeim öllum einkunn.
             </p>

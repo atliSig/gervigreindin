@@ -7,35 +7,63 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav class="top-nav" aria-label="Site navigation">
-    <a href="index.html">Heim</a>
-    <a href="arena.html">
-      Vígvöllur
-    </a>
-    <a href="about.html">Um mig</a>
-  </nav>
+    <div class="nav-bar-wrap">
+      <img src="assets/images/favicon.png" alt="Gervigreindin merki" class="nav-favicon is-hidden" loading="lazy">
+      <nav class="top-nav is-hidden" aria-label="Site navigation">
+        <div style="display:flex; gap:0.5rem;">
+          <div class="nav-item">
+          <a href="index.html">
+            Heim
+          </a>
+        </div>
+        <div class="nav-item nav-has-dropdown">
+          <a href="arena.html" class="nav-current" aria-haspopup="true" aria-expanded="false">
+            Vígvöllur
+            <svg class="nav-dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown" role="menu">
+                <a href="#site-header" role="menuitem" class="dropdown-link">Um vígvöllinn</a>
+                <a href="#summarySection" role="menuitem" class="dropdown-link">Stigatafla</a>
+            <a href="#filters" role="menuitem" class="dropdown-link">Niðurstöður</a>
+          </div>
+        </div>
+        </div>
+        <div class="nav-item"><a href="about.html">Um mig</a></div>
+      </nav>
+    </div>
   <header class="site-header">
     <div class="header-content">
-      <div>
-        <h1>Atli Þór Sigurgeirsson</h1>
+      <div class="header-left">
+        <h1 class="about-site-title">Atli Þór Sigurgeirsson</h1>
+        <div class="mobile-hero-content">
+          <div class="about-hero-media">
+            <img src="assets/images/profile.jpg" alt="Atli Thor Sigurgeirsson">
+          </div>
+          <div style="margin-top: 10px; display:flex; justify-content: center;">
+            <a class="pill-link" href="https://huggingface.co/atlithor" target="_blank" rel="noopener noreferrer">HuggingFace</a>
+            <a class="pill-link" href="https://www.linkedin.com/in/atlisig" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="pill-link" href="https://scholar.google.com/citations?user=sf8DVlIAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
+          </div>
+        </div>
         <p>Sérfræðingur í gervigreind | Menningar, Nýsköpunar og Háskólaráðuneytið</p>
         <p>PhD | Edinborgarháskóli | Máltækni, talgerving og gervigreind</p>
-        
+
         <h2>Um mig</h2>
          <p>
             Hæ! Ég heiti Atli og ég vinn við gervigreind. Ég lauk nýlega <a href="https://informatics.ed.ac.uk/ukri-cdt-in-natural-language-processing/people/students/cohort-2020">doktorsnámi</a> hjá <a href="https://www.cstr.ed.ac.uk/">CSTR</a>, í Edinborgarháskóla.
-            Ritgerðin mín heitir "Control Strategies For Expressive Text-To-Speech" og fjallar um hvernig er hægt að beisla stór gervigreindarlíkön svo þau hegði sér eftir þörfum notandans. Ég gaf út 5 rannsóknargreinar 
-            á meðan doktorsnáminu stóð sem fjalla helst um talgervingu og máltækni.
+            Ritgerðin mín heitir "Control Strategies For Expressive Text-To-Speech" og fjallar um hvernig er hægt að beisla stór gervigreindarlíkön svo þau hegði sér eftir þörfum notandans. 
           <p>  
-            Ég hóf störf sem sérfræðingur í gervigreind hjá Menningar, Nýsköpunar og Háskólaráðuneytinu (MNH) í ágúst, 2025. MNH er ráðuneyti gervigreindar í íslensku stjórnsýslunni og því er 
+            Ég hóf störf sem sérfræðingur í gervigreind hjá <a href="https://www.stjornarradid.is/raduneyti/starfsfolk/?raduneyti=menningar-%2c+n%c3%bdsk%c3%b6punar-+og+h%c3%a1sk%c3%b3lar%c3%a1%c3%b0uneyti%c3%b0&#:~:text=Atli%20%C3%9E%C3%B3r%20Sigurgeirsson">Stjórnarráðinu</a>, nánar tiltekið í Menningar, Nýsköpunar og Háskólaráðuneytinu (MNH) í ágúst, 2025. MNH er ráðuneyti gervigreindar í íslensku stjórnsýslunni og því er 
             alveg fullt af spennandi hlutum tengdum gervigreind sem koma til okkar.
           </p>
       </div>
-      <div>
+      <div class="header-right desktop-hero-content">
         <div class="about-hero-media">
           <img src="assets/images/profile.jpg" alt="Atli Thor Sigurgeirsson">
         </div>
-        <div style="display:flex; justify-content: space-between;">
+        <div style="margin-top: 10px; display:flex; justify-content: flex-end;">
           <a class="pill-link" href="https://huggingface.co/atlithor" target="_blank" rel="noopener noreferrer">HuggingFace</a>
           <a class="pill-link" href="https://www.linkedin.com/in/atlisig" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a class="pill-link" href="https://scholar.google.com/citations?user=sf8DVlIAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
@@ -45,79 +73,133 @@
   <main>
 
     <section class="summary-section">
-      <div class="summary-header">
-        <h2>Research</h2>
+      <div class="about-section-header">
+        <h2>Rannsóknargreinar</h2>
+        <p>Ég gaf út 5 rannsóknargreinar 
+            á meðan doktorsnáminu stóð sem fjalla helst um talgervingu og máltækni.</p>
       </div>
       <div class="about-card-grid">
         <article class="about-card">
-          <a class="pill-link" href="https://atlisig.github.io/SSW_supp_material/index.html">RepeaTTS: Towards feature discovery through repeated fine-tuning</a>
+          <h2>RepeaTTS: Towards feature discovery through repeated fine-tuning</h2>
           <p style="margin-top:5px;">A Sigurgeirsson, S King, SSW 2025</p>
+          <p class='paper-abstract'>
+            A Prompt-based Text-To-Speech model allows a user to control different aspects of speech, such as speaking rate and perceived gender, through natural language instruction. Although user-friendly, such approaches are on one hand constrained: control is limited to acoustic features learned by the model during training, and too flexible on the other: the same inputs yields uncontrollable variation that are reflected in the corpus statistics.*
+            <br><br>
+            We investigate a novel fine-tuning regime to address both of these issues at the same time by exploiting the uncontrollable variance of the model. Through principal component analysis of thousands of synthesised samples, we determine latent features that account for the highest proportion of the output variance and incorporate them as new labels for secondary fine-tuning. We evaluate the proposed methods on two models trained on an expressive Icelandic speech corpus, one with emotional disclosure and one without. In the case of the model without emotional disclosure, the method yields both continuous and discrete features that improve overall controllability of the model.*
+          </p>
+          <a class="pill-link" href="https://atlisig.github.io/SSW_supp_material/index.html">Skoða</a>
         </article>
+
         <article class="about-card">
-          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:0EnyYjriUFMC">Controllable speaking styles using a large language model</a>
+          <h2>Controllable speaking styles using a large language model</h2>
           <p style="margin-top:5px;">A Sigurgeirsson, S King, ICASSP 2024</p>
+          <p class="paper-abstract">
+            Reference-based Text-to-Speech (TTS) models can generate multiple, prosodically-different renditions of the same target text. Such models jointly learn a latent acoustic space during training, which can be sampled from during inference. Controlling these models during inference typically requires finding an appropriate reference utterance, which is non-trivial.*
+            <br><br>
+            Large generative language models (LLMs) have shown excellent performance in various language-related tasks. Given only a natural language query text (the `prompt'), such models can be used to solve specific, context-dependent tasks. Recent work in TTS has attempted similar prompt-based control of novel speaking style generation. Those methods do not require a reference utterance and can, under ideal conditions, be controlled with only a prompt. But existing methods typically require a prompt-labelled speech corpus for jointly training a prompt-conditioned encoder.*
+            <br><br>
+            In contrast, we instead employ an LLM to directly suggest prosodic modifications for a controllable TTS model, using contextual information provided in the prompt. The prompt can be designed for a multitude of tasks. Here, we give two demonstrations: control of speaking style; prosody appropriate for a given dialogue context. The proposed method is rated most appropriate in 50% of cases vs. 31% for a baseline model.*
+          </p>
+          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:0EnyYjriUFMC">Skoða</a>
+       
         </article>
+
         <article class="about-card">
-          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:UebtZRa9Y70C">Do Prosody Transfer Models Transfer Prosody?</a>
+          <h2>Do Prosody Transfer Models Transfer Prosody?</h2>
+          <p style="margin-top:5px;">A Sigurgeirsson, S King, Interspeech 2024</p>
+
+          <p class="paper-abstract">
+            Some recent models for Text-to-Speech synthesis aim to transfer the prosody of a reference utterance to the generated target synthetic speech. This is done by using a learned embedding of the reference utterance, which is used to condition speech generation. During training, the reference utterance is identical to the target utterance. Yet, during synthesis, these models are often used to transfer prosody from a reference that differs from the text or speaker being synthesized.*
+            <br><br>
+            To address this inconsistency, we propose to use a different, but prosodically-related, utterance during training too. We believe this should encourage the model to learn to transfer only those characteristics that the reference and target have in common. If prosody transfer methods do indeed transfer prosody they should be able to be trained in the way we propose. However, results show that a model trained under these conditions performs significantly worse than one trained using the target utterance as a reference. To explain this, we hypothesise that prosody transfer models do not learn a transferable representation of prosody, but rather a utterance-level representation which is highly dependent on both the reference speaker and reference text.*
+          </p>
+          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:UebtZRa9Y70C">Skoða</a>
+
+        </article>
+
+        <article class="about-card">
+          <h2>Just Because We Camp, Doesn't Mean We Should: The Ethics of Modelling Queer Voices</h2>
           <p style="margin-top:5px;">A Sigurgeirsson, E Ungless, Interspeech 2024</p>
+          <p class="paper-abstract">
+            Modern voice cloning models claim to be able to capture a diverse range of voices. We test the ability of a typical pipeline to capture the style known colloquially as “gay voice” and notice a homogenisation effect: synthesised speech is rated as sounding significantly “less gay” (by LGBTQ+ participants) than its corresponding ground-truth for speakers with “gay voice”, but ratings actually increase for control speakers. Loss of “gay voice” has implications for accessibility. We also find that for speakers with “gay voice”, loss of “gay voice” corresponds to lower similarity ratings.*
+            <br><br>
+            However, we caution that improving the ability of such models to synthesise “gay voice comes with a great number of risks. We use this pipeline as a starting point for a discussion on the ethics of modelling queer voices more broadly. Collecting “clean” queer data has safety and fairness ramifications, and the resulting technology may cause harms from mockery to death.*
+          </p>
+          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:8k81kl-MbHgC">Skoða</a>
+
         </article>
+
         <article class="about-card">
-          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:8k81kl-MbHgC">Just Because We Camp, Doesn't Mean We Should: The Ethics of Modelling Queer Voices</a>
-          <p style="margin-top:5px;">A Sigurgeirsson, E Ungless, Interspeech 2024</p>
-        </article>
-        <article class="about-card">
-          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:5nxA0vEk-isC">A Human-in-the-Loop Approach to Improving Cross-Text Prosody Transfer</a>
+          <h2>A Human-in-the-Loop Approach to Improving Cross-Text Prosody Transfer</h2>
           <p style="margin-top:5px;">H Maurya, A Sigurgeirsson, Interspeech 2024</p>
+          
+          <p class="paper-abstract">
+            Text-To-Speech (TTS) prosody transfer models can generate varied prosodic renditions, for the same text, by conditioning on a reference utterance. These models are trained with a reference that is identical to the target utterance. But when the reference utterance differs from the target text, as in cross-text prosody transfer, these models struggle to separate prosody from text, resulting in reduced perceived naturalness.*
+            <br><br>
+            To address this, we propose a Human-in-the-Loop (HitL) approach. HitL users adjust salient correlates of prosody to make the prosody more appropriate for the target text, while maintaining the overall reference prosodic effect. Human adjusted renditions maintain the reference prosody while being rated as more appropriate for the target text $57.8\\%$ of the time. Our analysis suggests that limited user effort suffices for these improvements, and that closeness in the latent reference space is not a reliable prosodic similarity metric for the cross-text condition.*
+          </p>
+          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:5nxA0vEk-isC">Skoða</a>
+
         </article>
       </div>
     </section>
 
     <section class="summary-section">
-      <div class="summary-header">
-        <h2>Corpora</h2>
+      <div class="about-section-header">
+        <h2>Gagnasett</h2>
+        <p>Hér eru nokkur gagnasett sem ég hjálpaði við að búa til meðan ég vann við rannsóknir hjá Háskólanum í Reykjavík.
+          Þessi gagnasett voru styrkt af Máltækniáætlun og eru þar af leiðandi gerð opin og aðgengileg.
+        </p>
       </div>
       <div class="about-card-grid">
         <article class="about-card">
-          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:W7OEmFMy1HYC">TalrA3mur: Large general use TTS corpus</a>
-          <p style="margin-top:5px;">Atli AzA3r Sigurgeirsson, Azorsteinn DaA?i Gunnarsson, Gunnar Thor A-rnA3lfsson, RagnheiA?ur AzA3rhallsdA3ttir, EydA-s Huld MagnA?sdA3ttir, JA3n GuA?nason, 2021</p>
+          <h2>Talromur: Large general use TTS corpus</h2>
+          <p style="margin-top:5px;">Atli Thor Sigurgeirsson, Thorsteinn Dadi Gunnarsson, Gunnar Thor Ornolfsson, Ragnheidur Thorhallsdottir, Eydis Huld MagnusdA3ttir, Jon Gudnason, 2021</p>
+          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:W7OEmFMy1HYC">Skoða</a>
         </article>
         <article class="about-card">
-          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:MXK_kJrjxJIC">TalrA3mur 3: Multi-speaker emotive TTS corpus</a>
-          <p style="margin-top:5px;">GT A-rnA3lfsson, AAz Sigurgeirsson, AB NikulA?sdA3ttir, D Schnell, 2024</p>
+          <h2>Talromur 3: Multi-speaker emotive TTS corpus</h2>
+          <p style="margin-top:5px;">Gunnar Thor Ornolfsson, Atli Thor Sigurgeirsson, Anna Nikulasdottir, Daniel Schnell, 2024</p>
+          <a class="pill-link" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sf8DVlIAAAAJ&citation_for_view=sf8DVlIAAAAJ:MXK_kJrjxJIC">Skoða</a>
+
         </article>
       </div>
     </section>
 
     <section class="summary-section">
-      <div class="summary-header">
-        <h2>Available TTS models</h2>
+      <div class="about-section-header">
+        <h2>Opnir talgervlar</h2>
+        <p>Ég gerði nokkra talgervla aðgengilega á HuggingFace meðan ég var í doktorsnámi.</p>
       </div>
       <div class="about-card-grid">
         <article class="about-card">
-          <a class="pill-link" href="https://huggingface.co/atlithor/EmotiveIcelandic">Emotive Icelandic</a>
-          <p style="margin-top:5px;">An Icelandic TTS model that can synthesise speech according to natural language descriptions of the output.</p>
+          <h2>Emotive Icelandic</h2>
+          <p style="margin-top:5px;">Talgervill sem getur búið til tilfinningaríkt tal eftir textalýsingum. Textalýsingarnar geta innihaldið upplýsingar um tilfinningar (t.d. mjög mikil reiði), upplýsingar um þann sem talar (t.d. kona/karl/nafn) og svo framvegis.</p>
+          <a class="pill-link" href="https://huggingface.co/atlithor/EmotiveIcelandic">Skoða</a>
         </article>
         <article class="about-card">
-          <a class="pill-link" href="https://huggingface.co/atlithor/RepeaTTS-level-3">RepeaTTS</a>
-          <p style="margin-top:5px;">The model proposed in my paper: RepeaTTS.</p>
+          <h2>RepeaTTS</h2>
+          <p style="margin-top:5px;">Líkanið sem var rannsakað í greininni RepeaTTS. Líkanið notar fínþjálfunaralgrím sem ég hannaði til að auka fjölda stýringarbreyta líkansins.</p>
+          <a class="pill-link" href="https://huggingface.co/atlithor/RepeaTTS-level-3">Skoða</a>
         </article>
       </div>
     </section>
 
     <section class="summary-section">
-      <div class="summary-header">
-        <h2>Contact</h2>
+      <div class="about-section-header">
+        <h2>Hafa samband</h2>
+        <p>
+          Þessi síða er ný og er í stöðugri vinnslu. Meðan ég er að klára að setja hana upp þá er best að ná í mig á LinkedIn eða senda mér tölvupóst á <a href="mailto:gervigreindin.postur@gmail.com">gervigreindin.postur@gmail.com</a>.
+        </p>
       </div>
-      <div class="about-card-grid">
-        <article class="about-card">
-          <p>Email: <a class="pill-link" href="mailto:atlisigurgeirsson@gmail.com">atlisigurgeirsson@gmail.com</a></p>
-        </article>
+      <div style="display: flex; width: 100%; justify-content: flex-end;">
+        <a class="pill-link" href="https://www.linkedin.com/in/atlisig" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="pill-link" href="mailto:gervigreindin.postur@gmail.com" >Senda póst</a>    
       </div>
+
     </section>
   </main>
-  <footer class="summary-section">
-    <p>Ac 2025 Atli Sigurgeirsson</p>
-  </footer>
+<script src="app.js" type="module"></script>
 </body>
 </html>
 

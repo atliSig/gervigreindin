@@ -7,11 +7,32 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body id="top"> 
-    <nav class="top-nav" aria-label="Site navigation"> 
-      <a href="index.html">home</a>
-      <a href="arena.html">arena</a>
-      <a href="about.html">about</a>
-    </nav>
+    <div class="nav-bar-wrap">
+      <img src="assets/images/favicon.png" alt="Gervigreindin merki" class="nav-favicon is-hidden" loading="lazy">
+      <nav class="top-nav is-hidden" aria-label="Site navigation">
+        <div style="display:flex; gap:0.5rem;">
+          <div class="nav-item">
+          <a href="index.html">
+            Heim
+          </a>
+        </div>
+        <div class="nav-item nav-has-dropdown">
+          <a href="arena.html" class="nav-current" aria-haspopup="true" aria-expanded="false">
+            Vígvöllur
+            <svg class="nav-dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown" role="menu">
+                <a href="#site-header" role="menuitem" class="dropdown-link">Um vígvöllinn</a>
+                <a href="#summarySection" role="menuitem" class="dropdown-link">Stigatafla</a>
+            <a href="#filters" role="menuitem" class="dropdown-link">Niðurstöður</a>
+          </div>
+        </div>
+        </div>
+        <div class="nav-item"><a href="about.html">Um mig</a></div>
+      </nav>
+    </div>
     <main>
       <section class="summary-section">
         <div class="summary-header">
@@ -30,5 +51,7 @@
           <p>Kemur seinna...</p>
       </section>
     </main>
+    <script src="app.js" type="module"></script>
+
   </body>
 </html>

@@ -10,6 +10,7 @@ const lightboxPrevBtn = document.getElementById("lightboxPrev");
 const lightboxNextBtn = document.getElementById("lightboxNext");
 const lightboxScoresEl = document.getElementById("lightboxScores");
 const lightboxCommentEl = document.getElementById("lightboxComment");
+const navFavicon = document.querySelector(".nav-favicon");
 const summaryTable = document.getElementById("summaryTable");
 
 const setText = (node, value) => {
@@ -203,6 +204,11 @@ const registerSummaryLightbox = () => {
   const headerCells = Array.from(summaryTable.querySelectorAll("thead th"));
   if (headerCells.length < 3) return;
   const trialIds = headerCells.slice(2).map((cell) => {
+    const link = cell.querySelector("a");
+    if (link?.hash) {
+      const match = link.hash.match(/trial-(\d+)/i);
+      if (match) return match[1];
+    }
     const match = cell.textContent.match(/(\d+)/);
     return match ? match[1] : "";
   });
@@ -247,6 +253,7 @@ registerSummaryLightbox();
 const topNav = document.querySelector(".top-nav");
 const registerTopNavScrollHide = () => {
   if (!topNav) return;
+  if (navFavicon) navFavicon.classList.remove("is-hidden");
   topNav.classList.remove("is-hidden");
   let lastY = window.scrollY;
   let ticking = false;
@@ -257,8 +264,10 @@ const registerTopNavScrollHide = () => {
     const scrollingUp = lastY - currentY > threshold;
     if (scrollingDown && currentY > 80) {
       topNav.classList.add("is-hidden");
+      if (navFavicon) navFavicon.classList.add("is-hidden");
     } else if (scrollingUp) {
       topNav.classList.remove("is-hidden");
+      if (navFavicon) navFavicon.classList.remove("is-hidden");
     }
     lastY = currentY;
     ticking = false;
