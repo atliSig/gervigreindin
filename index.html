@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gervigreindin</title>
+    <link rel="icon" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- ANDROID -->
+    <meta name="theme-color" content="transparent">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgba(255,255,255,0.5)">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgba(0,0,0,0.5)">
+    <meta name="theme-color" content="#000000"> <!-- fallback -->
+
+    <!-- IOS PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <meta name="apple-mobile-web-app-title" content="Gervigreindin">
+
   </head>
   <body id="top"> 
     <div class="nav-bar-wrap">
@@ -33,13 +47,59 @@
         <div class="nav-item"><a href="about.html">Um mig</a></div>
       </nav>
     </div>
-    <main>
-      <section class="summary-section">
-        <div class="summary-header">
-          <h1>Welcome</h1>
-          <p>This is a placeholder home page.</p>
+
+    <header class="site-header">
+      <div class="header-content">
+      <div class="header-left">
+        <h1 class="about-site-title">Atli Þór Sigurgeirsson</h1>
+        <div class="mobile-hero-content">
+          <div class="about-hero-media">
+            <img src="assets/images/profile.jpg" alt="Atli Thor Sigurgeirsson">
+          </div>
+          <div style="margin-top: 10px; display:flex; justify-content: center;">
+            <a class="pill-link" href="https://huggingface.co/atlithor" target="_blank" rel="noopener noreferrer">HuggingFace</a>
+            <a class="pill-link" href="https://www.linkedin.com/in/atlisig" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="pill-link" href="https://scholar.google.com/citations?user=sf8DVlIAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
+          </div>
         </div>
+        <p>Sérfræðingur í gervigreind | Menningar, Nýsköpunar og Háskólaráðuneytið</p>
+        <p>PhD | Edinborgarháskóli | Máltækni, talgerving og gervigreind</p>
+
+        <h2>Um mig</h2>
+         <p>
+            Hæ! Ég heiti Atli og ég vinn við gervigreind. Ég lauk nýlega <a href="https://informatics.ed.ac.uk/ukri-cdt-in-natural-language-processing/people/students/cohort-2020">doktorsnámi</a> hjá <a href="https://www.cstr.ed.ac.uk/">CSTR</a>, í Edinborgarháskóla.
+            Ritgerðin mín heitir "Control Strategies For Expressive Text-To-Speech" og fjallar um hvernig er hægt að beisla stór gervigreindarlíkön svo þau hegði sér eftir þörfum notandans. 
+          <p>  
+            Ég hóf störf sem sérfræðingur í gervigreind hjá <a href="https://www.stjornarradid.is/raduneyti/starfsfolk/?raduneyti=menningar-%2c+n%c3%bdsk%c3%b6punar-+og+h%c3%a1sk%c3%b3lar%c3%a1%c3%b0uneyti%c3%b0&#:~:text=Atli%20%C3%9E%C3%B3r%20Sigurgeirsson">Stjórnarráðinu</a>, nánar tiltekið í Menningar, Nýsköpunar og Háskólaráðuneytinu (MNH) í ágúst, 2025. MNH er ráðuneyti gervigreindar í íslensku stjórnsýslunni og því er 
+            alveg fullt af spennandi hlutum tengdum gervigreind sem koma til okkar.
+          </p>
+      </div>
+      <div class="header-right desktop-hero-content">
+        <div class="about-hero-media">
+          <img src="assets/images/profile.jpg" alt="Atli Thor Sigurgeirsson">
+        </div>
+        <div style="margin-top: 10px; display:flex; justify-content: flex-end;">
+          <a class="pill-link" href="https://huggingface.co/atlithor" target="_blank" rel="noopener noreferrer">HuggingFace</a>
+          <a class="pill-link" href="https://www.linkedin.com/in/atlisig" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="pill-link" href="https://scholar.google.com/citations?user=sf8DVlIAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
+        </div>
+    </div>
+  </header>
+    <main>    
+      <section class="summary-section">
+        <div class="about-section-header">
+          <h2>Ný síða</h2>
+          <p>Hæhæ! þetta er ný síða í vinnslu. Það kemur meira áhugavert hérna inn innan tíðar.</p>
+        </div>
+      </section>  
+      <section class="summary-section">
+        <div class="about-section-header">
+          <h2>Gervigreindarvígvöllurinn</h2>
+          <p>Á gervigreindarvígvellinum berjast mismunandi gervigreindarlíkön um titilinn "Besta gervigreindin í íslensku".</p>
+        </div>
+        <a class="pill-link" href="arena.html">Opna vígvöllinn</a>
       </section>
+      
       <section class="summary-section">
         <div class="summary-header">
           <h2>Íslensk máltæknitól</h2>

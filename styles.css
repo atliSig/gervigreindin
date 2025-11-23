@@ -1140,6 +1140,13 @@ select {
   .about-site-title{
     text-align: center;
   }
+
+  .summary-header-left{
+    max-width: 100%;
+  }
+  .summary-header-right{
+    display: none !important;
+  }
 }
 
 
