@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gervigreindarvígvöllurinn</title>
+    <link rel="icon" href="assets/images/favicon.png"/>
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- ANDROID -->
+    <meta name="theme-color" content="transparent">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgba(255,255,255,0.5)">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgba(0,0,0,0.5)">
+    <meta name="theme-color" content="#000000"> <!-- fallback -->
+
+    <!-- IOS PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <meta name="apple-mobile-web-app-title" content="Gervigreindin" />
+
+  </head>
+  <body id="top">
+    <nav class="top-nav" aria-label="Site navigation">
+      <a href="index.html">Heim</a>
+      <a href="arena.html">
+        Vígvöllur
+      </a>
+      <a href="about.html">Um mig</a>
+    </nav>
+    <header class="site-header">
+      <div class="header-content">
+        
+        <div class="header-inner-content">
+          <div class="header-left">
+            <div class="header-title-logo">
+              <div class="site-title-wrapper">
+                <h1 class="site-title">Gervigreindar<wbr>vígvöllurinn
+                </h1>
+                <span id="version-header">Útgáfa 0.1</span>
+              </div>
+              <div class="arena-logo-wrapper">
+                <img src="assets/images/arena_logo.png" alt="Gervigreindarvígvöllurinn logo" class="arena-logo", loading="lazy" />
+              </div>
+            </div>
+            <h3 class="site-subtitle">
+                Á gervigreindarvígvellinum berjast mismunandi gervigreindarlíkön um titilinn "Besta gervigreindin í íslensku".
+            </h3>
+            <p class="long-text">
+              Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til <a href='https://huggingface.co/spaces/mideind/icelandic-llm-leaderboard'>stöðupróf</a> 
+              (e. benchmarks) sem eru hjálpleg í að bera saman gæði tólanna í afmörkuðum verkefnum. Þessari síðu er ekki ætlað að vera slíkt próf og er alls ekki vísindalegt. Hér eru líkönin
+              í staðin borin saman í "núllskots" (e. zero-shot) verkefnum með frekar hlutdrægum mælikvörðum. Það þýðir að sama manneskjan, það er að segja ég, bjó til öll prófin og gaf þeim öllum einkunn.
+            </p>
+            <p class="long-text">
+              Þrátt fyrir það þá gefur þesis vígvöllur ágæta mynd af getu mismunandi gervigreindarlíkana að skilja og fylgja skipunum á íslensku.
+            </p>
+            <p class="long-text">
+              Vefurinn er í stöðugri þróun og áhugasamir eru kvattir til að fylgjast vel með uppfærslum. Tilgangur vígvallarins er að prófa sem flesta fleti á gervigreindinni. Þetta er gert til þess að
+              gefa sem best meðmæli um hvaða líkan er best að nota hvenær. 
+            </p>
+          </div>
+          <div class="header-update-list">
+              <h3 style="margin:0">Uppfærslur</h3>
+              <p style="margin: 0.2rem">Vígvöllurinn verður reglulega uppfærður með nýjum prófum og líkönum. Listinn hér að neðan
+                sýnir fyrrverandi útgáfur og uppfærslur sem eru í vinnslu.
+              </p>
+              <div class="header-update-list-scroll">
+                  <div class="update-item">
+                    <div class="update-item-header">
+                      <div class="update-version current-update">
+                        Útgáfa 0.1
+                      </div>
+                      <div class="update-date">
+                          24/11/2025
+                      </div>
+                    </div>
+                    <div>
+                      Myndlistarkeppnin er komin í loftið!
+                    </div>
+                  </div>
+                  <div class="update-item">
+                    <div class="update-item-header">
+                      <div class="update-version future-update">
+                        Útgáfa 0.2
+                      </div>
+                      <div class="update-date">
+                          01/12/2025
+                      </div>
+                    </div>
+                    <div class="mystery">
+                      ?????????
+                    </div>
+                  </div>
+                  <div class="update-item">
+                    <div class="update-item-header">
+                      <div class="update-version future-update">
+                        Útgáfa 0.3
+                      </div>
+                      <div class="update-date">
+                          08/12/2025
+                      </div>
+                    </div>
+                    <div class="mystery">
+                      ?????????
+                    </div>
+                  </div>
+                  <div class="update-item">
+                    <div class="update-item-header">
+                      <div class="update-version future-update">
+                        Útgáfa 0.4
+                      </div>
+                      <div class="update-date">
+                          15/12/2025
+                      </div>
+                    </div>
+                    <div class="mystery">
+                      ?????????
+                    </div>
+                  </div>
+                  <div class="update-item">
+                    <div class="update-item-header">
+                      <div class="update-version future-update">
+                        Útgáfa 1.0
+                      </div>
+                      <div class="update-date">
+                          22/12/2025
+                      </div>
+                    </div>
+                    <div class="mystery">
+                      ?????????
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="summary-section" id="summarySection">
+        <div class="summary-header">
+          <h2>Stigataflan</h2>
+          <div class="long-header-text">
+            <p>Taflan sýnir hversu mörg stig hvert líkan fékk á hverju prófi. 
+            Græn stig tákna bestu frammistöðu, rauð tákna þá verstu. Smelltu á
+            stigagjöf til að sjá tilraun líkansins á tilteknu prófi.
+          </p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="summaryTable">
+            <thead>
+              <tr>
+                <th>Líkan</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <p class="table-empty" id="summaryEmpty">Engin gögn til að sýna.</p>
+        </div>
+      </section>
+      
+      <section class="common-questions"></section>
+
+      <section class="filters">
+        <div class="summary-header">
+          <h2>Síur</h2>
+          <div class="long-header-text">
+            <p>Hér er hægt að sía tilraunir gervigreindanna eftir líkani og prófi.</p>
+          </div>
+        </div>
+        <div>
+          <label>
+          Sía eftir prófi
+          <select id="trialFilter">
+            <option value="all" selected>Sýna öll</option>
+          </select>
+        </label>
+        <label>
+          Sía eftir líkani
+          <select id="modelFilter">
+            <option value="all" selected>Sýna öll</option>
+          </select>
+        </label>  
+        </div>
+      </section>
+
+      <section id="trialGrid" class="trial-grid" aria-live="polite">
+        <div class="status-message">Hleð gögnum…</div>
+      </section>
+    </main>
+
+    <template id="trialTemplate">
+      <article class="trial-card">
+        <header>
+          <h2 class="trial-name"></h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"></p>
+            <p class="trial-type"></p>
+          </span>
+        </header>
+        <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
+        <pre class="trial-prompt-code">
+          <span class="trial-prompt-content"></span>
+        </pre>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <p class="trial-description"></p>
+        <div class="trial-metrics"></div>
+
+        <div class="model-grid"></div>
+      </article>
+    </template>
+
+    <template id="modelTemplate">
+      <figure class="model-card">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Open image preview">
+            <img alt="" loading="lazy" />
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name"></strong>
+            <span class="generated-date"></span>
+          </div>
+          <p class="model-comment">—</p>
+          <div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">—</span>
+          </div>
+        </figcaption>
+      </figure>
+    </template>
+
+    <div id="lightbox" class="lightbox hidden" aria-hidden="true">
+      <div class="lightbox-backdrop"></div>
+      <figure class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Image preview">
+        <button type="button" class="lightbox-close" aria-label="Close image">×</button>
+        <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Show previous image">‹</button>
+        <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Show next image">›</button>
+        <img id="lightboxImage" alt="" />
+        <figcaption class="lightbox-caption">
+          <strong id="lightboxModel"></strong>
+          <p id="lightboxPrompt"></p>
+          <p id="lightboxComment" class="lightbox-comment"></p>
+          <div class="lightbox-scores" id="lightboxScores"></div>
+        </figcaption>
+      </figure>
+    </div>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

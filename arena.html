@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gervigreindarvígvöllurinn</title>
-    <link rel="icon" href="assets/images/favicon.png"/>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
     <meta name="mobile-web-app-capable" content="yes">
     <!-- ANDROID -->
     <meta name="theme-color" content="transparent">
@@ -17,18 +15,35 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
-    <meta name="apple-mobile-web-app-title" content="Gervigreindin" />
+    <meta name="apple-mobile-web-app-title" content="Gervigreindin">
 
   </head>
   <body id="top">
-    <nav class="top-nav" aria-label="Site navigation">
-      <a href="home.html">Heim</a>
-      <a href="arena.html">
-        Vígvöllur
-      </a>
-      <a href="about.html">Um mig</a>
+    <nav class="top-nav is-hidden" aria-label="Site navigation">
+      <div style="display: flex; gap: 0.5rem;">
+        <div class="nav-item">
+          <a href="index.html">
+            Heim
+          </a>
+        </div>
+        <div class="nav-item nav-has-dropdown">
+          <a href="arena.html" class="nav-current" aria-haspopup="true" aria-expanded="false">
+            Vígvöllur
+            <svg class="nav-dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown" role="menu">
+                <a href="#site-header" role="menuitem" class="dropdown-link">Um vígvöllinn</a>
+                <a href="#summarySection" role="menuitem" class="dropdown-link">Stigatafla</a>
+            <a href="#filters" role="menuitem" class="dropdown-link">Niðurstöður</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="nav-item"><a href="about.html">Um mig</a></div>
     </nav>
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="header-content">
         
         <div class="header-inner-content">
@@ -40,14 +55,14 @@
                 <span id="version-header">Útgáfa 0.1</span>
               </div>
               <div class="arena-logo-wrapper">
-                <img src="assets/images/arena_logo.png" alt="Gervigreindarvígvöllurinn logo" class="arena-logo", loading="lazy" />
+                <img src="assets/images/arena_logo.png" alt="Gervigreindarvígvöllurinn logo" class="arena-logo" ,="" loading="lazy">
               </div>
             </div>
             <h3 class="site-subtitle">
                 Á gervigreindarvígvellinum berjast mismunandi gervigreindarlíkön um titilinn "Besta gervigreindin í íslensku".
             </h3>
             <p class="long-text">
-              Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til <a href='https://huggingface.co/spaces/mideind/icelandic-llm-leaderboard'>stöðupróf</a> 
+              Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til <a href="https://huggingface.co/spaces/mideind/icelandic-llm-leaderboard">stöðupróf</a> 
               (e. benchmarks) sem eru hjálpleg í að bera saman gæði tólanna í afmörkuðum verkefnum. Þessari síðu er ekki ætlað að vera slíkt próf og er alls ekki vísindalegt. Hér eru líkönin
               í staðin borin saman í "núllskots" (e. zero-shot) verkefnum með frekar hlutdrægum mælikvörðum. Það þýðir að sama manneskjan, það er að segja ég, bjó til öll prófin og gaf þeim öllum einkunn.
             </p>
@@ -138,12 +153,18 @@
     <main>
       <section class="summary-section" id="summarySection">
         <div class="summary-header">
+          <div class="summary-header-left">
           <h2>Stigataflan</h2>
-          <div class="long-header-text">
-            <p>Taflan sýnir hversu mörg stig hvert líkan fékk á hverju prófi. 
-            Græn stig tákna bestu frammistöðu, rauð tákna þá verstu. Smelltu á
-            stigagjöf til að sjá tilraun líkansins á tilteknu prófi.
+          <p>Taflan sýnir hversu mörg stig hvert líkan fékk á hverju prófi. 
+            Græn stig tákna bestu frammistöðu í viðeigandi prófi, rauð tákna þá verstu. 
           </p>
+          <p>
+            Smelltu á stigagjöf til að sjá tilraun líkansins á tilteknu prófi. 
+            Smelltu á dálkatitil til að fara beint í viðkomandi próf.
+          </p>
+          </div>
+          <div class="summary-header-right">
+              <img src="assets/images/arena_score_board_logo.png" alt="Gervigreindarvígvöllurinn stigatafla logo" class="arena-scoreboard-logo" loading="lazy">
           </div>
         </div>
         <div class="table-wrap">
@@ -151,42 +172,2079 @@
             <thead>
               <tr>
                 <th>Líkan</th>
-              </tr>
+                <th>Heildareinkunn</th>
+                <th><a href="#trial-01" title="Fara í Próf 01">Skilti</a></th>
+                <th><a href="#trial-02" title="Fara í Próf 02">Kirkja</a></th>
+                <th><a href="#trial-03" title="Fara í Próf 03">Sundlaug</a></th>
+                <th><a href="#trial-04" title="Fara í Próf 04">Ganga</a></th>
+                <th><a href="#trial-05" title="Fara í Próf 05">Forsíða</a></th>
+                <th><a href="#trial-06" title="Fara í Próf 06">Heimili</a></th>
+                <th><a href="#trial-07" title="Fara í Próf 07">Milljón</a></th>
+                <th><a href="#trial-08" title="Fara í Próf 08">Jólasveinar</a></th>
+                <th><a href="#trial-09" title="Fara í Próf 09">Kort</a></th>
+                <th><a href="#trial-10" title="Fara í Próf 10">Peningar</a></th></tr>
             </thead>
-            <tbody></tbody>
+            <tbody><tr><td>GPT-5.1</td><td><span class="score-chip total"><span>243/300</span></span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">28/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">29/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">24/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">20/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">24/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">26/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">28/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">18/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip best">21/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">25/30</span></td></tr><tr><td>GROK</td><td><span class="score-chip total"><span>171/300</span></span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">26/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip worst">12/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">15/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">11/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip worst">13/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">16/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">21/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">18/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">16/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">23/30</span></td></tr><tr><td>META_AI</td><td><span class="score-chip total"><span>135/300</span></span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">9/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">21/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip worst">8/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">20/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">17/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">17/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">10/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip best">21/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip worst">9/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip worst">3/30</span></td></tr><tr><td>MISTRAL</td><td><span class="score-chip total"><span>168/300</span></span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">12/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">15/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">26/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">15/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">15/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">23/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">17/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">13/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">11/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">21/30</span></td></tr><tr><td>QWEN3-MAX</td><td><span class="score-chip total"><span>134/300</span></span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">20/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">16/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">10/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">11/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">18/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">13/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip worst">8/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip worst">11/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">15/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">12/30</span></td></tr><tr><td>GEMINI</td><td><span class="score-chip total"><span>243/300</span></span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">23/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">27/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">25/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip best">30/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip best">25/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">25/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">27/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">18/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">16/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">27/30</span></td></tr><tr><td>COPILOT</td><td><span class="score-chip total"><span>241/300</span></span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip best">29/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip best">30/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">27/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">21/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">20/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">23/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">27/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">18/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">17/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip best">29/30</span></td></tr><tr><td>GPT-4o</td><td><span class="score-chip total-winner"><span class="crown-icon" aria-hidden="true">♛ </span><span>245/300</span></span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">27/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">29/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">26/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">21/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip best">25/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip best">29/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip best">29/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">18/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">18/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">23/30</span></td></tr><tr><td>GPT-5instant</td><td><span class="score-chip total"><span>238/300</span></span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">27/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">29/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip best">28/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">21/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">22/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">23/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">28/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">19/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">17/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">24/30</span></td></tr><tr><td>IMAGEN-4</td><td><span class="score-chip total"><span>117/300</span></span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip worst">8/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">14/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">9/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip worst">1/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">14/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip worst">12/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">16/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">15/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">14/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">14/30</span></td></tr><tr><td>DALL-E</td><td><span class="score-chip total"><span>172/300</span></span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">18/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">21/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">24/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">16/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip worst">13/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">18/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">17/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">18/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">10/30</span></td><td class="table-cell-link" role="button" tabindex="0"><span class="score-chip">17/30</span></td></tr></tbody>
           </table>
-          <p class="table-empty" id="summaryEmpty">Engin gögn til að sýna.</p>
+          <p class="table-empty" id="summaryEmpty" style="display: none;">Engin gögn til að sýna.</p>
         </div>
       </section>
       
       <section class="common-questions"></section>
 
-      <section class="filters">
+      <section class="filters" id="filters">
         <div class="summary-header">
-          <h2>Síur</h2>
-          <div class="long-header-text">
-            <p>Hér er hægt að sía tilraunir gervigreindanna eftir líkani og prófi.</p>
+          <div class='summary-header-left'>
+            <h2>Niðurstöður allra líkana.</h2>
+            <p>Hér fyrir neðan eru niðurstöður allra líkana sýndar. Í hverju prófi eru gervigreindunum gefin ein fyrirspurn (einn promptur). Hann er sýndur fyrst, til dæmis gæti fyrirskipun verið:</p>
+            <pre class="trial-prompt-code">Búðu til mynd af ketti í teiknimyndastíl.'</pre>
+            <p>Gefið skipunina, þá býr gervigreindarlíkanið til úrtak, til dæmis mynd, sem er síðan notað sem niðurstaða þess líkans. Hvert líkan fær bara einn séns.</p>
+            <p>Það er hægt að sía tilraunir gervigreindanna eftir líkani og prófi. Þegar engar síur eru notaðar sýnir síðan niðurstöður allra líkana fyrir öll próf.</p>
+            
+            <div>
+              <label>
+                Sía eftir prófi
+                <select id="trialFilter">
+                  <option value="all" selected="">Sýna öll</option>
+                <option value="01">01 : Hundaskilti</option><option value="02">02 : Hallgrímskirkja</option><option value="03">03 : Sundlaug</option><option value="04">04 : Fjallgangan</option><option value="05">05 : Forsíðufrétt</option><option value="06">06 : Heimilið</option><option value="07">07 : Viltu vinna milljón?</option><option value="08">08 : Jólasveinar</option><option value="09">09 : Íslandskort</option><option value="10">10 : Peningar</option></select>
+              </label>
+              <label>
+                Sía eftir líkani
+                <select id="modelFilter">
+                  <option value="all" selected="">Sýna öll</option>
+                <option value="GPT-5.1">GPT-5.1</option><option value="GROK">GROK</option><option value="META_AI">META_AI</option><option value="MISTRAL">MISTRAL</option><option value="QWEN3-MAX">QWEN3-MAX</option><option value="GEMINI">GEMINI</option><option value="COPILOT">COPILOT</option><option value="GPT-4o">GPT-4o</option><option value="GPT-5instant">GPT-5instant</option><option value="IMAGEN-4">IMAGEN-4</option><option value="DALL-E">DALL-E</option></select>
+              </label>  
+            </div>
           </div>
+          <div class="summary-header-right">
+            <img src="assets/images/arena_robot_logo.png" alt="Gervigreindarvígvöllurinn vélmenni logo" class="arena-scoreboard-logo" loading="lazy">
+          </div>
+          
         </div>
-        <div>
-          <label>
-          Sía eftir prófi
-          <select id="trialFilter">
-            <option value="all" selected>Sýna öll</option>
-          </select>
-        </label>
-        <label>
-          Sía eftir líkani
-          <select id="modelFilter">
-            <option value="all" selected>Sýna öll</option>
-          </select>
-        </label>  
-        </div>
+        
       </section>
 
-      <section id="trialGrid" class="trial-grid" aria-live="polite">
-        <div class="status-message">Hleð gögnum…</div>
-      </section>
+      <section id="trialGrid" class="trial-grid" aria-live="polite"><article class="trial-card" id="trial-01">
+        <header>
+          <h2 class="trial-name">Hundaskilti</h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"><a href="#trial-01" class="trial-link" title="Smelltu til að afrita tengil">Próf 01</a></p>
+            <p class="trial-type">Tegund: Mynd</p>
+          </span>
+        </header>
+        <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
+        <pre class="trial-prompt-code">Búðu til mynd í teiknimyndastíl af skilti sem á stendur 'hér býr æðislegur hundur.'</pre>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <p class="trial-description">Geta líkönin fylgt leiðbeiningum á íslensku og skrifað íslenska stafi?</p>
+        <div class="trial-metrics"><span class="trial-metric-pill">Texti: 10 stig</span><span class="trial-metric-pill">Þema: 10 stig</span><span class="trial-metric-pill">Gæði: 10 stig</span></div>
+
+        <div class="model-grid"><figure class="model-card" data-model="GPT-5.1" data-folder="GPT5-1" data-trial="01">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 01">
+            <img alt="Mynd fyrir GPT-5.1" loading="lazy" src="images/GPT5-1/01.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5.1</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">GPT-5.1 var eina líkanið sem skrifaði textann algjörlega rétt. Skiltið sjálft er allt í lagi en missir nokkur stig fyrir órökrétta framsetningu (skiltið flýtur í loftinu).</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Þema: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Gæði: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">28/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GROK" data-folder="GROK" data-trial="01">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 01">
+            <img alt="Mynd fyrir GROK" loading="lazy" src="images/GROK/01.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GROK</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Líkanið notar nokkra séríslenska stafi, en ekki á réttum stöðum. Sumir stafir eru ekki til í alvörunni. Skiltið er fínt og í réttum stíl.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Þema: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Gæði: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">26/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="META_AI" data-folder="META_AI" data-trial="01">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 01">
+            <img alt="Mynd fyrir META_AI" loading="lazy" src="images/META_AI/01.jpeg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">META_AI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Það er enginn texti á myndinni. Þetta er í raun ekki skilti heldur. Myndin er þó í teiknimyndastíl.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Þema: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Gæði: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">9/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="MISTRAL" data-folder="MISTRAL" data-trial="01">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 01">
+            <img alt="Mynd fyrir MISTRAL" loading="lazy" src="images/MISTRAL/01.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">MISTRAL</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Textinn er eittvað í áttina að því sem beðið var um. Þetta er skilti, en ekki í teiknimyndastíl. Hundurinn er með skrítin augu.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Þema: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Gæði: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">12/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="QWEN3-MAX" data-folder="QWEN" data-trial="01">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 01">
+            <img alt="Mynd fyrir QWEN3-MAX" loading="lazy" src="images/QWEN/01.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">QWEN3-MAX</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Textinn er á ákveðinn hátt nákvæmur (sami fjöldi atkvæða). En líkanið skáldar nokkra stafi sem eru ekki til í íslensku. Þemað er tæknilega rétt.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Þema: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Gæði: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">20/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GEMINI" data-folder="GEMINI" data-trial="01">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 01">
+            <img alt="Mynd fyrir GEMINI" loading="lazy" src="images/GEMINI/01.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GEMINI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Textinn er nálægt því að vera réttur, en notar tákn sem eru ekki til í íslensku. Skiltið er með teiknimynd en þemað á myndinni er rangt. Myndin er að öðru leiti rétt.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Þema: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Gæði: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">23/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="COPILOT" data-folder="COPILOT" data-trial="01">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 01">
+            <img alt="Mynd fyrir COPILOT" loading="lazy" src="images/COPILOT/01.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">COPILOT</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Textinn er einu tákni frá því að vera réttur. Þemað er rétt og skiltið er rökrétt.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Þema: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Gæði: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">29/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-4o" data-folder="GPT4o" data-trial="01">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 01">
+            <img alt="Mynd fyrir GPT-4o" loading="lazy" src="images/GPT4o/01.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-4o</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Textinn er einu tákni frá því að vera réttur. Myndin er rétt þemuð en það er ekki augljóst hvort að hundurinn sé á skiltinu eða ekki.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Þema: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Gæði: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">27/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-5instant" data-folder="GPT-5instant" data-trial="01">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 01">
+            <img alt="Mynd fyrir GPT-5instant" loading="lazy" src="images/GPT-5instant/01.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5instant</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Textinn er einu tákni frá því að vera réttur. Myndin er í teiknimyndastíl og þemað er rétt. Skiltið er meira eins og platti og hundurinn er teiknaður út fyrir brúnina.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Þema: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Gæði: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">27/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="IMAGEN-4" data-folder="IMAGEN-4" data-trial="01">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 01">
+            <img alt="Mynd fyrir IMAGEN-4" loading="lazy" src="images/IMAGEN-4/01.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">IMAGEN-4</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Textinn er tæknilega séð nálægt því að vera réttur. Þemað er rangt og líkanið teiknaði sápuflösku en ekki skilti.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Þema: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Gæði: 1/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 10%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">8/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="DALL-E" data-folder="DALL-E" data-trial="01">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 01">
+            <img alt="Mynd fyrir DALL-E" loading="lazy" src="images/DALL-E/01.webp">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">DALL-E</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Textinn er endurtekinn en er sumstaðar í áttina að réttum texta. Þemað er að einhverju leiti rétt en líkanið notar blöndu af nokkrum þemum. Það eru nokkur augljós merki um að um gervimmynd er að ræða.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Þema: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Gæði: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">18/30</span>
+          </div></div>
+        </figcaption>
+      </figure></div>
+      </article><article class="trial-card" id="trial-02">
+        <header>
+          <h2 class="trial-name">Hallgrímskirkja</h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"><a href="#trial-02" class="trial-link" title="Smelltu til að afrita tengil">Próf 02</a></p>
+            <p class="trial-type">Tegund: Mynd</p>
+          </span>
+        </header>
+        <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
+        <pre class="trial-prompt-code">Gerðu mynd af hallgrímskirkju á gamlárskvöld, séð frá skólavörðustíg. Myndin á að vera eins og alvöru ljósmynd.</pre>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <p class="trial-description">Þekkja líkönin íslensk kennileiti og götuheiti?</p>
+        <div class="trial-metrics"><span class="trial-metric-pill">Kirkjan: 10 stig</span><span class="trial-metric-pill">Tími árs: 10 stig</span><span class="trial-metric-pill">Sjónarhorn: 10 stig</span></div>
+
+        <div class="model-grid"><figure class="model-card" data-model="GPT-5.1" data-folder="GPT5-1" data-trial="02">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 02">
+            <img alt="Mynd fyrir GPT-5.1" loading="lazy" src="images/GPT5-1/02.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5.1</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Myndin er mjög sannfærandi, kirkjan er teiknuð vel, frá réttu sjónarhorni. Bæði flugeldar og jólaljós gefa til kynna að um gamlárskvöld sé að ræða.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Kirkjan: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Tími árs: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">29/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GROK" data-folder="GROK" data-trial="02">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 02">
+            <img alt="Mynd fyrir GROK" loading="lazy" src="images/GROK/02.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GROK</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Kirkjan er ágætlega vel teiknuð, en það vantar klukkuna til dæmis. Sjónarhornið er úr réttri átt en gatan er ólík skólavörðustíg. Myndin gæti verið tekin um sumartíma, frekar en gamlárskvöld.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Kirkjan: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Tími árs: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">12/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="META_AI" data-folder="META_AI" data-trial="02">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 02">
+            <img alt="Mynd fyrir META_AI" loading="lazy" src="images/META_AI/02.jpeg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">META_AI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Kirkjan er fín, hlutföllin ekki alveg rétt. Sjónarhornið er næstum rétt, en kirkjan snýr ekki rétt miðað við skólavörðustíg. Myndin er tekin um vetur, en ekki um nótt og engin merki um gamlárskvöld.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Kirkjan: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Tími árs: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">21/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="MISTRAL" data-folder="MISTRAL" data-trial="02">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 02">
+            <img alt="Mynd fyrir MISTRAL" loading="lazy" src="images/MISTRAL/02.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">MISTRAL</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Kirkjan er einhverskonar nálgun að hallgrímskirkju. Sjónarhornið er úr réttri átt en svæðið er meira eins og torg frekar en Skólavörðustígur. Þetta gæti verið vetrarkvöld og það eru einhver ummerki um jól og flugelda.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Kirkjan: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Tími árs: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">15/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="QWEN3-MAX" data-folder="QWEN" data-trial="02">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 02">
+            <img alt="Mynd fyrir QWEN3-MAX" loading="lazy" src="images/QWEN/02.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">QWEN3-MAX</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Kirkjan er sannfærandi. Hún er ekki rétt staðsett og það eru engin ummerki um Skólavörðustíg eða gamlárskvöld.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Kirkjan: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Tími árs: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 1/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 10%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">16/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GEMINI" data-folder="GEMINI" data-trial="02">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 02">
+            <img alt="Mynd fyrir GEMINI" loading="lazy" src="images/GEMINI/02.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GEMINI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Fyrir utan þetta long exposure, þá er myndin sannfærandi. Kirkjan er ekki alveg í réttum hlutföllum, en er tekin á réttum tíma og frá réttu sjónarhorni.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Kirkjan: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Tími árs: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">27/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="COPILOT" data-folder="COPILOT" data-trial="02">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 02">
+            <img alt="Mynd fyrir COPILOT" loading="lazy" src="images/COPILOT/02.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">COPILOT</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Myndin er mjög sannfærandi. Kirkjan er rétt teiknuð, frá réttu sjónarhorni og á réttum tíma árs.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Kirkjan: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Tími árs: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">30/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-4o" data-folder="GPT4o" data-trial="02">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 02">
+            <img alt="Mynd fyrir GPT-4o" loading="lazy" src="images/GPT4o/02.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-4o</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Myndin er mjög fín. Kirkjan er rétt teiknuð, fyrir utan klukkuna, og frá réttu sjónarhorni. Tíminn ársins er sýndur með jólaljósum og flugeldum.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Kirkjan: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Tími árs: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">29/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-5instant" data-folder="GPT-5instant" data-trial="02">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 02">
+            <img alt="Mynd fyrir GPT-5instant" loading="lazy" src="images/GPT-5instant/02.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5instant</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Myndin er mjög sannfærandi. Kirkjan er  vel teiknuð, frá réttu sjónarhorni og á réttum tíma árs.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Kirkjan: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Tími árs: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">29/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="IMAGEN-4" data-folder="IMAGEN-4" data-trial="02">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 02">
+            <img alt="Mynd fyrir IMAGEN-4" loading="lazy" src="images/IMAGEN-4/02.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">IMAGEN-4</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Kirkjan er ekki alveg rétt teiknuð. Myndin gæti verið tekin fyrir framan Skólavörðustíg um sumarkvöld.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Kirkjan: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Tími árs: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">14/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="DALL-E" data-folder="DALL-E" data-trial="02">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 02">
+            <img alt="Mynd fyrir DALL-E" loading="lazy" src="images/DALL-E/02.webp">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">DALL-E</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Hér er mikill teiknimyndastíll. Kirkjan snýr ekki alveg rétt en er klárlega tekin um gamlárskvöld</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Kirkjan: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Tími árs: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">21/30</span>
+          </div></div>
+        </figcaption>
+      </figure></div>
+      </article><article class="trial-card" id="trial-03">
+        <header>
+          <h2 class="trial-name">Sundlaug</h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"><a href="#trial-03" class="trial-link" title="Smelltu til að afrita tengil">Próf 03</a></p>
+            <p class="trial-type">Tegund: Mynd</p>
+          </span>
+        </header>
+        <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
+        <pre class="trial-prompt-code">Skýringarmynd, séð úr lofti, af týpískri íslenskri sundlaug með öllum aðbúnaði. Notaðu bara svartar línur og rauða, bláa eða hvíta fleti.</pre>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <p class="trial-description">Menningarlega eru sundlaugar mjög mikilvægar á Íslandi. Skilja líkönin hvernig íslenskar laugar líta út?</p>
+        <div class="trial-metrics"><span class="trial-metric-pill">Þema: 10 stig</span><span class="trial-metric-pill">Litir: 10 stig</span><span class="trial-metric-pill">Aðbúnaður: 10 stig</span></div>
+
+        <div class="model-grid"><figure class="model-card" data-model="GPT-5.1" data-folder="GPT5-1" data-trial="03">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 03">
+            <img alt="Mynd fyrir GPT-5.1" loading="lazy" src="images/GPT5-1/03.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5.1</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Fínasta mynd en kannski ekki dæmigerð skýringarmynd. Litir að mestu leiti réttir, en nokkrir svartir fletir.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Þema: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Litir: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Aðbúnaður: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">24/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GROK" data-folder="GROK" data-trial="03">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 03">
+            <img alt="Mynd fyrir GROK" loading="lazy" src="images/GROK/03.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GROK</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Meginlitur myndarinnar er rangur. Minnir frekar á hlaupabraut frekar en sundlaug. Lítið um aðbúnað.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Þema: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Litir: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Aðbúnaður: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">15/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="META_AI" data-folder="META_AI" data-trial="03">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 03">
+            <img alt="Mynd fyrir META_AI" loading="lazy" src="images/META_AI/03.jpeg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">META_AI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Frekar eins og einföld ljósmynd af sundlaug.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Þema: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Litir: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Aðbúnaður: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">8/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="MISTRAL" data-folder="MISTRAL" data-trial="03">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 03">
+            <img alt="Mynd fyrir MISTRAL" loading="lazy" src="images/MISTRAL/03.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">MISTRAL</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Sannfærandi sem skýringarmynd. Litir eru réttir en það vantar til dæmis rennibrautir.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Þema: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Litir: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Aðbúnaður: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">26/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="QWEN3-MAX" data-folder="QWEN" data-trial="03">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 03">
+            <img alt="Mynd fyrir QWEN3-MAX" loading="lazy" src="images/QWEN/03.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">QWEN3-MAX</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Er ekki skýringarmynd. Meginliturinn er rangur. Takmarkaður aðbúnaður.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Þema: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Litir: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Aðbúnaður: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">10/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GEMINI" data-folder="GEMINI" data-trial="03">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 03">
+            <img alt="Mynd fyrir GEMINI" loading="lazy" src="images/GEMINI/03.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GEMINI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Mjög sannfærandi skýringarmynd en er ekki alveg rökrétt. Litirnir eru almennt réttir og týpiskur aðbúnaður er sýndur.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Þema: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Litir: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Aðbúnaður: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">25/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="COPILOT" data-folder="COPILOT" data-trial="03">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 03">
+            <img alt="Mynd fyrir COPILOT" loading="lazy" src="images/COPILOT/03.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">COPILOT</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Teiknimyndaleg skýringarmynd. Góður aðbúnaður og litirnir eru réttir.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Þema: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Litir: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Aðbúnaður: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">27/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-4o" data-folder="GPT4o" data-trial="03">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 03">
+            <img alt="Mynd fyrir GPT-4o" loading="lazy" src="images/GPT4o/03.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-4o</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Góð skýringarmynd, en er ekki rökrétt, til dæmis hvað varðar sjónarhorn. Litir eru réttir og aðbúnaður er fínn.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Þema: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Litir: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Aðbúnaður: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">26/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-5instant" data-folder="GPT-5instant" data-trial="03">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 03">
+            <img alt="Mynd fyrir GPT-5instant" loading="lazy" src="images/GPT-5instant/03.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5instant</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Mjög góð skýringarmynd. Litirnir eru réttir og aðbúnaðurinn er sannfærandi.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Þema: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Litir: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Aðbúnaður: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">28/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="IMAGEN-4" data-folder="IMAGEN-4" data-trial="03">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 03">
+            <img alt="Mynd fyrir IMAGEN-4" loading="lazy" src="images/IMAGEN-4/03.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">IMAGEN-4</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Er eins og einhverskonar tæknileg lýsing á sundlaug. Litirnir eru ekki réttir. Takmarkaður aðbúnaður sýndur.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Þema: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Litir: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Aðbúnaður: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">9/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="DALL-E" data-folder="DALL-E" data-trial="03">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 03">
+            <img alt="Mynd fyrir DALL-E" loading="lazy" src="images/DALL-E/03.webp">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">DALL-E</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Fín skýringarmynd af mjög spennandi sundlaug. Litirnir eru ekki alveg réttir, margar sundlaugar en engin rennibraut.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Þema: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Litir: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Aðbúnaður: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">24/30</span>
+          </div></div>
+        </figcaption>
+      </figure></div>
+      </article><article class="trial-card" id="trial-04">
+        <header>
+          <h2 class="trial-name">Fjallgangan</h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"><a href="#trial-04" class="trial-link" title="Smelltu til að afrita tengil">Próf 04</a></p>
+            <p class="trial-type">Tegund: Mynd</p>
+          </span>
+        </header>
+        <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
+        <pre class="trial-prompt-code">Björt og falleg mynd af gömlu fólki í fjallgöngu. Ein þeirra heldur á einni með öllu og annar er með 66 gráður norður bakpoka.</pre>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <p class="trial-description">Þessi promptur notar flókna blöndu af fornöfnum og tölum. Vita líkönin að hér erum pulsu að ræða?</p>
+        <div class="trial-metrics"><span class="trial-metric-pill">Gamalt fólk: 10 stig</span><span class="trial-metric-pill">Pulsa: 10 stig</span><span class="trial-metric-pill">Bakpoki: 10 stig</span></div>
+
+        <div class="model-grid"><figure class="model-card" data-model="GPT-5.1" data-folder="GPT5-1" data-trial="04">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 04">
+            <img alt="Mynd fyrir GPT-5.1" loading="lazy" src="images/GPT5-1/04.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5.1</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Glæsileg pulsa, án remúlaði. Bakpoki er sýndur en ekkert gefur til kynna að hann sé frá 66° Norður.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Gamalt fólk: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Pulsa: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Bakpoki: 1/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 10%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">20/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GROK" data-folder="GROK" data-trial="04">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 04">
+            <img alt="Mynd fyrir GROK" loading="lazy" src="images/GROK/04.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GROK</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Engin pulsa, rétt fólk og einn ómerktur bakpoki.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Gamalt fólk: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Pulsa: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Bakpoki: 1/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 10%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">11/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="META_AI" data-folder="META_AI" data-trial="04">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 04">
+            <img alt="Mynd fyrir META_AI" loading="lazy" src="images/META_AI/04.jpeg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">META_AI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Fólkið er rétt og bakpokinn líka. Engin pulsa.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Gamalt fólk: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Pulsa: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Bakpoki: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">20/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="MISTRAL" data-folder="MISTRAL" data-trial="04">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 04">
+            <img alt="Mynd fyrir MISTRAL" loading="lazy" src="images/MISTRAL/04.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">MISTRAL</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Gamalt fólk án pulsu og bakpokinn á rangri manneskju, framan á henni.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Gamalt fólk: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Pulsa: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Bakpoki: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">15/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="QWEN3-MAX" data-folder="QWEN" data-trial="04">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 04">
+            <img alt="Mynd fyrir QWEN3-MAX" loading="lazy" src="images/QWEN/04.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">QWEN3-MAX</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Vissulega gamalt fólk í fjallgöngu, en hvar er pylsan og afhverju er bakpokinn orðinn að hatti?</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Gamalt fólk: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Pulsa: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Bakpoki: 1/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 10%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">11/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GEMINI" data-folder="GEMINI" data-trial="04">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 04">
+            <img alt="Mynd fyrir GEMINI" loading="lazy" src="images/GEMINI/04.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GEMINI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Frábær mynd af konu með pulsu (sem gæti verið með remúlaði) og fjórburavinum hennar. Einn þeirra er með réttan bakpoka.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Gamalt fólk: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Pulsa: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Bakpoki: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">30/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="COPILOT" data-folder="COPILOT" data-trial="04">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 04">
+            <img alt="Mynd fyrir COPILOT" loading="lazy" src="images/COPILOT/04.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">COPILOT</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Falleg fjallgöngustund með pulsu. Bakpokinn er þó jakki.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Gamalt fólk: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Pulsa: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Bakpoki: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">21/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-4o" data-folder="GPT4o" data-trial="04">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 04">
+            <img alt="Mynd fyrir GPT-4o" loading="lazy" src="images/GPT4o/04.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-4o</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Skemmtilegur hópur af fólki í allskonar stærðum. Pulsan er fín en bakpokinn er flíspeysa.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Gamalt fólk: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Pulsa: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Bakpoki: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">21/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-5instant" data-folder="GPT-5instant" data-trial="04">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 04">
+            <img alt="Mynd fyrir GPT-5instant" loading="lazy" src="images/GPT-5instant/04.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5instant</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Girnileg pulsa, en undarlegt hvernig er haldið á henni. Fólkið er fínt og bakpokinn er aftur orðinn að einhverju öðru.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Gamalt fólk: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Pulsa: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Bakpoki: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">21/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="IMAGEN-4" data-folder="IMAGEN-4" data-trial="04">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 04">
+            <img alt="Mynd fyrir IMAGEN-4" loading="lazy" src="images/IMAGEN-4/04.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">IMAGEN-4</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er ekki gamalt fólk heldur skilti. Það er engin pulsa en það er minnst á 66° Norður.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Gamalt fólk: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Pulsa: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Bakpoki: 1/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 10%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">1/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="DALL-E" data-folder="DALL-E" data-trial="04">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 04">
+            <img alt="Mynd fyrir DALL-E" loading="lazy" src="images/DALL-E/04.webp">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">DALL-E</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Einhverskonar miðevrópsk pulsa með káli, í höndunum á rangri manneskju. Sami maður er með vörumerkið á bumbunni.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Gamalt fólk: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Pulsa: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Bakpoki: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">16/30</span>
+          </div></div>
+        </figcaption>
+      </figure></div>
+      </article><article class="trial-card" id="trial-05">
+        <header>
+          <h2 class="trial-name">Forsíðufrétt</h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"><a href="#trial-05" class="trial-link" title="Smelltu til að afrita tengil">Próf 05</a></p>
+            <p class="trial-type">Tegund: Mynd</p>
+          </span>
+        </header>
+        <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
+        <pre class="trial-prompt-code">Búðu til mynd af dramatískri forsíðufrétt, ásamt fyrirsögn, úr íslensku dagblaði frá árinu 1918.</pre>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <p class="trial-description">Geta líkönin framkallað sannfærandi mynd af íslensku dagblaði, með vísanir í atburði ársins 1918?</p>
+        <div class="trial-metrics"><span class="trial-metric-pill">Texti: 10 stig</span><span class="trial-metric-pill">Dagblað: 10 stig</span><span class="trial-metric-pill">Samhengi: 10 stig</span></div>
+
+        <div class="model-grid"><figure class="model-card" data-model="GPT-5.1" data-folder="GPT5-1" data-trial="05">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 05">
+            <img alt="Mynd fyrir GPT-5.1" loading="lazy" src="images/GPT5-1/05.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5.1</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Hér er Morgunblaðið sýnt í teiknimyndastíl, fréttin gæti átt við íslenskt samhengi og textinn er í áttina að týpískri íslensku.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Dagblað: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">24/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GROK" data-folder="GROK" data-trial="05">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 05">
+            <img alt="Mynd fyrir GROK" loading="lazy" src="images/GROK/05.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GROK</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Hér er dagblaðið Slemsk Deitilð sýnt. En það er ekki til og er greinilega ekki íslenskt. Ártalið er rétt.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 1/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 10%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Dagblað: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">13/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="META_AI" data-folder="META_AI" data-trial="05">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 05">
+            <img alt="Mynd fyrir META_AI" loading="lazy" src="images/META_AI/05.jpeg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">META_AI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Það er eitthvað mjög íslenskt við þessa mynd. Textinn er í áttina að einhverju íslensku.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Dagblað: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">17/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="MISTRAL" data-folder="MISTRAL" data-trial="05">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 05">
+            <img alt="Mynd fyrir MISTRAL" loading="lazy" src="images/MISTRAL/05.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">MISTRAL</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Dagblaðið er ekki íslenskt en það er minnst á Ísland og inflúensu.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 1/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 10%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Dagblað: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">15/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="QWEN3-MAX" data-folder="QWEN" data-trial="05">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 05">
+            <img alt="Mynd fyrir QWEN3-MAX" loading="lazy" src="images/QWEN/05.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">QWEN3-MAX</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er mjög áhugaverð tilraun. Þarna eru augljósar vísanir í fullveldisdaginn. Blaðið er rétt ármerkt og textinn er skýr, en hann er á ensku.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Dagblað: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">18/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GEMINI" data-folder="GEMINI" data-trial="05">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 05">
+            <img alt="Mynd fyrir GEMINI" loading="lazy" src="images/GEMINI/05.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GEMINI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Hérna er fín mynd af Morgu blaðinu. Það eru ýmsar vísanir í atburði sem tengjast þessum tíma og Íslandi.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Dagblað: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">25/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="COPILOT" data-folder="COPILOT" data-trial="05">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 05">
+            <img alt="Mynd fyrir COPILOT" loading="lazy" src="images/COPILOT/05.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">COPILOT</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Ágætismynd en ekkert sérstaklega sannfærandi sem forsíða á dagblaði. Textinn er fínn í fyrirsögnum og titli en minna í efnisgreinum.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Dagblað: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">20/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-4o" data-folder="GPT4o" data-trial="05">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 05">
+            <img alt="Mynd fyrir GPT-4o" loading="lazy" src="images/GPT4o/05.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-4o</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Textinn er mjög nálægt því að vera alveg réttur. Það var sannarlega Kötlugos árið 1918.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Dagblað: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">25/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-5instant" data-folder="GPT-5instant" data-trial="05">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 05">
+            <img alt="Mynd fyrir GPT-5instant" loading="lazy" src="images/GPT-5instant/05.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5instant</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Blaðið er gefið út 7. Nóvember 1918, sem er einmmitt þegar samið var um vopnahlé í fyrri heimsstyrjöldinni.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Dagblað: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">22/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="IMAGEN-4" data-folder="IMAGEN-4" data-trial="05">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 05">
+            <img alt="Mynd fyrir IMAGEN-4" loading="lazy" src="images/IMAGEN-4/05.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">IMAGEN-4</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Við verðum að gefa IMAGEN-4 smá hrós fyrir að skrifa svona mikinn texta. En þetta er ekki dagblað, þótt að umræðuefnið sé í réttu samhengi.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Dagblað: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">14/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="DALL-E" data-folder="DALL-E" data-trial="05">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 05">
+            <img alt="Mynd fyrir DALL-E" loading="lazy" src="images/DALL-E/05.webp">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">DALL-E</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er mjög spennandi dagblað, þótt það sé ekki mjög sannfærandi. Þarna er vitnað í inflúensu mikið.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Dagblað: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">13/30</span>
+          </div></div>
+        </figcaption>
+      </figure></div>
+      </article><article class="trial-card" id="trial-06">
+        <header>
+          <h2 class="trial-name">Heimilið</h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"><a href="#trial-06" class="trial-link" title="Smelltu til að afrita tengil">Próf 06</a></p>
+            <p class="trial-type">Tegund: Mynd</p>
+          </span>
+        </header>
+        <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
+        <pre class="trial-prompt-code">Týpískt íslenskt heimili tekið í gegnum víðlinsu frá sjónarhorni barns.</pre>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <p class="trial-description">Skilja líkön hvað víðlinsa er og hvað felst í íslensku heimili?</p>
+        <div class="trial-metrics"><span class="trial-metric-pill">Almenn gæði: 10 stig</span><span class="trial-metric-pill">Íslenskt samhengi: 10 stig</span><span class="trial-metric-pill">Sjónarhorn: 10 stig</span></div>
+
+        <div class="model-grid"><figure class="model-card" data-model="GPT-5.1" data-folder="GPT5-1" data-trial="06">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 06">
+            <img alt="Mynd fyrir GPT-5.1" loading="lazy" src="images/GPT5-1/06.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5.1</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er hágæða mynd af háíslensku heimili. Þarna er notuð víðlinsa, en þetta væri mjög hávaxið barn.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Almenn gæði: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Íslenskt samhengi: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">26/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GROK" data-folder="GROK" data-trial="06">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 06">
+            <img alt="Mynd fyrir GROK" loading="lazy" src="images/GROK/06.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GROK</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Barnið hefur tekið á flug til að ná sem bestri mynd. Það er margt sem lítur smá út eins og Ísland en finnst þetta frekar eins og Noregur.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Almenn gæði: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Íslenskt samhengi: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">16/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="META_AI" data-folder="META_AI" data-trial="06">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 06">
+            <img alt="Mynd fyrir META_AI" loading="lazy" src="images/META_AI/06.jpeg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">META_AI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Barnið gleymdi víðlinsunni en faldi sig í staðinn á bakvið grindverk. Gæti alveg verið tekið á Íslandi.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Almenn gæði: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Íslenskt samhengi: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">17/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="MISTRAL" data-folder="MISTRAL" data-trial="06">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 06">
+            <img alt="Mynd fyrir MISTRAL" loading="lazy" src="images/MISTRAL/06.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">MISTRAL</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta barn býr á mjög stílhreinu heimili. Þetta er svona næstum í hæð barns en engin víðlinsa.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Almenn gæði: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Íslenskt samhengi: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">23/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="QWEN3-MAX" data-folder="QWEN" data-trial="06">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 06">
+            <img alt="Mynd fyrir QWEN3-MAX" loading="lazy" src="images/QWEN/06.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">QWEN3-MAX</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er meira eins og teiknimynd. Þetta er fornaldarbarn greinilega, en á þessa fínu víðlinsu.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Almenn gæði: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Íslenskt samhengi: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">13/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GEMINI" data-folder="GEMINI" data-trial="06">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 06">
+            <img alt="Mynd fyrir GEMINI" loading="lazy" src="images/GEMINI/06.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GEMINI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Bónusstig fyrir kisuna og öll þessi teppi. Þetta er sannfærandi sem íslenskt heimili en barnið gleymdi víðlinsunni.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Almenn gæði: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Íslenskt samhengi: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">25/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="COPILOT" data-folder="COPILOT" data-trial="06">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 06">
+            <img alt="Mynd fyrir COPILOT" loading="lazy" src="images/COPILOT/06.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">COPILOT</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Barnið klifraði uppá borð til að taka myndina. Þetta er mjög íslenskt heimili en smá eins og biðstofa.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Almenn gæði: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Íslenskt samhengi: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">23/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-4o" data-folder="GPT4o" data-trial="06">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 06">
+            <img alt="Mynd fyrir GPT-4o" loading="lazy" src="images/GPT4o/06.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-4o</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Barnið tekur mynd af dótinu sínu á þessu mjög íslenska heimili. Barnið hefur fundið víðlinsu til að taka myndina.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Almenn gæði: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Íslenskt samhengi: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">29/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-5instant" data-folder="GPT-5instant" data-trial="06">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 06">
+            <img alt="Mynd fyrir GPT-5instant" loading="lazy" src="images/GPT-5instant/06.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5instant</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Barnið ákvað að taka frekar mynd af sjálfu sér með eina kubbinn sinn og bangsann sinn</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Almenn gæði: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Íslenskt samhengi: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">23/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="IMAGEN-4" data-folder="IMAGEN-4" data-trial="06">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 06">
+            <img alt="Mynd fyrir IMAGEN-4" loading="lazy" src="images/IMAGEN-4/06.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">IMAGEN-4</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er ákveðin móðgun við íslensk heimili.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Almenn gæði: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Íslenskt samhengi: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">12/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="DALL-E" data-folder="DALL-E" data-trial="06">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 06">
+            <img alt="Mynd fyrir DALL-E" loading="lazy" src="images/DALL-E/06.webp">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">DALL-E</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Gæti verið barn, erfitt að segja. Þetta er aðeins of íslenskt eitthvað, en virkar alveg kósí.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Almenn gæði: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Íslenskt samhengi: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Sjónarhorn: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">18/30</span>
+          </div></div>
+        </figcaption>
+      </figure></div>
+      </article><article class="trial-card" id="trial-07">
+        <header>
+          <h2 class="trial-name">Viltu vinna milljón?</h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"><a href="#trial-07" class="trial-link" title="Smelltu til að afrita tengil">Próf 07</a></p>
+            <p class="trial-type">Tegund: Mynd</p>
+          </span>
+        </header>
+        <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
+        <pre class="trial-prompt-code">Skjáskot af seinustu spurningunni í viltu vinna milljón. Konan er við það að fara að vinna með því að velja rétt svar, sem er valkostur B (kanilsykur).</pre>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <p class="trial-description">Geta líkönin búið til spurningu sem passar við svarið?</p>
+        <div class="trial-metrics"><span class="trial-metric-pill">Texti: 10 stig</span><span class="trial-metric-pill">Samhengi: 10 stig</span><span class="trial-metric-pill">Valkostur: 10 stig</span></div>
+
+        <div class="model-grid"><figure class="model-card" data-model="GPT-5.1" data-folder="GPT5-1" data-trial="07">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 07">
+            <img alt="Mynd fyrir GPT-5.1" loading="lazy" src="images/GPT5-1/07.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5.1</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Mjög sannfærandi skjáskot, textinn er nærri lagi.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Valkostur: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">28/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GROK" data-folder="GROK" data-trial="07">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 07">
+            <img alt="Mynd fyrir GROK" loading="lazy" src="images/GROK/07.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GROK</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er ekki viltu vinna milljón. En þarna er texti sem nánast réttur og ágætlega rökréttur fyrir spurninguna.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Valkostur: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">21/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="META_AI" data-folder="META_AI" data-trial="07">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 07">
+            <img alt="Mynd fyrir META_AI" loading="lazy" src="images/META_AI/07.jpeg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">META_AI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Konan gat valið um annað hvort stafinn l eða liccorc. Hvorugt er kanilsykur en bæði er merkt B.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Valkostur: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">10/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="MISTRAL" data-folder="MISTRAL" data-trial="07">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 07">
+            <img alt="Mynd fyrir MISTRAL" loading="lazy" src="images/MISTRAL/07.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">MISTRAL</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er í spilavíti, konan velur réttan valmöguleika en spurningin er eitthvað skrítin.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Valkostur: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">17/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="QWEN3-MAX" data-folder="QWEN" data-trial="07">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 07">
+            <img alt="Mynd fyrir QWEN3-MAX" loading="lazy" src="images/QWEN/07.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">QWEN3-MAX</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Valkosturinn B er vissulega sýndur en þetta er meira eins og auglýsing fyrir nýtt íslenskt app.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Valkostur: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">8/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GEMINI" data-folder="GEMINI" data-trial="07">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 07">
+            <img alt="Mynd fyrir GEMINI" loading="lazy" src="images/GEMINI/07.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GEMINI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er skemmtileg spurning sem er reyndar alls ekki rökrétt. Valkosturinn er næstum því réttur.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Valkostur: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">27/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="COPILOT" data-folder="COPILOT" data-trial="07">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 07">
+            <img alt="Mynd fyrir COPILOT" loading="lazy" src="images/COPILOT/07.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">COPILOT</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þarna fer spurningin sjálf á eitthvað skrítið flug. Mjög sannfærandi skjáskot úr þættinum með réttan valmöguleika.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Valkostur: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">27/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-4o" data-folder="GPT4o" data-trial="07">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 07">
+            <img alt="Mynd fyrir GPT-4o" loading="lazy" src="images/GPT4o/07.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-4o</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þessi kona er greinilega alltaf í viltu vinna milljón, því hérna birtist hún aftur. Textinn er næstum réttur.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Valkostur: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">29/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-5instant" data-folder="GPT-5instant" data-trial="07">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 07">
+            <img alt="Mynd fyrir GPT-5instant" loading="lazy" src="images/GPT-5instant/07.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5instant</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">´Ætla að prófa að láta kanilsykur á lummur næst. Þetta er mjög líkt þættinum og svarið næstum rétt skrifað.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Valkostur: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">28/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="IMAGEN-4" data-folder="IMAGEN-4" data-trial="07">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 07">
+            <img alt="Mynd fyrir IMAGEN-4" loading="lazy" src="images/IMAGEN-4/07.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">IMAGEN-4</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Við verðum að gefa IMAGEN-4 það að það skrifar skemmtilega sögur. Réttur valkostur er nefndur en röng tegund af skjáskoti sýnd.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Valkostur: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">16/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="DALL-E" data-folder="DALL-E" data-trial="07">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 07">
+            <img alt="Mynd fyrir DALL-E" loading="lazy" src="images/DALL-E/07.webp">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">DALL-E</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Það eru ekki svona margir valkostir í þættinum og þeir eru ekki merktir með bæði tölum og bókstöfum. Valkosturinn er næstum rétt skrifaður.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Samhengi: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Valkostur: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">17/30</span>
+          </div></div>
+        </figcaption>
+      </figure></div>
+      </article><article class="trial-card" id="trial-08">
+        <header>
+          <h2 class="trial-name">Jólasveinar</h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"><a href="#trial-08" class="trial-link" title="Smelltu til að afrita tengil">Próf 08</a></p>
+            <p class="trial-type">Tegund: Mynd</p>
+          </span>
+        </header>
+        <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
+        <pre class="trial-prompt-code">Gerðu teiknimynd af fyrsta jólasveininum og síðasta jólasveininum að tala við mömmu sína.</pre>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <p class="trial-description">Vita líkönin hver Stekkjastaur, Kertasníkir og Grýla eru?</p>
+        <div class="trial-metrics"><span class="trial-metric-pill">Teiknimynd: 10 stig</span><span class="trial-metric-pill">Jólasveinar: 10 stig</span><span class="trial-metric-pill">Grýla: 10 stig</span></div>
+
+        <div class="model-grid"><figure class="model-card" data-model="GPT-5.1" data-folder="GPT5-1" data-trial="08">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 08">
+            <img alt="Mynd fyrir GPT-5.1" loading="lazy" src="images/GPT5-1/08.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5.1</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Ekkert sem gefur til kynna hvaða jólasveinar þetta eru. Grýla er ekki nógu vond.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Teiknimynd: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Jólasveinar: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Grýla: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">18/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GROK" data-folder="GROK" data-trial="08">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 08">
+            <img alt="Mynd fyrir GROK" loading="lazy" src="images/GROK/08.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GROK</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Grýla er ágætlega vond. Ekkert sem gefur til kynna hvaða jólasveinar þetta eru.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Teiknimynd: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Jólasveinar: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Grýla: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">18/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="META_AI" data-folder="META_AI" data-trial="08">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 08">
+            <img alt="Mynd fyrir META_AI" loading="lazy" src="images/META_AI/08.jpeg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">META_AI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er mjög týpísk jólasveinateiknimynd. En eiginleikar sveinanna eru ekki sérlega áberandi.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Teiknimynd: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Jólasveinar: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Grýla: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">21/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="MISTRAL" data-folder="MISTRAL" data-trial="08">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 08">
+            <img alt="Mynd fyrir MISTRAL" loading="lazy" src="images/MISTRAL/08.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">MISTRAL</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Mistral fattar að það eru einhver kerti tengd þessu. En þetta er eins og mynd af einum stórum jólasveini og tveimur krökkum.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Teiknimynd: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Jólasveinar: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Grýla: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">13/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="QWEN3-MAX" data-folder="QWEN" data-trial="08">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 08">
+            <img alt="Mynd fyrir QWEN3-MAX" loading="lazy" src="images/QWEN/08.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">QWEN3-MAX</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er eins og anime mynd. Engir jólasveinar en það eru vísanir í Ísland (rúnir)</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Teiknimynd: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Jólasveinar: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Grýla: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">11/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GEMINI" data-folder="GEMINI" data-trial="08">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 08">
+            <img alt="Mynd fyrir GEMINI" loading="lazy" src="images/GEMINI/08.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GEMINI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Of margir jólasveinar en það er einn með kerti. Hinn er hærri. Grýla er ekki vond og gleymdi að tengja garnið við prjónana.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Teiknimynd: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Jólasveinar: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Grýla: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">18/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="COPILOT" data-folder="COPILOT" data-trial="08">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 08">
+            <img alt="Mynd fyrir COPILOT" loading="lazy" src="images/COPILOT/08.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">COPILOT</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Mjög týpísk teiknimynd en jólasveinarnir eru ekki einkennandi og Grýla er of góð.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Teiknimynd: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Jólasveinar: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Grýla: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">18/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-4o" data-folder="GPT4o" data-trial="08">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 08">
+            <img alt="Mynd fyrir GPT-4o" loading="lazy" src="images/GPT4o/08.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-4o</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Sannfærandi teiknimynd sem nær ekki að tjá einkenni jólasveinanna og Grýlu.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Teiknimynd: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Jólasveinar: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Grýla: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">18/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-5instant" data-folder="GPT-5instant" data-trial="08">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 08">
+            <img alt="Mynd fyrir GPT-5instant" loading="lazy" src="images/GPT-5instant/08.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5instant</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Góð teiknimynd, einn jólasveinninn er hærri en hinn. Grýla er ekki nógu vond.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Teiknimynd: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Jólasveinar: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Grýla: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">19/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="IMAGEN-4" data-folder="IMAGEN-4" data-trial="08">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 08">
+            <img alt="Mynd fyrir IMAGEN-4" loading="lazy" src="images/IMAGEN-4/08.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">IMAGEN-4</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þarna er ameríski jólasveinninn og vinur hans tæknisveinn. Grýla er of góð.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Teiknimynd: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Jólasveinar: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Grýla: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">15/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="DALL-E" data-folder="DALL-E" data-trial="08">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 08">
+            <img alt="Mynd fyrir DALL-E" loading="lazy" src="images/DALL-E/08.webp">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">DALL-E</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Það eru kerti og einn er mjög stór, það er ákveðinn sigur fyrir DALL-E. En Grýla er of vond og Kertasníkir er ekki sá sem heldur á kertinu.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Teiknimynd: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Jólasveinar: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Grýla: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">18/30</span>
+          </div></div>
+        </figcaption>
+      </figure></div>
+      </article><article class="trial-card" id="trial-09">
+        <header>
+          <h2 class="trial-name">Íslandskort</h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"><a href="#trial-09" class="trial-link" title="Smelltu til að afrita tengil">Próf 09</a></p>
+            <p class="trial-type">Tegund: Mynd</p>
+          </span>
+        </header>
+        <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
+        <pre class="trial-prompt-code">Teiknaðu framtíðarlegt blátt kort af Íslandi og merktu inn helstu bæjarfélög sem rauða demanta. Stærð demantanna á að vera í hlutfalli við íbúafjölda.</pre>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <p class="trial-description">Ansi flókin fyrirspurn sem krefst þekkingar á íslenskum bæjum.</p>
+        <div class="trial-metrics"><span class="trial-metric-pill">Texti: 10 stig</span><span class="trial-metric-pill">Staðsetningar: 10 stig</span><span class="trial-metric-pill">Stærðir: 10 stig</span></div>
+
+        <div class="model-grid"><figure class="model-card" data-model="GPT-5.1" data-folder="GPT5-1" data-trial="09">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 09">
+            <img alt="Mynd fyrir GPT-5.1" loading="lazy" src="images/GPT5-1/09.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5.1</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Stærðirnar eru fínar, staðsetningar eru ekki alveg réttar en textinn er fínn.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Staðsetningar: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Stærðir: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">21/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GROK" data-folder="GROK" data-trial="09">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 09">
+            <img alt="Mynd fyrir GROK" loading="lazy" src="images/GROK/09.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GROK</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Hérna eru allskonar nýir bæir sýndir sem ég hef aldrei heyrt um. En sumar stærðirnar eru góðar.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Staðsetningar: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Stærðir: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">16/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="META_AI" data-folder="META_AI" data-trial="09">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 09">
+            <img alt="Mynd fyrir META_AI" loading="lazy" src="images/META_AI/09.jpeg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">META_AI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Enginn texti merktur, en það var ekki beðið um það sérstaklega. þarna er bara hrúga af rauðum demöntum.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Staðsetningar: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Stærðir: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">9/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="MISTRAL" data-folder="MISTRAL" data-trial="09">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 09">
+            <img alt="Mynd fyrir MISTRAL" loading="lazy" src="images/MISTRAL/09.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">MISTRAL</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Lélegir textar en líkanið fattar að láta flesta staði nálægt strönd.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Staðsetningar: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Stærðir: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">11/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="QWEN3-MAX" data-folder="QWEN" data-trial="09">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 09">
+            <img alt="Mynd fyrir QWEN3-MAX" loading="lazy" src="images/QWEN/09.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">QWEN3-MAX</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Flott kort með ágætis texta en stærðir og staðsetningar eru ekki alveg réttar.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Staðsetningar: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Stærðir: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">15/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GEMINI" data-folder="GEMINI" data-trial="09">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 09">
+            <img alt="Mynd fyrir GEMINI" loading="lazy" src="images/GEMINI/09.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GEMINI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Líkanið fattar að vera með stærsta demantinn á réttum stað, en heldur að margir íslenskir bæjir séu í kringum jökla.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Staðsetningar: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Stærðir: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">16/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="COPILOT" data-folder="COPILOT" data-trial="09">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 09">
+            <img alt="Mynd fyrir COPILOT" loading="lazy" src="images/COPILOT/09.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">COPILOT</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Stærðirnar eru ágætar og textinn er mjög góður. En Reykjavík er ekki í sjónum og það vantar ýmislegt.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Staðsetningar: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Stærðir: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">17/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-4o" data-folder="GPT4o" data-trial="09">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 09">
+            <img alt="Mynd fyrir GPT-4o" loading="lazy" src="images/GPT4o/09.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-4o</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Textinn er næstum alveg réttur. Það vantar Reykjavík en staðsetningarnar sem eru sýndar eru mjög fínar.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Staðsetningar: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Stærðir: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">18/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-5instant" data-folder="GPT-5instant" data-trial="09">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 09">
+            <img alt="Mynd fyrir GPT-5instant" loading="lazy" src="images/GPT-5instant/09.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5instant</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Sumar staðsetningarnar eru mjög fínar, aðrar ekki. Textinn er fínn en Kornafjörður er ekki til, held ég.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Staðsetningar: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Stærðir: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">17/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="IMAGEN-4" data-folder="IMAGEN-4" data-trial="09">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 09">
+            <img alt="Mynd fyrir IMAGEN-4" loading="lazy" src="images/IMAGEN-4/09.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">IMAGEN-4</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta líkan elskar Egilstaði og Mosfellsbúr. Hér eru stærðirnar ekki mjög raunverulegar og demöntum dreyft bara einhvern veginn.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Staðsetningar: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Stærðir: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">14/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="DALL-E" data-folder="DALL-E" data-trial="09">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 09">
+            <img alt="Mynd fyrir DALL-E" loading="lazy" src="images/DALL-E/09.webp">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">DALL-E</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Svolítið mikið af Reykjavík. Það er erfitt að lesa hvað stendur á myndinni og það eru allskonar bæir í sjónum.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Texti: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Staðsetningar: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Stærðir: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">10/30</span>
+          </div></div>
+        </figcaption>
+      </figure></div>
+      </article><article class="trial-card" id="trial-10">
+        <header>
+          <h2 class="trial-name">Peningar</h2>
+          <span class="trial-header-pills">
+            <p class="trial-id"><a href="#trial-10" class="trial-link" title="Smelltu til að afrita tengil">Próf 10</a></p>
+            <p class="trial-type">Tegund: Mynd</p>
+          </span>
+        </header>
+        <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
+        <pre class="trial-prompt-code">Gerðu samanburðamynd af öllum íslensku myntunum. Raðaðu þeim eftir verðgildi, frá mesta til minnsta.</pre>
+        <h4 class="trial-metric-title">Mælikvarðar</h4>
+        <p class="trial-description">Þekkja líkönin íslenskar myntir og verðgildi þeirra?</p>
+        <div class="trial-metrics"><span class="trial-metric-pill">Fjöldi og verðmæti: 10 stig</span><span class="trial-metric-pill">Hönnun: 10 stig</span><span class="trial-metric-pill">Röðun: 10 stig</span></div>
+
+        <div class="model-grid"><figure class="model-card" data-model="GPT-5.1" data-folder="GPT5-1" data-trial="10">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 10">
+            <img alt="Mynd fyrir GPT-5.1" loading="lazy" src="images/GPT5-1/10.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5.1</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Sannfærandi, en það vantar 10 krónur. Litir ekki réttir og ég veit ekki hvað er sýnt á 1 krónunni.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Fjöldi og verðmæti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Hönnun: 7/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 70%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Röðun: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">25/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GROK" data-folder="GROK" data-trial="10">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 10">
+            <img alt="Mynd fyrir GROK" loading="lazy" src="images/GROK/10.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GROK</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Röðin er rétt en það er of mikið af kröbbum og peningum sem eru eins og evrur. 100 krónurnar eru reyndar mjög flott hannaðar!</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Fjöldi og verðmæti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Hönnun: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Röðun: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">23/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="META_AI" data-folder="META_AI" data-trial="10">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 10">
+            <img alt="Mynd fyrir META_AI" loading="lazy" src="images/META_AI/10.jpeg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">META_AI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er bara safn af allskonar peningum sem hefur verið raðað eftir lit.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Fjöldi og verðmæti: 0/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 0%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Hönnun: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Röðun: 1/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 10%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">3/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="MISTRAL" data-folder="MISTRAL" data-trial="10">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 10">
+            <img alt="Mynd fyrir MISTRAL" loading="lazy" src="images/MISTRAL/10.jpg">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">MISTRAL</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Enn vantar 5 krónu peninginn. Þetta er blanda af evrum og bandarískum peningum sýnist mér.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Fjöldi og verðmæti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Hönnun: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Röðun: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">21/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="QWEN3-MAX" data-folder="QWEN" data-trial="10">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 10">
+            <img alt="Mynd fyrir QWEN3-MAX" loading="lazy" src="images/QWEN/10.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">QWEN3-MAX</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þetta er skemmtilegt en óraunverulegt safn af peningum. Við notum ekki lengur aurma.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Fjöldi og verðmæti: 4/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 40%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Hönnun: 2/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 20%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Röðun: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">12/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GEMINI" data-folder="GEMINI" data-trial="10">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 10">
+            <img alt="Mynd fyrir GEMINI" loading="lazy" src="images/GEMINI/10.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GEMINI</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Þarna eru nokkrir mjög vel gerðir íslenskir peningar. En það vantar einn og myndirnar eru ekki alveg réttar og litirnir eru rangir líka.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Fjöldi og verðmæti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Hönnun: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Röðun: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">27/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="COPILOT" data-folder="COPILOT" data-trial="10">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 10">
+            <img alt="Mynd fyrir COPILOT" loading="lazy" src="images/COPILOT/10.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">COPILOT</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Mjög vel gert. Líkanið fattar að láta peningana í rétta liti en blandar saman báðum hliðum sumra peninga.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Fjöldi og verðmæti: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Hönnun: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Röðun: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">29/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-4o" data-folder="GPT4o" data-trial="10">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 10">
+            <img alt="Mynd fyrir GPT-4o" loading="lazy" src="images/GPT4o/10.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-4o</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Ekki fallega raðað hjá líkaninu. Að vissu leiti vel gert en við erum ekki með andapening.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Fjöldi og verðmæti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Hönnun: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Röðun: 9/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 90%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">23/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="GPT-5instant" data-folder="GPT-5instant" data-trial="10">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 10">
+            <img alt="Mynd fyrir GPT-5instant" loading="lazy" src="images/GPT-5instant/10.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">GPT-5instant</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Skemmtilegur lundapeningur. Það vantar 1 krónu peninginn og við notum ekki víkingaskip á íslenskum peningum.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Fjöldi og verðmæti: 8/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 80%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Hönnun: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Röðun: 10/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 100%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">24/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="IMAGEN-4" data-folder="IMAGEN-4" data-trial="10">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 10">
+            <img alt="Mynd fyrir IMAGEN-4" loading="lazy" src="images/IMAGEN-4/10.png">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">IMAGEN-4</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">IMAGEN segir okkur sögu um peningana. Þetta eru ekki íslenskir peningar og þeim er skringilega raðað.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Fjöldi og verðmæti: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Hönnun: 3/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 30%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Röðun: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">14/30</span>
+          </div></div>
+        </figcaption>
+      </figure><figure class="model-card" data-model="DALL-E" data-folder="DALL-E" data-trial="10">
+        <div class="image-wrap">
+          <button type="button" class="image-button" aria-label="Staekka mynd fyrir próf 10">
+            <img alt="Mynd fyrir DALL-E" loading="lazy" src="images/DALL-E/10.webp">
+          </button>
+        </div>
+        <figcaption>
+          <div class="model-meta">
+            <strong class="model-name">DALL-E</strong>
+            <span class="generated-date">Búið til: 18-11-2025</span>
+          </div>
+          <p class="model-comment">Það er mikið af kröbbum og fiskum. En þetta er skringilega sett fram til samanburðar.</p>
+          <div class="score-stack"><div class="score-bars"><div class="score-bar"><span class="score-bar-label">Fjöldi og verðmæti: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Hönnun: 6/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 60%;"></div></div></div><div class="score-bar"><span class="score-bar-label">Röðun: 5/10</span><div class="score-bar-track"><div class="score-bar-fill" style="width: 50%;"></div></div></div></div><div class="score-tile">
+            <span class="score-label">Heildareinkunn</span>
+            <span class="score-value overall-grade">17/30</span>
+          </div></div>
+        </figcaption>
+      </figure></div>
+      </article></section>
     </main>
 
     <template id="trialTemplate">
@@ -199,8 +2257,7 @@
           </span>
         </header>
         <span class="trial-prompt-title">Fyrirspurn (prompt):</span>
-        <pre class="trial-prompt-code">
-          <span class="trial-prompt-content"></span>
+        <pre class="trial-prompt-code">          <span class="trial-prompt-content"></span>
         </pre>
         <h4 class="trial-metric-title">Mælikvarðar</h4>
         <p class="trial-description"></p>
@@ -214,7 +2271,7 @@
       <figure class="model-card">
         <div class="image-wrap">
           <button type="button" class="image-button" aria-label="Open image preview">
-            <img alt="" loading="lazy" />
+            <img alt="" loading="lazy">
           </button>
         </div>
         <figcaption>
@@ -237,7 +2294,7 @@
         <button type="button" class="lightbox-close" aria-label="Close image">×</button>
         <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Show previous image">‹</button>
         <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Show next image">›</button>
-        <img id="lightboxImage" alt="" />
+        <img id="lightboxImage" alt="">
         <figcaption class="lightbox-caption">
           <strong id="lightboxModel"></strong>
           <p id="lightboxPrompt"></p>
@@ -247,6 +2304,6 @@
       </figure>
     </div>
 
-    <script src="app.js" type="module"></script>
-  </body>
-</html>
+  <script src="app.js" type="module"></script>
+
+</body></html>
