@@ -63,16 +63,36 @@
             <h3 class="site-subtitle">
                 Á gervigreindarvígvellinum berjast mismunandi gervigreindarlíkön um titilinn "Besta gervigreindin í íslensku".
             </h3>
-            <p class="long-text">
-              Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til nokkur <a href="https://huggingface.co/spaces/mideind/icelandic-llm-leaderboard">stöðupróf</a> 
-              (e. benchmarks) sem eru hjálpleg í að bera saman gæði tólanna í afmörkuðum verkefnum. Þessari síðu er ekki ætlað að vera slíkt próf og er alls ekki vísindalegt. Hér eru líkönin
-              í staðin borin saman í "núllskots" (e. zero-shot) verkefnum með frekar hlutdrægum mælikvörðum. Það þýðir að sama manneskjan, það er að segja ég, bjó til öll prófin og gaf þeim öllum einkunn.
-              Þrátt fyrir það þá gefur þesis vígvöllur ágæta mynd af getu mismunandi gervigreindarlíkana að skilja og fylgja skipunum á íslensku.
+            <div>
+              <p>
+                Það er erfitt að meta gæði mismunandi gervigreindartóla á íslensku. Það eru til nokkur <a href="https://huggingface.co/spaces/mideind/icelandic-llm-leaderboard">stöðupróf</a> 
+                (e. benchmarks) sem eru hjálpleg í að bera saman gæði tólanna í afmörkuðum verkefnum. Þessari síðu er ekki ætlað að vera slíkt próf og er alls ekki vísindalegt. Hér eru líkönin
+                í staðin borin saman í "núllskots" (e. zero-shot) verkefnum með frekar hlutdrægum mælikvörðum. Það þýðir að sama manneskjan, það er að segja ég, bjó til öll prófin og gaf þeim öllum einkunn.
+                Þrátt fyrir það þá gefur þesis vígvöllur ágæta mynd af getu mismunandi gervigreindarlíkana að skilja og fylgja skipunum á íslensku.
+                </p>
+              <h2>Hvað er þetta?</h2>
+              <p>
+                Gervigreindarvígvöllurinn er fyrst og fremst bara lítið helgarverkefni sem ég hef verið að dunda mér við.
+                Enginn ætti að taka þessum niðurstöðum mjög alvarlega!
               </p>
-            <p class="long-text">
-              Vefurinn er í stöðugri þróun og áhugasamir eru kvattir til að fylgjast vel með uppfærslum. Tilgangur vígvallarins er að prófa sem flesta fleti á gervigreindinni, til þess að
-              gefa sem best meðmæli um hvaða líkan er best að nota hvenær. 
-            </p>
+              <p>
+                Ég bjó síðuna ekki heldur til til að sýna hvað gervigreind er góð í að gera allt þetta mannlega, eins og að 
+                að búa til myndir eða skrifa sögur. Þvert á móti, þá er síðunni ætlað að sýna hvað gervigreindin getur verið
+                óáreiðanleg, sérstaklega á "low-resource" tungumálum eins og íslensku. Niðurstöðurnar hér að neðan sýna það
+                mjög skýrt.
+              </p>
+              <p>
+                Ég nota mjög hlutdræga og einfalda mælikvarða til að ákvarða hvaða líkan er best í hverju prófi. Þar af leiðandi
+                er niðurstaðan (úrtakið) sem er valið best í hverju prófi ekkert endilega frábær, sú niðurstaða var einfaldlega 
+                sú besta í samanburðinum.
+              </p>
+              <p>
+                Með þetta allt í huga þá vona ég að þessi síða gagnist, í fyrsta lagi, til að fá einhverja mynd af því hvaða
+                gervigreindarlíkön eru betri en önnur á íslenskum texta. Og, í öðru lagi, að sýna að takmarkaður stuðningur við
+                tungumál eins og íslensku getur leitt til verri, bjagaðri (e. biased) og óáreiðanlegri frammistöðu borið saman
+                við stærri málsvæði.
+              </p>
+            </div>
           </div>
           <div class="header-update-list">
               <h3 style="margin:0">Uppfærslur</h3>
@@ -82,7 +102,7 @@
               <div class="header-update-list-scroll">
                   <div class="update-item">
                     <div class="update-item-header">
-                      <div class="update-version current-update">
+                      <div class="update-version past-update">
                         Útgáfa 0.1
                       </div>
                       <div class="update-date">
@@ -95,15 +115,15 @@
                   </div>
                   <div class="update-item">
                     <div class="update-item-header">
-                      <div class="update-version future-update">
+                      <div class="update-version current-update">
                         Útgáfa 0.2
                       </div>
                       <div class="update-date">
                           01/12/2025
                       </div>
                     </div>
-                    <div class="mystery">
-                      ?????????
+                    <div>
+                      Fallbeyging 100 orða
                     </div>
                   </div>
                   <div class="update-item">
@@ -151,51 +171,39 @@
       </div>
     </header>
     <main>
+
       <section class="summary-section" id="summarySection">
         <div class="summary-header">
           <div class="summary-header-left">
-            <h2>Hvað er þetta?</h2>
-            <p>
-              Gervigreindarvígvöllurinn er fyrst og fremst bara lítið helgarverkefni sem ég hef verið að dunda mér við.
-              Enginn ætti að taka þessum niðurstöðum mjög alvarlega!
-            </p>
-            <p>
-              Ég bjó síðuna ekki heldur til til að sýna hvað gervigreind er góð í að gera allt þetta mannlega, eins og að 
-              að búa til myndir eða skrifa sögur. Þvert á móti, þá er síðunni ætlað að sýna hvað gervigreindin getur verið
-              óáreiðanleg, sérstaklega á "low-resource" tungumálum eins og íslensku. Niðurstöðurnar hér að neðan sýna það
-              mjög skýrt.
-            </p>
-            <p>
-              Ég nota mjög hlutdræga og einfalda mælikvarða til að ákvarða hvaða líkan er best í hverju prófi. Þar af leiðandi
-              er niðurstaðan (úrtakið) sem er valið best í hverju prófi ekkert endilega frábær, sú niðurstaða var einfaldlega 
-              sú besta í samanburðinum.
-            </p>
-            <p>
-              Með þetta allt í huga þá vona ég að þessi síða gagnist, í fyrsta lagi, til að fá einhverja mynd af því hvaða
-              gervigreindarlíkön eru betri en önnur á íslenskum texta. Og, í öðru lagi, að sýna að takmarkaður stuðningur við
-              tungumál eins og íslensku getur leitt til verri, bjagaðri (e. biased) og óáreiðanlegri frammistöðu borið saman
-              við stærri málsvæði.
-            </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="summary-section" id="summarySection">
-        <div class="summary-header">
-          <div class="summary-header-left">
-          <h2>Stigataflan</h2>
-          <p>Taflan sýnir hversu mörg stig hvert líkan fékk á hverju prófi. 
+          <h2>Stigatöflurnar</h2>
+          <p>Töflurnar sýna hversu mörg stig hvert líkan fékk á hverju prófi. 
             Græn stig tákna bestu frammistöðu í viðeigandi prófi, rauð tákna þá verstu. 
+            Gular tölur tákna heildarframmistöðu. Gul niðurstaða með kórónu þýðir besta heildarniðurstaðan á 
+            tilteknu prófi.
           </p>
           <p>
-            Smelltu á stigagjöf til að sjá tilraun líkansins á tilteknu prófi. 
-            Smelltu á dálkatitil til að fara beint í viðkomandi próf.
+            
           </p>
           </div>
           <div class="summary-header-right">
               <img src="assets/images/arena_score_board_logo.png" alt="Gervigreindarvígvöllurinn stigatafla logo" class="arena-scoreboard-logo" loading="lazy">
           </div>
         </div>
+        <h3>Fallbeyging 100 orða</h3>
+        <div class='table-wrap'>
+            <table class='resultsTable' id='inflection-table'>
+            <thead>
+              <tr><th>GEMINI3-default</th><th>GPT5-1</th><th>GPT4o</th><th>MISTRAL</th><th>COPILOT</th><th>GROK</th><th>DEEPSEEK-default</th><th>GPT5-instant</th><th>CLAUDE-Haiku4.5</th><th>QWEN</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="score-chip total-winner"><span class="crown-icon" aria-hidden="true">♛ </span>98/100 (98.0%)</span></td><td><span class="score-chip total">94/100 (94.0%)</span></td><td><span class="score-chip total">91/100 (91.0%)</span></td><td><span class="score-chip total">91/100 (91.0%)</span></td><td><span class="score-chip total">88/100 (88.0%)</span></td><td><span class="score-chip total">88/100 (88.0%)</span></td><td><span class="score-chip total">86/100 (86.0%)</span></td><td><span class="score-chip total">86/100 (86.0%)</span></td><td><span class="score-chip total">72/100 (72.0%)</span></td><td><span class="score-chip total">63/100 (63.0%)</span></td></tr>
+            </tbody>  
+          </table>
+        </div>
+
+        <h3>Myndlistarkeppni</h3>
+        <p>Smelltu á stigagjöf til að sjá tilraun líkansins á tilteknu prófi. 
+            Smelltu á dálkatitil til að fara beint í viðkomandi próf.</p>
         <div class="table-wrap">
           <table id="summaryTable">
             <thead>
@@ -230,12 +238,140 @@
           <p class="table-empty" id="summaryEmpty" style="display: none;">Engin gögn til að sýna.</p>
         </div>
       </section>
+
+      <section id="inflection-section">
+        <div class="summary-header">
+          <div class="summary-header-left">
+            <h2>Niðurstöður úr fallbeygingu 100 orða</h2>
+            <p>
+              Gervigreindarlíkönin voru látin fallbeygja 100 íslensk orð í mismunandi föllum, tölum og með eða án greinis. Orðin eru
+              fengin úr <a href="https://bin.arnastofnun.is/gogn/mimisbrunnur/">BÍN orðalistanum</a> og eru þau valin af handahófi.
+              Vegna þess eru sum orðin frekar sjaldgæf og skrítin en listinn var ekki ritskoðaður mikið fyrirfram.
+            </p>
+            <p>
+              Til þess að fá rétt, þarf líkanið að skrifa orðið í réttu falli, tölu og með réttum greini. Það var í lagi ef líkanið bætti við
+              bili fyrir eða eftir orðið, skrifaði orðið í hástöfum eða lástöfum, eða ef greinarmerki fylgdu svarinu.
+            </p>
+          </div>
       
-      <section class="common-questions"></section>
+        <div class='summary-header-right'>
+            <img src="assets/images/arena_inflection_robot.png" alt="Gervigreindarvígvöllurinn fallbeygingar vélmenni" class="arena-inflection-logo" loading="lazy">
+        </div>
+        </div>
+            <div class="table-wrap">
+          <table class='resultsTable' id='inflection-table'>
+  <thead>
+    <tr><th>Hvernig skrifar maður orðið...</th><th>GEMINI3-default</th><th>GPT5-1</th><th>GPT4o</th><th>MISTRAL</th><th>COPILOT</th><th>GROK</th><th>DEEPSEEK-default</th><th>GPT5-instant</th><th>CLAUDE-Haiku4.5</th><th>QWEN</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row">Nákvæmni</th><td><span class="score-chip total-winner"><span class="crown-icon" aria-hidden="true">♛ </span>98/100 (98.0%)</span></td><td><span class="score-chip total">94/100 (94.0%)</span></td><td><span class="score-chip total">91/100 (91.0%)</span></td><td><span class="score-chip total">91/100 (91.0%)</span></td><td><span class="score-chip total">88/100 (88.0%)</span></td><td><span class="score-chip total">88/100 (88.0%)</span></td><td><span class="score-chip total">86/100 (86.0%)</span></td><td><span class="score-chip total">86/100 (86.0%)</span></td><td><span class="score-chip total">72/100 (72.0%)</span></td><td><span class="score-chip total">63/100 (63.0%)</span></td></tr>
+    <tr><th scope="row">samtún í eignarfalli, eintölu, án greinis?</th><td>samtúns</td><td>samtúns</td><td>samtúns</td><td class="bad-inflection">samtúnar</td><td>samtúns</td><td>samtúns</td><td>samtúns</td><td>samtúns</td><td>samtúns</td><td class="bad-inflection">samtúnar</td></tr>
+    <tr><th scope="row">linkuháttur í þolfalli, eintölu, með greini?</th><td>linkuháttinn</td><td>linkuháttinn</td><td>linkuháttinn</td><td>linkuháttinn</td><td>linkuháttinn</td><td>linkuháttinn</td><td class="bad-inflection">linkaháttinn</td><td>linkuháttinn</td><td>linkuháttinn</td><td class="bad-inflection">linkuháttinum</td></tr>
+    <tr><th scope="row">eigináhætta í nefnifalli, eintölu, með greini?</th><td>eigináhættan</td><td>eigináhættan</td><td>eigináhættan</td><td>eigináhættan</td><td>eigináhættan</td><td>eigináhættan</td><td>eigináhættan</td><td>eigináhættan</td><td>eigináhættan</td><td>eigináhættan</td></tr>
+    <tr><th scope="row">landnám í þolfalli, eintölu, án greinis?</th><td>landnám</td><td>landnám</td><td>landnám</td><td>landnám</td><td>landnám</td><td class="bad-inflection">landnámi</td><td>landnám</td><td>landnám</td><td>landnám</td><td>landnám</td></tr>
+    <tr><th scope="row">kennslugrein í þolfalli, fleirtölu, án greinis?</th><td>kennslugreinar</td><td>kennslugreinar</td><td>kennslugreinar</td><td>kennslugreinar</td><td>kennslugreinar</td><td>kennslugreinar</td><td>kennslugreinar</td><td>kennslugreinar</td><td class="bad-inflection">kennslugranir</td><td class="bad-inflection">kennslugreinum</td></tr>
+    <tr><th scope="row">múshéri í þágufalli, fleirtölu, án greinis?</th><td>múshérum</td><td>múshérum</td><td>múshérum</td><td>múshérum</td><td>múshérum</td><td>múshérum</td><td class="bad-inflection">múshérjum</td><td>múshérum</td><td>múshérum</td><td>múshérum</td></tr>
+    <tr><th scope="row">jöðrun í þágufalli, eintölu, án greinis?</th><td>jöðrun</td><td>jöðrun</td><td>jöðrun</td><td>jöðrun</td><td>jöðrun</td><td>jöðrun</td><td>jöðrun</td><td>jöðrun</td><td>jöðrun</td><td>jöðrun</td></tr>
+    <tr><th scope="row">landafleygur í þolfalli, eintölu, án greinis?</th><td>landafleyg</td><td>landafleyg</td><td>landafleyg</td><td class="bad-inflection">landafleygann</td><td>landafleyg</td><td>landafleyg</td><td class="bad-inflection">landafleygi</td><td>landafleyg</td><td>landafleyg</td><td>landafleyg</td></tr>
+    <tr><th scope="row">brúngepill í þolfalli, fleirtölu, með greini?</th><td>brúngeplana</td><td class="bad-inflection">brúngepilana</td><td class="bad-inflection">brúngepilsins</td><td class="bad-inflection">brúngepillana</td><td class="bad-inflection">brúngepilsina</td><td>brúngeplana</td><td>brúngeplana</td><td class="bad-inflection">brúngepilsana</td><td class="bad-inflection">brúngepilana</td><td class="bad-inflection">brúngepillunum</td></tr>
+    <tr><th scope="row">kjörmerki í eignarfalli, eintölu, án greinis?</th><td>kjörmerkis</td><td>kjörmerkis</td><td>kjörmerkis</td><td>kjörmerkis</td><td>kjörmerkis</td><td class="bad-inflection">kjörmerks</td><td>kjörmerkis</td><td>kjörmerkis</td><td>kjörmerkis</td><td>kjörmerkis</td></tr>
+    <tr><th scope="row">Kanadaferð í þolfalli, eintölu, án greinis?</th><td>Kanadaferð</td><td>Kanadaferð</td><td>Kanadaferð</td><td>Kanadaferð</td><td>Kanadaferð</td><td>Kanadaferð</td><td>Kanadaferð</td><td>Kanadaferð</td><td>Kanadaferð</td><td>Kanadaferð</td></tr>
+    <tr><th scope="row">dómefndarmaður í nefnifalli, eintölu, án greinis?</th><td>dómefndarmaður</td><td>dómefndarmaður</td><td>dómefndarmaður</td><td>dómefndarmaður</td><td>dómefndarmaður</td><td>dómefndarmaður</td><td>dómefndarmaður</td><td>dómefndarmaður</td><td>dómefndarmaður</td><td>dómefndarmaður</td></tr>
+    <tr><th scope="row">örveira í þolfalli, fleirtölu, með greini?</th><td>örveirurnar</td><td>örveirurnar</td><td>örveirurnar</td><td>örveirurnar</td><td>örveirurnar</td><td>örveirurnar</td><td class="bad-inflection">örveirana</td><td>örveirurnar</td><td>örveirurnar</td><td class="bad-inflection">örveirunum</td></tr>
+    <tr><th scope="row">framhaldspróf í þolfalli, fleirtölu, með greini?</th><td>framhaldsprófin</td><td>framhaldsprófin</td><td>framhaldsprófin</td><td>framhaldsprófin</td><td>framhaldsprófin</td><td>framhaldsprófin</td><td>framhaldsprófin</td><td>framhaldsprófin</td><td>framhaldsprófin</td><td class="bad-inflection">framhaldsprófunum</td></tr>
+    <tr><th scope="row">strákastirtla í eignarfalli, fleirtölu, án greinis?</th><td>strákastirtla</td><td>strákastirtla</td><td>strákastirtla</td><td>strákastirtla</td><td>strákastirtla</td><td class="bad-inflection">strákastirtlna</td><td>strákastirtla</td><td class="bad-inflection">strákastirtlna</td><td>strákastirtla</td><td>strákastirtla</td></tr>
+    <tr><th scope="row">þátttökuþröskuldur í eignarfalli, fleirtölu, án greinis?</th><td>þátttökuþröskulda</td><td>þátttökuþröskulda</td><td>þátttökuþröskulda</td><td>þátttökuþröskulda</td><td>þátttökuþröskulda</td><td>þátttökuþröskulda</td><td>þátttökuþröskulda</td><td>þátttökuþröskulda</td><td>þátttökuþröskulda</td><td>þátttökuþröskulda</td></tr>
+    <tr><th scope="row">frumuþráður í eignarfalli, eintölu, án greinis?</th><td>frumuþráðar</td><td>frumuþráðar</td><td>frumuþráðar</td><td>frumuþráðar</td><td>frumuþráðar</td><td class="bad-inflection">frumuþráðs</td><td>frumuþráðar</td><td>frumuþráðar</td><td>frumuþráðar</td><td>frumuþráðar</td></tr>
+    <tr><th scope="row">baðlón í nefnifalli, fleirtölu, með greini?</th><td>baðlónin</td><td>baðlónin</td><td>baðlónin</td><td>baðlónin</td><td>baðlónin</td><td>baðlónin</td><td>baðlónin</td><td>baðlónin</td><td class="bad-inflection">baðlónir</td><td class="bad-inflection">baðlönin</td></tr>
+    <tr><th scope="row">Brynjudalsá í eignarfalli, eintölu, án greinis?</th><td>Brynjudalsár</td><td>Brynjudalsár</td><td>Brynjudalsár</td><td>Brynjudalsár</td><td>Brynjudalsár</td><td>Brynjudalsár</td><td>Brynjudalsár</td><td>Brynjudalsár</td><td>Brynjudalsár</td><td>Brynjudalsár</td></tr>
+    <tr><th scope="row">E-flokkur í þolfalli, fleirtölu, með greini?</th><td>E-flokkana</td><td>E-flokkana</td><td>E-flokkana</td><td>E-flokkana</td><td>E-flokkana</td><td>E-flokkana</td><td>E-flokkana</td><td>E-flokkana</td><td class="bad-inflection">E-flokka</td><td class="bad-inflection">E-flokkinum</td></tr>
+    <tr><th scope="row">leiðindapési í þolfalli, eintölu, með greini?</th><td>leiðindapésann</td><td>leiðindapésann</td><td>leiðindapésann</td><td>leiðindapésann</td><td>leiðindapésann</td><td>leiðindapésann</td><td>leiðindapésann</td><td>leiðindapésann</td><td class="bad-inflection">leiðindapésinn</td><td class="bad-inflection">leiðindapésinu</td></tr>
+    <tr><th scope="row">Inúki í eignarfalli, eintölu, með greini?</th><td>Inúkans</td><td>Inúkans</td><td>Inúkans</td><td class="bad-inflection">Inúka</td><td class="bad-inflection">Inúka</td><td>Inúkans</td><td>Inúkans</td><td class="bad-inflection">Inúksins</td><td class="bad-inflection">Inúka</td><td class="bad-inflection">Inúka</td></tr>
+    <tr><th scope="row">leiguandlag í nefnifalli, fleirtölu, án greinis?</th><td>leiguandlög</td><td>leiguandlög</td><td class="bad-inflection">leiguöndulög</td><td>leiguandlög</td><td>leiguandlög</td><td>leiguandlög</td><td>leiguandlög</td><td class="bad-inflection">leiguöndlar</td><td>leiguandlög</td><td class="bad-inflection">leiguandlögin</td></tr>
+    <tr><th scope="row">kolbildur í þágufalli, fleirtölu, án greinis?</th><td>kolbildum</td><td>kolbildum</td><td>kolbildum</td><td>kolbildum</td><td>kolbildum</td><td>kolbildum</td><td>kolbildum</td><td>kolbildum</td><td>kolbildum</td><td>kolbildum</td></tr>
+    <tr><th scope="row">hræðslugæði í nefnifalli, fleirtölu, með greini?</th><td>hræðslugæðin</td><td>hræðslugæðin</td><td>hræðslugæðin</td><td>hræðslugæðin</td><td>hræðslugæðin</td><td>hræðslugæðin</td><td>hræðslugæðin</td><td>hræðslugæðin</td><td>hræðslugæðin</td><td>hræðslugæðin</td></tr>
+    <tr><th scope="row">þótta í þágufalli, fleirtölu, án greinis?</th><td>þóttum</td><td>þóttum</td><td>þóttum</td><td>þóttum</td><td>þóttum</td><td>þóttum</td><td>þóttum</td><td>þóttum</td><td>þóttum</td><td>þóttum</td></tr>
+    <tr><th scope="row">ágóðahlutdeild í eignarfalli, eintölu, án greinis?</th><td>ágóðahlutdeildar</td><td>ágóðahlutdeildar</td><td>ágóðahlutdeildar</td><td>ágóðahlutdeildar</td><td>ágóðahlutdeildar</td><td>ágóðahlutdeildar</td><td>ágóðahlutdeildar</td><td>ágóðahlutdeildar</td><td>ágóðahlutdeildar</td><td>ágóðahlutdeildar</td></tr>
+    <tr><th scope="row">þybbi í nefnifalli, eintölu, með greini?</th><td>þybbinn</td><td>þybbinn</td><td>þybbinn</td><td>þybbinn</td><td class="bad-inflection">þybbið</td><td>þybbinn</td><td>þybbinn</td><td>þybbinn</td><td>þybbinn</td><td class="bad-inflection">þybbin</td></tr>
+    <tr><th scope="row">samkvæmisdans í þágufalli, fleirtölu, án greinis?</th><td>samkvæmisdönsum</td><td>samkvæmisdönsum</td><td>samkvæmisdönsum</td><td>samkvæmisdönsum</td><td>samkvæmisdönsum</td><td>samkvæmisdönsum</td><td class="bad-inflection">samkvæmisdönsunum</td><td class="bad-inflection">samkvæmisdönsurum</td><td>samkvæmisdönsum</td><td class="bad-inflection">samkvæmisdönsunum</td></tr>
+    <tr><th scope="row">fátækragjaldkeri í eignarfalli, fleirtölu, án greinis?</th><td>fátækragjaldkera</td><td>fátækragjaldkera</td><td>fátækragjaldkera</td><td class="bad-inflection">fátækragjaldkerja</td><td>fátækragjaldkera</td><td>fátækragjaldkera</td><td class="bad-inflection">fátækragjaldkerja</td><td>fátækragjaldkera</td><td>fátækragjaldkera</td><td class="bad-inflection">fátækragjaldkerfa</td></tr>
+    <tr><th scope="row">barnakumbl í þolfalli, eintölu, án greinis?</th><td>barnakumbl</td><td>barnakumbl</td><td>barnakumbl</td><td>barnakumbl</td><td>barnakumbl</td><td>barnakumbl</td><td>barnakumbl</td><td class="bad-inflection">barnakuml</td><td>barnakumbl</td><td>barnakumbl</td></tr>
+    <tr><th scope="row">loftbæring í eignarfalli, eintölu, með greini?</th><td>loftbæringarinnar</td><td>loftbæringarinnar</td><td class="bad-inflection">loftbæringsins</td><td>loftbæringarinnar</td><td class="bad-inflection">loftbæringsins</td><td>loftbæringarinnar</td><td>loftbæringarinnar</td><td class="bad-inflection">loftbæringsins</td><td>loftbæringarinnar</td><td>loftbæringarinnar</td></tr>
+    <tr><th scope="row">veiðiskúr í þolfalli, eintölu, án greinis?</th><td>veiðiskúr</td><td>veiðiskúr</td><td>veiðiskúr</td><td>veiðiskúr</td><td>veiðiskúr</td><td>veiðiskúr</td><td>veiðiskúr</td><td>veiðiskúr</td><td>veiðiskúr</td><td>veiðiskúr</td></tr>
+    <tr><th scope="row">afarorð í eignarfalli, eintölu, án greinis?</th><td>afarorðs</td><td>afarorðs</td><td>afarorðs</td><td>afarorðs</td><td>afarorðs</td><td>afarorðs</td><td>afarorðs</td><td>afarorðs</td><td>afarorðs</td><td>afarorðs</td></tr>
+    <tr><th scope="row">alþingishátíð í þágufalli, fleirtölu, með greini?</th><td>alþingishátíðunum</td><td>alþingishátíðunum</td><td>alþingishátíðunum</td><td>alþingishátíðunum</td><td>alþingishátíðunum</td><td>alþingishátíðunum</td><td>alþingishátíðunum</td><td>alþingishátíðunum</td><td>alþingishátíðunum</td><td>alþingishátíðunum</td></tr>
+    <tr><th scope="row">risalísa í þágufalli, fleirtölu, án greinis?</th><td>risalísum</td><td>risalísum</td><td>risalísum</td><td>risalísum</td><td>risalísum</td><td>risalísum</td><td>risalísum</td><td>risalísum</td><td>risalísum</td><td class="bad-inflection">risalísunum</td></tr>
+    <tr><th scope="row">Björnsson í þolfalli, fleirtölu, án greinis?</th><td>Björnssyni</td><td class="bad-inflection">Björnssona</td><td class="bad-inflection">Björnssona</td><td>Björnssyni</td><td class="bad-inflection">Björnssona</td><td>Björnssyni</td><td class="bad-inflection">Björnsson</td><td class="bad-inflection">Björnssona</td><td class="bad-inflection">Björnssona</td><td class="bad-inflection">Björnssona</td></tr>
+    <tr><th scope="row">Jóndís í þágufalli, eintölu, án greinis?</th><td>Jóndísi</td><td>Jóndísi</td><td>Jóndísi</td><td>Jóndísi</td><td>Jóndísi</td><td>Jóndísi</td><td>Jóndísi</td><td>Jóndísi</td><td>Jóndísi</td><td>Jóndísi</td></tr>
+    <tr><th scope="row">þurrkleysudagur í eignarfalli, eintölu, án greinis?</th><td>þurrkleysudags</td><td>þurrkleysudags</td><td>þurrkleysudags</td><td>þurrkleysudags</td><td>þurrkleysudags</td><td>þurrkleysudags</td><td>þurrkleysudags</td><td>þurrkleysudags</td><td class="bad-inflection">thurrkleysudags</td><td>þurrkleysudags</td></tr>
+    <tr><th scope="row">massastreymi í þágufalli, fleirtölu, með greini?</th><td>massastreymunum</td><td>massastreymunum</td><td>massastreymunum</td><td>massastreymunum</td><td>massastreymunum</td><td>massastreymunum</td><td class="bad-inflection">massastreimunum</td><td>massastreymunum</td><td class="bad-inflection">massastreyminum</td><td>massastreymunum</td></tr>
+    <tr><th scope="row">innihald í nefnifalli, eintölu, með greini?</th><td>innihaldið</td><td>innihaldið</td><td>innihaldið</td><td>innihaldið</td><td>innihaldið</td><td>innihaldið</td><td>innihaldið</td><td>innihaldið</td><td>innihaldið</td><td>innihaldið</td></tr>
+    <tr><th scope="row">afdalskvæði í eignarfalli, eintölu, með greini?</th><td>afdalskvæðisins</td><td>afdalskvæðisins</td><td>afdalskvæðisins</td><td>afdalskvæðisins</td><td>afdalskvæðisins</td><td>afdalskvæðisins</td><td>afdalskvæðisins</td><td>afdalskvæðisins</td><td>afdalskvæðisins</td><td>afdalskvæðisins</td></tr>
+    <tr><th scope="row">galdralist í þágufalli, eintölu, með greini?</th><td>galdralistinni</td><td>galdralistinni</td><td>galdralistinni</td><td>galdralistinni</td><td>galdralistinni</td><td>galdralistinni</td><td>galdralistinni</td><td>galdralistinni</td><td class="bad-inflection">galdalistarinni</td><td>galdralistinni</td></tr>
+    <tr><th scope="row">jarpkolla í þolfalli, eintölu, án greinis?</th><td>jarpkollu</td><td>jarpkollu</td><td>jarpkollu</td><td>jarpkollu</td><td>jarpkollu</td><td>jarpkollu</td><td>jarpkollu</td><td>jarpkollu</td><td>jarpkollu</td><td class="bad-inflection">jarpkolla</td></tr>
+    <tr><th scope="row">leirklumpur í nefnifalli, fleirtölu, með greini?</th><td>leirklumparnir</td><td>leirklumparnir</td><td>leirklumparnir</td><td>leirklumparnir</td><td>leirklumparnir</td><td class="bad-inflection">leirklumpurnir</td><td>leirklumparnir</td><td>leirklumparnir</td><td class="bad-inflection">leirklumpar</td><td>leirklumparnir</td></tr>
+    <tr><th scope="row">eldsneytisflutningabíll í eignarfalli, eintölu, með greini?</th><td>eldsneytisflutningabílsins</td><td>eldsneytisflutningabílsins</td><td>eldsneytisflutningabílsins</td><td>eldsneytisflutningabílsins</td><td>eldsneytisflutningabílsins</td><td>eldsneytisflutningabílsins</td><td>eldsneytisflutningabílsins</td><td>eldsneytisflutningabílsins</td><td>eldsneytisflutningabílsins</td><td>eldsneytisflutningabílsins</td></tr>
+    <tr><th scope="row">skrifhús í eignarfalli, eintölu, án greinis?</th><td>skrifhúss</td><td>skrifhúss</td><td>skrifhúss</td><td>skrifhúss</td><td>skrifhúss</td><td>skrifhúss</td><td>skrifhúss</td><td>skrifhúss</td><td>skrifhúss</td><td>skrifhúss</td></tr>
+    <tr><th scope="row">augakast í eignarfalli, fleirtölu, með greini?</th><td>augakastanna</td><td>augakastanna</td><td>augakastanna</td><td>augakastanna</td><td>augakastanna</td><td>augakastanna</td><td>augakastanna</td><td>augakastanna</td><td>augakastanna</td><td class="bad-inflection">augakasta</td></tr>
+    <tr><th scope="row">feigðarslóð í þolfalli, eintölu, án greinis?</th><td>feigðarslóð</td><td>feigðarslóð</td><td>feigðarslóð</td><td>feigðarslóð</td><td>feigðarslóð</td><td>feigðarslóð</td><td>feigðarslóð</td><td>feigðarslóð</td><td>feigðarslóð</td><td>feigðarslóð</td></tr>
+    <tr><th scope="row">skömmtunartímabil í nefnifalli, eintölu, með greini?</th><td>skömmtunartímabilið</td><td>skömmtunartímabilið</td><td>skömmtunartímabilið</td><td>skömmtunartímabilið</td><td>skömmtunartímabilið</td><td>skömmtunartímabilið</td><td>skömmtunartímabilið</td><td>skömmtunartímabilið</td><td>skömmtunartímabilið</td><td>skömmtunartímabilið</td></tr>
+    <tr><th scope="row">byggingarstarfsmaður í þágufalli, eintölu, án greinis?</th><td>byggingarstarfsmanni</td><td>byggingarstarfsmanni</td><td>byggingarstarfsmanni</td><td>byggingarstarfsmanni</td><td>byggingarstarfsmanni</td><td>byggingarstarfsmanni</td><td>byggingarstarfsmanni</td><td>byggingarstarfsmanni</td><td>byggingarstarfsmanni</td><td>byggingarstarfsmanni</td></tr>
+    <tr><th scope="row">Kirsuberjagarðurinn í eignarfalli, eintölu, með greini?</th><td>Kirsuberjagarðsins</td><td>Kirsuberjagarðsins</td><td>Kirsuberjagarðsins</td><td>Kirsuberjagarðsins</td><td>Kirsuberjagarðsins</td><td>Kirsuberjagarðsins</td><td>Kirsuberjagarðsins</td><td>Kirsuberjagarðsins</td><td>Kirsuberjagarðsins</td><td class="bad-inflection">Kirsuberjagarðarins</td></tr>
+    <tr><th scope="row">þvottastaur í nefnifalli, eintölu, án greinis?</th><td>þvottastaur</td><td>þvottastaur</td><td>þvottastaur</td><td>þvottastaur</td><td>þvottastaur</td><td class="bad-inflection">þvottastaurr</td><td>þvottastaur</td><td>þvottastaur</td><td>þvottastaur</td><td>þvottastaur</td></tr>
+    <tr><th scope="row">gránuló í eignarfalli, fleirtölu, án greinis?</th><td>gránulóa</td><td>gránulóa</td><td>gránulóa</td><td>gránulóa</td><td>gránulóa</td><td class="bad-inflection">gránúla</td><td>gránulóa</td><td>gránulóa</td><td>gránulóa</td><td>gránulóa</td></tr>
+    <tr><th scope="row">pappahulstur í eignarfalli, fleirtölu, með greini?</th><td>pappahulstranna</td><td>pappahulstranna</td><td>pappahulstranna</td><td>pappahulstranna</td><td>pappahulstranna</td><td>pappahulstranna</td><td class="bad-inflection">pappahulstanna</td><td>pappahulstranna</td><td class="bad-inflection">pappahulstanna</td><td class="bad-inflection">pappahulstanna</td></tr>
+    <tr><th scope="row">stenslagerðarvél í þágufalli, fleirtölu, með greini?</th><td>stenslagerðarvélunum</td><td>stenslagerðarvélunum</td><td class="bad-inflection">stenslagerðarvélinni</td><td>stenslagerðarvélunum</td><td>stenslagerðarvélunum</td><td>stenslagerðarvélunum</td><td>stenslagerðarvélunum</td><td>stenslagerðarvélunum</td><td class="bad-inflection">stenslagerðarvélum</td><td class="bad-inflection">stenslagerðarvélinum</td></tr>
+    <tr><th scope="row">steinþrep í þolfalli, eintölu, án greinis?</th><td>steinþrep</td><td>steinþrep</td><td>steinþrep</td><td>steinþrep</td><td>steinþrep</td><td>steinþrep</td><td>steinþrep</td><td>steinþrep</td><td>steinþrep</td><td>steinþrep</td></tr>
+    <tr><th scope="row">hljóðband í nefnifalli, eintölu, án greinis?</th><td>hljóðband</td><td>hljóðband</td><td>hljóðband</td><td>hljóðband</td><td>hljóðband</td><td>hljóðband</td><td>hljóðband</td><td>hljóðband</td><td>hljóðband</td><td>hljóðband</td></tr>
+    <tr><th scope="row">slikjuhár í þolfalli, eintölu, með greini?</th><td>slikjuhárið</td><td>slikjuhárið</td><td>slikjuhárið</td><td>slikjuhárið</td><td>slikjuhárið</td><td>slikjuhárið</td><td class="bad-inflection">slikjuhárinn</td><td>slikjuhárið</td><td>slikjuhárið</td><td class="bad-inflection">slikjuhárinn</td></tr>
+    <tr><th scope="row">trítlaætt í eignarfalli, eintölu, án greinis?</th><td>trítlaættar</td><td>trítlaættar</td><td>trítlaættar</td><td>trítlaættar</td><td>trítlaættar</td><td class="bad-inflection">trítlaætts</td><td>trítlaættar</td><td class="bad-inflection">trítluættar</td><td>trítlaættar</td><td>trítlaættar</td></tr>
+    <tr><th scope="row">blaðsveppur í nefnifalli, eintölu, án greinis?</th><td>blaðsveppur</td><td>blaðsveppur</td><td>blaðsveppur</td><td>blaðsveppur</td><td>blaðsveppur</td><td>blaðsveppur</td><td>blaðsveppur</td><td>blaðsveppur</td><td>blaðsveppur</td><td>blaðsveppur</td></tr>
+    <tr><th scope="row">óléttupróf í nefnifalli, eintölu, með greini?</th><td>óléttuprófið</td><td>óléttuprófið</td><td>óléttuprófið</td><td>óléttuprófið</td><td>óléttuprófið</td><td>óléttuprófið</td><td>óléttuprófið</td><td>óléttuprófið</td><td>óléttuprófið</td><td>óléttuprófið</td></tr>
+    <tr><th scope="row">rekstursfræði í eignarfalli, eintölu, án greinis?</th><td>rekstursfræði</td><td class="bad-inflection">rekstursfræða</td><td>rekstursfræði</td><td>rekstursfræði</td><td class="bad-inflection">rekstursfræðar</td><td class="bad-inflection">rekstursfræðis</td><td>rekstursfræði</td><td class="bad-inflection">rekstursfræðar</td><td>rekstursfræði</td><td>rekstursfræði</td></tr>
+    <tr><th scope="row">káltegund í eignarfalli, fleirtölu, með greini?</th><td>káltegundanna</td><td>káltegundanna</td><td>káltegundanna</td><td>káltegundanna</td><td>káltegundanna</td><td>káltegundanna</td><td>káltegundanna</td><td>káltegundanna</td><td class="bad-inflection">káltegunda</td><td class="bad-inflection">káltegunda</td></tr>
+    <tr><th scope="row">blómþak í eignarfalli, eintölu, án greinis?</th><td>blómþaks</td><td>blómþaks</td><td>blómþaks</td><td>blómþaks</td><td>blómþaks</td><td>blómþaks</td><td>blómþaks</td><td>blómþaks</td><td>blómþaks</td><td>blómþaks</td></tr>
+    <tr><th scope="row">geyfa í nefnifalli, eintölu, með greini?</th><td>geyfan</td><td>geyfan</td><td>geyfan</td><td>geyfan</td><td class="bad-inflection">geyfið</td><td>geyfan</td><td>geyfan</td><td class="bad-inflection">geyfinn</td><td class="bad-inflection">geyfa</td><td>geyfan</td></tr>
+    <tr><th scope="row">sýan í þolfalli, eintölu, án greinis?</th><td>sýan</td><td>sýan</td><td>sýan</td><td class="bad-inflection">sýn</td><td>sýan</td><td>sýan</td><td>sýan</td><td class="bad-inflection">sýn</td><td>sýan</td><td>sýan</td></tr>
+    <tr><th scope="row">staðalskekkja í eignarfalli, eintölu, með greini?</th><td>staðalskekkjunnar</td><td>staðalskekkjunnar</td><td>staðalskekkjunnar</td><td>staðalskekkjunnar</td><td>staðalskekkjunnar</td><td class="bad-inflection">staðalskekkjunni</td><td>staðalskekkjunnar</td><td>staðalskekkjunnar</td><td>staðalskekkjunnar</td><td class="bad-inflection">staðalskekkju</td></tr>
+    <tr><th scope="row">viðrétting í þolfalli, eintölu, án greinis?</th><td>viðréttingu</td><td>viðréttingu</td><td>viðréttingu</td><td>viðréttingu</td><td>viðréttingu</td><td>viðréttingu</td><td>viðréttingu</td><td>viðréttingu</td><td>viðréttingu</td><td class="bad-inflection">viðrétting</td></tr>
+    <tr><th scope="row">kirkjusálmur í eignarfalli, fleirtölu, án greinis?</th><td>kirkjusálma</td><td>kirkjusálma</td><td>kirkjusálma</td><td>kirkjusálma</td><td>kirkjusálma</td><td>kirkjusálma</td><td>kirkjusálma</td><td>kirkjusálma</td><td>kirkjusálma</td><td>kirkjusálma</td></tr>
+    <tr><th scope="row">matarhorn í nefnifalli, fleirtölu, með greini?</th><td>matarhornin</td><td>matarhornin</td><td>matarhornin</td><td>matarhornin</td><td>matarhornin</td><td>matarhornin</td><td>matarhornin</td><td>matarhornin</td><td>matarhornin</td><td>matarhornin</td></tr>
+    <tr><th scope="row">bríkarkorn í eignarfalli, fleirtölu, með greini?</th><td>bríkarkornanna</td><td>bríkarkornanna</td><td>bríkarkornanna</td><td>bríkarkornanna</td><td>bríkarkornanna</td><td>bríkarkornanna</td><td>bríkarkornanna</td><td>bríkarkornanna</td><td class="bad-inflection">bríkarkorna</td><td class="bad-inflection">bríkarkorna</td></tr>
+    <tr><th scope="row">jólaglögg í þolfalli, eintölu, án greinis?</th><td>jólaglögg</td><td>jólaglögg</td><td>jólaglögg</td><td>jólaglögg</td><td>jólaglögg</td><td>jólaglögg</td><td>jólaglögg</td><td>jólaglögg</td><td>jólaglögg</td><td>jólaglögg</td></tr>
+    <tr><th scope="row">grundvallarhljóð í nefnifalli, eintölu, með greini?</th><td>grundvallarhljóðið</td><td>grundvallarhljóðið</td><td>grundvallarhljóðið</td><td>grundvallarhljóðið</td><td>grundvallarhljóðið</td><td>grundvallarhljóðið</td><td>grundvallarhljóðið</td><td>grundvallarhljóðið</td><td>grundvallarhljóðið</td><td>grundvallarhljóðið</td></tr>
+    <tr><th scope="row">Naddoddur í þolfalli, eintölu, án greinis?</th><td>Naddodd</td><td>Naddodd</td><td>Naddodd</td><td>Naddodd</td><td>Naddodd</td><td>Naddodd</td><td>Naddodd</td><td>Naddodd</td><td class="bad-inflection">Naddóddo</td><td>Naddodd</td></tr>
+    <tr><th scope="row">svínabóndi í þágufalli, fleirtölu, með greini?</th><td>svínabændunum</td><td class="bad-inflection">svínabóndunum</td><td class="bad-inflection">svínabóndunum</td><td>svínabændunum</td><td class="bad-inflection">svínabóndunum</td><td>svínabændunum</td><td class="bad-inflection">svínabóndunum</td><td class="bad-inflection">svínabóndunum</td><td class="bad-inflection">svínabóndanum</td><td class="bad-inflection">svínaböndunum</td></tr>
+    <tr><th scope="row">hlutleysingi í nefnifalli, eintölu, án greinis?</th><td>hlutleysingi</td><td>hlutleysingi</td><td>hlutleysingi</td><td>hlutleysingi</td><td>hlutleysingi</td><td>hlutleysingi</td><td>hlutleysingi</td><td>hlutleysingi</td><td>hlutleysingi</td><td>hlutleysingi</td></tr>
+    <tr><th scope="row">kökusala í þágufalli, eintölu, með greini?</th><td>kökusölunni</td><td>kökusölunni</td><td>kökusölunni</td><td>kökusölunni</td><td>kökusölunni</td><td>kökusölunni</td><td>kökusölunni</td><td>kökusölunni</td><td>kökusölunni</td><td class="bad-inflection">kökusölu</td></tr>
+    <tr><th scope="row">aðalseðlabankastjóri í þolfalli, eintölu, án greinis?</th><td>aðalseðlabankastjóra</td><td>aðalseðlabankastjóra</td><td>aðalseðlabankastjóra</td><td>aðalseðlabankastjóra</td><td>aðalseðlabankastjóra</td><td>aðalseðlabankastjóra</td><td>aðalseðlabankastjóra</td><td>aðalseðlabankastjóra</td><td>aðalseðlabankastjóra</td><td>aðalseðlabankastjóra</td></tr>
+    <tr><th scope="row">millikot í þolfalli, eintölu, án greinis?</th><td>millikot</td><td>millikot</td><td>millikot</td><td>millikot</td><td>millikot</td><td>millikot</td><td>millikot</td><td>millikot</td><td>millikot</td><td>millikot</td></tr>
+    <tr><th scope="row">innyflamengun í þágufalli, eintölu, án greinis?</th><td>innyflamengun</td><td>innyflamengun</td><td>innyflamengun</td><td>innyflamengun</td><td>innyflamengun</td><td>innyflamengun</td><td>innyflamengun</td><td>innyflamengun</td><td>innyflamengun</td><td>innyflamengun</td></tr>
+    <tr><th scope="row">heilbrigðisvara í þolfalli, fleirtölu, með greini?</th><td>heilbrigðisvörurnar</td><td class="bad-inflection">heilbrigðisvarurnar</td><td class="bad-inflection">heilbrigðisvarirnar</td><td>heilbrigðisvörurnar</td><td class="bad-inflection">heilbrigðisvarurnar</td><td class="bad-inflection">heilbrigðisvarnirnar</td><td>heilbrigðisvörurnar</td><td>heilbrigðisvörurnar</td><td class="bad-inflection">heilbrigðisvaranna</td><td class="bad-inflection">heilbrigðisvörinum</td></tr>
+    <tr><th scope="row">keis í þágufalli, eintölu, með greini?</th><td class="bad-inflection">keisinu</td><td class="bad-inflection">keisnum</td><td class="bad-inflection">keisnum</td><td class="bad-inflection">keisanum</td><td class="bad-inflection">keisnum</td><td class="bad-inflection">keisnum</td><td class="bad-inflection">keisnum</td><td class="bad-inflection">keisnum</td><td class="bad-inflection">keisinum</td><td class="bad-inflection">keisanum</td></tr>
+    <tr><th scope="row">grámáfur í þágufalli, fleirtölu, með greini?</th><td class="bad-inflection">grámáfum</td><td>grámáfunum</td><td class="bad-inflection">grámöfunum</td><td>grámáfunum</td><td>grámáfunum</td><td>grámáfunum</td><td>grámáfunum</td><td>grámáfunum</td><td>grámáfunum</td><td class="bad-inflection">grámáfum</td></tr>
+    <tr><th scope="row">mataræðisnámskeið í þolfalli, fleirtölu, með greini?</th><td>mataræðisnámskeiðin</td><td>mataræðisnámskeiðin</td><td>mataræðisnámskeiðin</td><td>mataræðisnámskeiðin</td><td>mataræðisnámskeiðin</td><td>mataræðisnámskeiðin</td><td class="bad-inflection">mataræðisnámskeidinni</td><td>mataræðisnámskeiðin</td><td>mataræðisnámskeiðin</td><td class="bad-inflection">mataræðisnámskeiðunum</td></tr>
+    <tr><th scope="row">kamfórulykt í þágufalli, eintölu, án greinis?</th><td>kamfórulykt</td><td>kamfórulykt</td><td>kamfórulykt</td><td>kamfórulykt</td><td>kamfórulykt</td><td>kamfórulykt</td><td>kamfórulykt</td><td>kamfórulykt</td><td class="bad-inflection">kamfórlykti</td><td>kamfórulykt</td></tr>
+    <tr><th scope="row">ritkerfi í þolfalli, eintölu, án greinis?</th><td>ritkerfi</td><td>ritkerfi</td><td>ritkerfi</td><td>ritkerfi</td><td>ritkerfi</td><td>ritkerfi</td><td>ritkerfi</td><td>ritkerfi</td><td>ritkerfi</td><td>ritkerfi</td></tr>
+    <tr><th scope="row">bryggjuspor í nefnifalli, fleirtölu, með greini?</th><td>bryggjusporin</td><td>bryggjusporin</td><td>bryggjusporin</td><td>bryggjusporin</td><td class="bad-inflection">bryggusporin</td><td>bryggjusporin</td><td>bryggjusporin</td><td>bryggjusporin</td><td>bryggjusporin</td><td class="bad-inflection">bryggjuspörin</td></tr>
+    <tr><th scope="row">sædvergur í eignarfalli, fleirtölu, án greinis?</th><td>sædverga</td><td>sædverga</td><td>sædverga</td><td>sædverga</td><td>sædverga</td><td>sædverga</td><td>sædverga</td><td>sædverga</td><td class="bad-inflection">sædverja</td><td>sædverga</td></tr>
+    <tr><th scope="row">kennsluskrá í nefnifalli, eintölu, án greinis?</th><td>kennsluskrá</td><td>kennsluskrá</td><td>kennsluskrá</td><td>kennsluskrá</td><td>kennsluskrá</td><td>kennsluskrá</td><td>kennsluskrá</td><td>kennsluskrá</td><td>kennsluskrá</td><td>kennsluskrá</td></tr>
+    <tr><th scope="row">akvegasamband í þágufalli, eintölu, með greini?</th><td>akvegasambandinu</td><td>akvegasambandinu</td><td>akvegasambandinu</td><td>akvegasambandinu</td><td>akvegasambandinu</td><td>akvegasambandinu</td><td>akvegasambandinu</td><td>akvegasambandinu</td><td>akvegasambandinu</td><td>akvegasambandinu</td></tr>
+    <tr><th scope="row">gauð í þágufalli, fleirtölu, með greini?</th><td>gauðunum</td><td>gauðunum</td><td>gauðunum</td><td>gauðunum</td><td class="bad-inflection">gauðum</td><td>gauðunum</td><td>gauðunum</td><td>gauðunum</td><td class="bad-inflection">gauðum</td><td>gauðunum</td></tr>
+    <tr><th scope="row">kjarrárlax í eignarfalli, eintölu, án greinis?</th><td>kjarrárlax</td><td>kjarrárlax</td><td>kjarrárlax</td><td>kjarrárlax</td><td>kjarrárlax</td><td>kjarrárlax</td><td>kjarrárlax</td><td>kjarrárlax</td><td class="bad-inflection">kjarrárlaxs</td><td class="bad-inflection">kjarrárlaxar</td></tr>
+    <tr><th scope="row">klettahnappur í eignarfalli, eintölu, án greinis?</th><td>klettahnapps</td><td>klettahnapps</td><td>klettahnapps</td><td>klettahnapps</td><td>klettahnapps</td><td>klettahnapps</td><td>klettahnapps</td><td>klettahnapps</td><td class="bad-inflection">klettahnaps</td><td>klettahnapps</td></tr>
+    <tr><th scope="row">jafnaðarkona í þolfalli, fleirtölu, með greini?</th><td>jafnaðarkonurnar</td><td>jafnaðarkonurnar</td><td>jafnaðarkonurnar</td><td>jafnaðarkonurnar</td><td>jafnaðarkonurnar</td><td>jafnaðarkonurnar</td><td>jafnaðarkonurnar</td><td>jafnaðarkonurnar</td><td>jafnaðarkonurnar</td><td class="bad-inflection">jafnaðarkonunum</td></tr>
+    <tr><th scope="row">kolludráp í nefnifalli, eintölu, með greini?</th><td>kolludrápið</td><td>kolludrápið</td><td>kolludrápið</td><td>kolludrápið</td><td>kolludrápið</td><td>kolludrápið</td><td>kolludrápið</td><td>kolludrápið</td><td class="bad-inflection">kolludráp</td><td>kolludrápið</td></tr>
+    <tr><th scope="row">skipslag í þágufalli, eintölu, án greinis?</th><td>skipslagi</td><td>skipslagi</td><td>skipslagi</td><td>skipslagi</td><td>skipslagi</td><td>skipslagi</td><td>skipslagi</td><td>skipslagi</td><td>skipslagi</td><td>skipslagi</td></tr>
+    <tr><th scope="row">taugungi í nefnifalli, fleirtölu, án greinis?</th><td>taugungar</td><td>taugungar</td><td>taugungar</td><td>taugungar</td><td>taugungar</td><td>taugungar</td><td>taugungar</td><td>taugungar</td><td>taugungar</td><td>taugungar</td></tr>
+    <tr><th scope="row">svefnklefi í þolfalli, eintölu, með greini?</th><td>svefnklefann</td><td>svefnklefann</td><td>svefnklefann</td><td class="bad-inflection">svefnklefanum</td><td>svefnklefann</td><td>svefnklefann</td><td>svefnklefann</td><td>svefnklefann</td><td class="bad-inflection">svefnklefi</td><td class="bad-inflection">svefnklefanum</td></tr>
+    <tr><th scope="row">strengjabrú í nefnifalli, fleirtölu, með greini?</th><td>strengjabrýrnar</td><td>strengjabrýrnar</td><td>strengjabrýrnar</td><td class="bad-inflection">strengjabrýr</td><td>strengjabrýrnar</td><td>strengjabrýrnar</td><td class="bad-inflection">strengjabrúnar</td><td>strengjabrýrnar</td><td class="bad-inflection">strengjarbrúnir</td><td class="bad-inflection">strengjabrúin</td></tr>
+  </tbody>
+</table>
+        </div>
+      </section>
 
       <section class="filters" id="filters">
         <div class="summary-header">
-
           <div class='summary-header-left'>
             <h2>Niðurstöður Myndlistarkeppninnar</h2>
             <p>Hér fyrir neðan eru niðurstöður allra gervigreindarlíkana í myndlistarkeppninni sýndar. Í hverju prófi eru gervigreindunum gefin ein kvaðning (e. prompt). Til dæmis gæti kvaðningin verið:</p>
